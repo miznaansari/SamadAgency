@@ -197,83 +197,86 @@ if (!category) {
   /* =========================
      UI (DARK CONVERTED)
   ========================= */
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] to-[#111827]">
-      
-      <div className="mx-auto max-w-7xl px-4 py-10">
+  /* =========================
+   UI (WHITE THEME)
+========================= */
+return (
+  <div className="min-h-screen bg-white">
 
-        {/* CATEGORY TITLE */}
-        <h1
-          className="
-            mb-10 text-center text-3xl font-semibold
-            text-white
-          "
-        >
-          {category.name}
-        </h1>
+    <div className="mx-auto max-w-7xl px-4 py-10">
 
-        {/* ================= CHILD CATEGORIES ================= */}
-        {childrenWithCount.length > 0 && (
-          <div className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+      {/* CATEGORY TITLE */}
+      <h1 className="mb-10 text-center text-3xl font-semibold text-black">
+        {category.name}
+      </h1>
 
-            {childrenWithCount.map((child) => (
-              <Link
-                key={child.id}
-                href={`/product-category/${child.path}`}
+      {/* ================= CHILD CATEGORIES ================= */}
+      {childrenWithCount.length > 0 && (
+        <div className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+
+          {childrenWithCount.map((child) => (
+            <Link
+              key={child.id}
+              href={`/product-category/${child.path}`}
+              className="
+                group rounded-xl
+                bg-white
+                border border-gray-200
+                p-5 text-center
+                transition-all duration-300
+                hover:border-[#0ea5e9]
+                hover:shadow-md
+              "
+            >
+
+              <p
                 className="
-                  group rounded-xl
-                  bg-[#1a1a1a]
-                  border border-white/10
-                  p-5 text-center
-                  transition-all duration-300
-                  hover:border-[#38bdf8]
-                  hover:shadow-[0_0_20px_rgba(56,189,248,0.25)]
+                  text-sm font-semibold
+                  text-black
+                  group-hover:text-[#0ea5e9]
+                  transition
                 "
               >
-                <p
-                  className="
-                    text-sm font-semibold
-                    text-white
-                    group-hover:text-[#38bdf8]
-                    transition
-                  "
-                >
-                  {child.name}
-                </p>
+                {child.name}
+              </p>
 
-                <p className="text-xs text-[#9ca3af] mt-1">
-                  {child.product_count} products
-                </p>
-              </Link>
-            ))}
+              <p className="text-xs text-gray-500 mt-1">
+                {child.product_count} products
+              </p>
+
+            </Link>
+          ))}
+
+        </div>
+      )}
+
+      {/* ================= PRODUCT GRID ================= */}
+      {preparedProducts.length > 0 ? (
+        <ProductGrid
+          products={preparedProducts}
+          customerId={customerId}
+        />
+      ) : (
+        <div className="flex items-center justify-center py-16">
+
+          <div className="flex flex-col items-center gap-3 rounded-xl border border-gray-200 bg-white px-8 py-10 text-center shadow-sm">
+
+            <CubeIcon className="h-10 w-10 text-[#0ea5e9]" />
+
+            <h3 className="text-lg font-semibold text-black">
+              No products found
+            </h3>
+
+            <p className="text-sm text-gray-500">
+              There are currently no products available in this category.
+            </p>
 
           </div>
-        )}
 
-        {/* ================= PRODUCT GRID ================= */}
-        {preparedProducts.length > 0 ? (
-          <ProductGrid
-            products={preparedProducts}
-            customerId={customerId}
-          />
-        ) : (
-        <div className="flex items-center justify-center py-16">
-  <div className="flex flex-col items-center gap-3 rounded-xl border border-white/10 bg-[#1a1a1a] px-8 py-10 text-center shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
-    
-    <CubeIcon className="h-10 w-10 text-[#38bdf8]" />
+        </div>
+      )}
 
-    <h3 className="text-lg font-semibold text-white">
-      No products found
-    </h3>
-
-    <p className="text-sm text-gray-400">
-      There are currently no products available in this category.
-    </p>
-  </div>
-</div>
-        )}
-
-      </div>
     </div>
-  );
+  </div>
+);
 }

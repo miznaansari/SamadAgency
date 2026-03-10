@@ -15,7 +15,6 @@ export default function ProductGrid({ products, customerId }) {
   const [isPending, startTransition] = useTransition();
   const [loadingProductId, setLoadingProductId] = useState(null);
 
-  /* ================= IMAGE FADE ================= */
   useEffect(() => {
     ScrollReveal().reveal(".sr-image", {
       opacity: 0,
@@ -25,7 +24,6 @@ export default function ProductGrid({ products, customerId }) {
     });
   }, []);
 
-  /* ================= CART QTY ================= */
   const getCartQty = useCallback(
     (productId) => {
       if (Array.isArray(cartItems) && cartItems.length > 0) {
@@ -45,7 +43,6 @@ export default function ProductGrid({ products, customerId }) {
     [cartItems]
   );
 
-  /* ================= ADD ================= */
   const handleAddToCart = (product) => {
     const step = Number(product.stepper_value ?? 1);
     setLoadingProductId(product.id);
@@ -112,7 +109,6 @@ export default function ProductGrid({ products, customerId }) {
     });
   };
 
-  /* ================= REMOVE ================= */
   const handleRemoveFromCart = (product) => {
     const cartItem = cartItems?.find(
       (i) => i.product_list_id === product.id
@@ -138,7 +134,6 @@ export default function ProductGrid({ products, customerId }) {
     });
   };
 
-  /* ================= UI ================= */
   return (
     <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
 
@@ -153,17 +148,18 @@ export default function ProductGrid({ products, customerId }) {
             className="
               group flex flex-col overflow-hidden
               rounded-xl
-              border border-white/10
-              bg-[#1a1a1a]
-              shadow-[0_10px_30px_rgba(0,0,0,0.6)]
+              border border-gray-200
+              bg-white
+              shadow-sm
               transition-all duration-300
-              hover:border-[#38bdf8]
-              hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]
+              hover:border-[#0ea5e9]
+              hover:shadow-md
             "
           >
+
             {/* IMAGE */}
             <Link href={`/product/${product.slug}`}>
-              <div className="sr-image relative aspect-square w-full bg-[#111827]">
+              <div className="sr-image relative aspect-square w-full bg-gray-50">
 
                 <img
                   src={product.image}
@@ -183,13 +179,12 @@ export default function ProductGrid({ products, customerId }) {
             {/* CONTENT */}
             <div className="flex flex-1 flex-col gap-2 p-4">
 
-              {/* NAME */}
               <Link href={`/product/${product.slug}`}>
                 <p
                   className="
                     line-clamp-2 text-sm font-medium
-                    text-white
-                    group-hover:text-[#38bdf8]
+                    text-black
+                    group-hover:text-[#0ea5e9]
                     transition
                   "
                 >
@@ -200,9 +195,9 @@ export default function ProductGrid({ products, customerId }) {
               {/* PRICE */}
               <div className="flex mt-auto items-center justify-between">
 
-                <p className="text-lg font-semibold text-white">
+                <p className="text-lg font-semibold text-black">
                   ₹{product.price}
-                  <span className="ml-1 text-xs text-[#9ca3af]">
+                  <span className="ml-1 text-xs text-gray-500">
                     ex. GST
                   </span>
                 </p>
@@ -211,16 +206,17 @@ export default function ProductGrid({ products, customerId }) {
                   <span
                     className="
                       rounded-md
-                      bg-[#0ea5e9]/20
+                      bg-[#0ea5e9]/10
                       px-2 py-0.5
                       text-xs font-medium
-                      text-[#38bdf8]
-                      border border-[#38bdf8]/30
+                      text-[#0ea5e9]
+                      border border-[#0ea5e9]/30
                     "
                   >
                     Qty {qty}
                   </span>
                 )}
+
               </div>
 
               {/* BUTTONS */}
@@ -234,9 +230,9 @@ export default function ProductGrid({ products, customerId }) {
                     className="
                       w-full py-2 text-sm font-medium
                       rounded-lg
-                      border border-red-500/30
-                      text-red-400
-                      hover:bg-red-500/10
+                      border border-red-300
+                      text-red-600
+                      hover:bg-red-50
                       transition
                     "
                   >
@@ -258,15 +254,14 @@ export default function ProductGrid({ products, customerId }) {
                     ${
                       qty > 0
                         ? `
-                          border border-[#38bdf8]/40
-                          text-[#38bdf8]
-                          hover:bg-[#38bdf8]/10
+                          border border-[#0ea5e9]/40
+                          text-[#0ea5e9]
+                          hover:bg-[#0ea5e9]/10
                         `
                         : `
                           bg-[#0ea5e9]
                           text-white
-                          shadow-[0_0_15px_rgba(14,165,233,0.35)]
-                          hover:bg-[#38bdf8]
+                          hover:bg-[#0284c7]
                         `
                     }
                   `}
@@ -279,10 +274,12 @@ export default function ProductGrid({ products, customerId }) {
                 </button>
 
               </div>
+
             </div>
           </div>
         );
       })}
+
     </div>
   );
 }

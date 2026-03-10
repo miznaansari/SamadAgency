@@ -47,31 +47,33 @@ const geistMono = Geist_Mono({
 /* =========================
    METADATA
 ========================= */
-
 export const metadata = {
-  metadataBase: new URL("https://theclevar.com"),
+  metadataBase: new URL("https://samad-agency.vercel.app"),
 
- title: {
-  default: "Samad Agency | Custom Dresses & Premium Fashion",
-  template: "%s | Samad Agency",
-},
+  title: {
+    default: "Samad Agency | Wholesale Mobile Accessories Supplier",
+    template: "%s | Samad Agency",
+  },
 
   description:
-    "Samad Agency provides advanced custom dresses and premium fashion solutions across India. Trusted, reliable, and professional services.",
+    "Samad Agency is a trusted wholesale supplier of mobile accessories including Airpods, Chargers, Data Cables, Handsfree, Neckbands, and Power Banks. High-quality products with reliable delivery across India.",
 
   applicationName: "Samad Agency",
 
   keywords: [
     "Samad Agency",
-    "Custom Dresses ",
-    "Premium Fashion",
-    "theclevar",
-    "Fashion Company",
+    "Wholesale Mobile Accessories",
+    "Airpods Wholesale",
+    "Mobile Charger Wholesale",
+    "Data Cable Supplier",
+    "Handsfree Wholesale",
+    "Neckband Wholesale",
+    "Power Bank Supplier",
+    "Mobile Accessories Distributor India",
   ],
 
   authors: [{ name: "Samad Agency" }],
   creator: "Samad Agency",
-
 
   manifest: "/manifest.webmanifest",
 
@@ -84,10 +86,10 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Samad Agency | Custom Dresses & Premium Fashion",
+    title: "Samad Agency | Wholesale Mobile Accessories Supplier",
     description:
-      "Professional custom dresses and premium fashion solutions across India.",
-    url: "https://theclevar.com",
+      "Buy high-quality mobile accessories wholesale including Airpods, Chargers, Data Cables, Handsfree, Neckbands, and Power Banks. Trusted supplier across India.",
+    url: "https://samad-agency.vercel.app",
     siteName: "Samad Agency",
     locale: "en_IN",
     type: "website",

@@ -100,7 +100,6 @@ export default function CartDrawer({ isLoggedIn }) {
         className={`fixed right-0 top-0 h-full w-full md:w-[420px]
         bg-gradient-to-b from-[#0f0f0f] to-[#0b0b0b]
         border-l border-white/10
-        shadow-[-10px_0_40px_rgba(0,0,0,0.6)]
         transition-transform duration-300 z-50
         flex flex-col
         ${open ? "translate-x-0" : "translate-x-full"}`}

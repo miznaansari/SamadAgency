@@ -21,7 +21,7 @@ export default function Home() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] md:min-h-[90dvh] flex items-center justify-center overflow-hidden bg-white">
+    <section className="relative hidden md:flex min-h-[100dvh] md:min-h-[90dvh] flex items-center justify-center overflow-hidden bg-white">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">

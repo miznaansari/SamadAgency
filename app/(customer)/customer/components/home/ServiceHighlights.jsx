@@ -34,7 +34,7 @@ export default function ServiceHighlights() {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 hidden md:flex bg-white">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">

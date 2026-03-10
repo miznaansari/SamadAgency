@@ -251,7 +251,7 @@ export default function BestSellingProducts({ products }) {
   };
 
   return (
-    <section className="border-b bg-white border-gray-200 py-12">
+    <section className="border-b hidden md:flex bg-white border-gray-200 py-12">
 
       <div className="max-w-7xl mx-auto px-4 ">
 

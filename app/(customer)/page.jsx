@@ -35,7 +35,7 @@ const brands = [
 
 export default async function Page() {
   const skus = [
-    "SHIRT1", "SHIRT2"
+    "MUSIC-40Hours", "SHIRT2"
 
 
 
@@ -103,7 +103,7 @@ export default async function Page() {
       <BestSellingProducts products={products} customerId={user?.id} />
       {/* <WhyChoosetheclevar />
        */}
-      <LetsWorkTogether />
+      {/* <LetsWorkTogether /> */}
 
       {/* <StatsCounter /> */}
       {/* <Banner products={products} /> */}

@@ -6,16 +6,11 @@ import { useToast } from "@/app/admin/context/ToastProvider";
 import { useCart } from "@/app/context/CartContext";
 import RelatedProduct from "./RelatedProduct";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
 import {
-  HeartIcon,
-  TrashIcon,
-  ShoppingBagIcon,
   StarIcon,
   ShareIcon,
 } from "@heroicons/react/24/solid";
+
 import ProductInfoTabs from "./ProductInfoTabs";
 import ServiceHighlights from "@/app/(customer)/customer/components/home/ServiceHighlights";
 
@@ -32,9 +27,7 @@ export default function ProductDetailClient({
 
   const [qty, setQty] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
-  const [activeImage, setActiveImage] = useState(
-    product.mainImage?.[0]
-  );
+  const [activeImage, setActiveImage] = useState(product.mainImage?.[0]);
   const [selectedVariant, setSelectedVariant] = useState(
     product.variants?.[0] || null
   );
@@ -64,10 +57,12 @@ export default function ProductDetailClient({
           variantId: selectedVariant?.id,
           qty,
         });
+
         await reloadCart();
       } else {
         const existingCart =
           JSON.parse(localStorage.getItem("guest_cart")) || {};
+
         existingCart[product.id] = {
           product_id: product.id,
           name: product.name,
@@ -81,7 +76,7 @@ export default function ProductDetailClient({
         localStorage.setItem("guest_cart", JSON.stringify(existingCart));
       }
 
-      showToast({ type: "success", message: "Added to Bag" });
+      showToast({ type: "success", message: "Added to Cart" });
     } catch {
       showToast({ type: "error", message: "Something went wrong" });
     } finally {
@@ -108,12 +103,16 @@ export default function ProductDetailClient({
   };
 
   return (
-    <section className="bg-[#05070b] text-white min-h-screen">
+    <section className="bg-white text-black min-h-screen">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:py-10">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+          {/* IMAGE SECTION */}
           <div className="flex justify-evenly flex-wrap-reverse gap-6">
+
+            {/* THUMBNAILS */}
             <div className="flex flex-row md:flex-col gap-3 mt-4">
               {product.mainImage?.map((img, i) => (
                 <img
@@ -121,28 +120,26 @@ export default function ProductDetailClient({
                   src={img.url}
                   onClick={() => setActiveImage(img)}
                   className={`w-16 h-16 object-cover rounded-md cursor-pointer border
-${activeImage?.url === img.url
-                      ? "border-cyan-400"
-                      : "border-white/10 hover:border-cyan-400"
-                    }`}
+                  ${
+                    activeImage?.url === img.url
+                      ? "border-[#0ea5e9]"
+                      : "border-gray-200 hover:border-[#0ea5e9]"
+                  }`}
                 />
               ))}
             </div>
-            {/* LEFT IMAGE */}
+
+            {/* MAIN IMAGE */}
             <div className="relative">
 
-              <span className="absolute top-4 left-4 z-10 bg-pink-500 text-xs px-3 py-1 rounded-full font-semibold">
+              <span className="absolute top-4 left-4 z-10 bg-red-500 text-xs px-3 py-1 rounded-full font-semibold text-white">
                 HOT
               </span>
 
               <img
                 src={activeImage?.url}
-                className="w-full h-120 rounded-xl object-contain"
+                className="w-full h-[500px] rounded-xl object-contain border border-gray-200"
               />
-
-              {/* thumbnails */}
-
-
             </div>
 
           </div>
@@ -150,20 +147,22 @@ ${activeImage?.url === img.url
           {/* RIGHT DETAILS */}
           <div className="space-y-6">
 
-            {/* product title */}
             <div>
 
-              <p className="text-green-400 text-xs uppercase tracking-wider">
-                Oversized
+              <p className="text-green-600 text-xs uppercase tracking-wider">
+                Premium Accessory
               </p>
 
               <h1 className="text-3xl md:text-4xl font-bold mt-1">
                 {product.name}
               </h1>
-              <p className="text-gray-400 text-sm mt-1">{product.description}</p>
+
+              <p className="text-gray-500 text-sm mt-1">
+                {product.description}
+              </p>
 
               {/* rating */}
-              <div className="flex items-center gap-2 mt-2 text-sm text-gray-400">
+              <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
 
                 <div className="flex items-center gap-1 text-yellow-400">
                   {[...Array(5)].map((_, i) => (
@@ -171,14 +170,12 @@ ${activeImage?.url === img.url
                   ))}
                 </div>
 
-                <span className="text-cyan-400 font-semibold">4.8</span>
-
+                <span className="text-[#0ea5e9] font-semibold">4.8</span>
                 <span>(234 reviews)</span>
 
               </div>
 
             </div>
-
 
             {/* PRICE */}
             <div className="flex items-center gap-4">
@@ -191,49 +188,24 @@ ${activeImage?.url === img.url
                 ₹{originalPrice}
               </span>
 
-              <span className="bg-green-500/20 text-green-400 text-xs px-3 py-1 rounded">
+              <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded">
                 32% OFF
               </span>
 
             </div>
 
+            <div className="text-sm text-gray-500">
+              👁 {product.views} views
+            </div>
 
-            {/* COLOR SELECT */}
-            {/* <div>
-
-<p className="text-gray-400 text-sm mb-2">
-COLOR: SELECT
-</p>
-
-<div className="flex gap-3">
-
-<div className="w-6 h-6 rounded-full bg-black border border-white/30 cursor-pointer"/>
-
-<div className="w-6 h-6 rounded-full bg-blue-900 border border-white/30 cursor-pointer"/>
-
-<div className="w-6 h-6 rounded-full bg-indigo-900 border border-white/30 cursor-pointer"/>
-
-</div>
-
-</div> */}
-<div className="text-sm text-gray-400">
-  👁 {product.views} views
-</div>
-
-            {/* SIZE */}
+            {/* VARIANTS */}
             {product.variants?.length > 0 && (
               <div>
 
                 <div className="flex justify-between mb-2">
-
-                  <p className="text-gray-400 text-sm">
-                    SIZE: SELECT
+                  <p className="text-gray-500 text-sm">
+                    SELECT OPTION
                   </p>
-
-                  <span className="text-xs text-gray-500 cursor-pointer">
-                    Size Guide
-                  </span>
-
                 </div>
 
                 <div className="flex gap-3 flex-wrap">
@@ -244,25 +216,21 @@ COLOR: SELECT
                     const isOut = variant.stock_qty <= 0
 
                     return (
-
                       <button
                         key={variant.id}
                         disabled={isOut}
                         onClick={() => setSelectedVariant(variant)}
                         className={`px-4 py-2 text-sm rounded-md border transition
-
-${isSelected
-                            ? "border-cyan-400 text-cyan-400"
-                            : "border-white/10 hover:border-cyan-400"}
-
-${isOut ? "opacity-40 cursor-not-allowed" : ""}
-`}
+                        ${
+                          isSelected
+                            ? "border-[#0ea5e9] text-[#0ea5e9]"
+                            : "border-gray-200 hover:border-[#0ea5e9]"
+                        }
+                        ${isOut ? "opacity-40 cursor-not-allowed" : ""}
+                        `}
                       >
-
                         {variant.size}
-
                       </button>
-
                     )
 
                   })}
@@ -272,19 +240,18 @@ ${isOut ? "opacity-40 cursor-not-allowed" : ""}
               </div>
             )}
 
-
             {/* QTY */}
             <div className="flex items-center gap-3">
 
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-500">
                 QTY:
               </p>
 
-              <div className="flex items-center border border-white/10 rounded-md overflow-hidden">
+              <div className="flex items-center border border-gray-200 rounded-md overflow-hidden">
 
                 <button
                   onClick={() => setQty(q => Math.max(1, q - 1))}
-                  className="px-3 py-2 hover:bg-white/5"
+                  className="px-3 py-2 hover:bg-gray-100"
                 >
                   -
                 </button>
@@ -293,7 +260,7 @@ ${isOut ? "opacity-40 cursor-not-allowed" : ""}
 
                 <button
                   onClick={() => setQty(q => q + 1)}
-                  className="px-3 py-2 hover:bg-white/5"
+                  className="px-3 py-2 hover:bg-gray-100"
                 >
                   +
                 </button>
@@ -302,29 +269,21 @@ ${isOut ? "opacity-40 cursor-not-allowed" : ""}
 
             </div>
 
-
             {/* BUTTONS */}
             <div className="flex gap-4 pt-2">
 
               <button
                 onClick={handleAddToCart}
                 disabled={isAdding}
-                className="flex-1 h-12 cursor-pointer rounded-lg border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition font-semibold"
+                className="flex-1 h-12 rounded-lg border border-[#0ea5e9] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-white transition font-semibold"
               >
                 {isAdding ? "Adding..." : "Add To Cart"}
               </button>
 
-              {/* <button
-className="flex-1 h-12 rounded-lg bg-pink-500 hover:bg-pink-600 transition font-semibold"
->
-Buy Now
-</button> */}
-
             </div>
 
-
             {/* share */}
-            <p className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer hover:text-white transition">
+            <p className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer hover:text-black transition">
               <ShareIcon className="w-4 h-4" />
               Share this product
             </p>
@@ -332,14 +291,13 @@ Buy Now
           </div>
 
         </div>
+
       </div>
 
-        <ProductInfoTabs />
-        <ServiceHighlights />
-        {/* related */}
-          <RelatedProduct relatedProducts={relatedProducts} />
-
+      {/* <ProductInfoTabs /> */}
+      <ServiceHighlights />
+      <RelatedProduct relatedProducts={relatedProducts} />
 
     </section>
-  )
+  );
 }

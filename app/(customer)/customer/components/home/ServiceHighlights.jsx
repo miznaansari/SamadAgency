@@ -9,32 +9,32 @@ export default function ServiceHighlights() {
   const items = [
     {
       icon: TruckIcon,
-      title: "FREE SHIPPING",
-      desc: "On orders above ₹999",
-      color: "text-cyan-400 border-cyan-400/30 bg-cyan-400/10",
+      title: "PAN INDIA DELIVERY",
+      desc: "Fast shipping across India",
+      color: "text-[#0ea5e9] border-[#0ea5e9]/30 bg-[#0ea5e9]/10",
     },
     {
       icon: ShieldCheckIcon,
       title: "PREMIUM QUALITY",
-      desc: "240–380 GSM fabrics",
-      color: "text-pink-400 border-pink-400/30 bg-pink-400/10",
+      desc: "High quality mobile accessories",
+      color: "text-green-500 border-green-500/30 bg-green-500/10",
     },
     {
       icon: ArrowPathIcon,
-      title: "7-DAY RETURNS",
-      desc: "Hassle-free returns",
-      color: "text-green-400 border-green-400/30 bg-green-400/10",
+      title: "EASY RETURNS",
+      desc: "7-day hassle free returns",
+      color: "text-yellow-500 border-yellow-500/30 bg-yellow-500/10",
     },
     {
       icon: BoltIcon,
-      title: "FAST PRINTS",
-      desc: "5–7 day custom delivery",
-      color: "text-yellow-400 border-yellow-400/30 bg-yellow-400/10",
+      title: "FAST DISPATCH",
+      desc: "Quick order processing",
+      color: "text-purple-500 border-purple-500/30 bg-purple-500/10",
     },
   ];
 
   return (
-    <section className=" py-16">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
@@ -53,12 +53,12 @@ export default function ServiceHighlights() {
                 </div>
 
                 {/* TITLE */}
-                <h4 className="mt-4 text-white text-sm tracking-widest font-semibold">
+                <h4 className="mt-4 text-black text-sm tracking-widest font-semibold">
                   {item.title}
                 </h4>
 
                 {/* DESCRIPTION */}
-                <p className="text-gray-400 text-sm mt-1">
+                <p className="text-gray-500 text-sm mt-1">
                   {item.desc}
                 </p>
 

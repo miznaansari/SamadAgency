@@ -3,22 +3,14 @@ import { requireUser } from "@/lib/requireUser";
 
 export async function GET(req) {
 
-  console.time("api:category-products:total");
-
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("category");
 
-  console.log("category slug:", slug);
-
-  console.time("auth:user");
   const user = await requireUser();
-  console.timeEnd("auth:user");
 
   let customer;
 
   if (user) {
-    console.time("db:customer_lookup");
-
     customer = await prisma.customer_list.findUnique({
       where: { id: user.id },
       select: {
@@ -27,24 +19,15 @@ export async function GET(req) {
         price_tier: true,
       },
     });
-
-    console.timeEnd("db:customer_lookup");
   }
 
-  console.time("db:category_lookup");
-
-  const category = await prisma.product_category.findFirst({
-    where: { slug },
-  });
-
-  console.timeEnd("db:category_lookup");
+const category = await prisma.product_category.findFirst({
+  where: { slug },
+});
 
   if (!category) {
-    console.timeEnd("api:category-products:total");
     return Response.json([]);
   }
-
-  console.time("db:products_query");
 
   const products = await prisma.product_list.findMany({
     where: {
@@ -72,12 +55,6 @@ export async function GET(req) {
         : false,
     },
   });
-
-  console.timeEnd("db:products_query");
-
-  console.log("products found:", products.length);
-
-  console.timeEnd("api:category-products:total");
 
   return Response.json(products);
 }

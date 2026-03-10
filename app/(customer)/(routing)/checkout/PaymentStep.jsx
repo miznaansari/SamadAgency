@@ -172,84 +172,84 @@ export default function PaymentStep() {
     }
   };
 
-  return (
-    <div className="bg-[#1a1a1a] border border-white/10 rounded-xl p-6">
+return (
+  <div className="bg-white border border-gray-200 rounded-xl p-6">
 
-      {/* TITLE */}
-      <h2 className="text-lg font-semibold mb-6 text-white">
-        SELECT PAYMENT METHOD
-      </h2>
+    {/* TITLE */}
+    <h2 className="text-lg font-semibold mb-6 text-black">
+      SELECT PAYMENT METHOD
+    </h2>
 
-      {/* OPTIONS */}
-      <div className="space-y-4">
+    {/* OPTIONS */}
+    <div className="space-y-4">
 
-        {/* RAZORPAY */}
-        <label
-          className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
-          ${
-            method === "razorpay"
-              ? "border-cyan-400 bg-cyan-400/10"
-              : "border-white/10 hover:border-cyan-400/40"
-          }`}
-        >
-
-          <div>
-            <p className="font-semibold text-white">
-              Razorpay
-            </p>
-
-            <p className="text-xs text-gray-400">
-              UPI • Cards • Wallets • Net Banking
-            </p>
-          </div>
-
-          <input
-            type="radio"
-            checked={method === "razorpay"}
-            onChange={() => setMethod("razorpay")}
-          />
-
-        </label>
-
-        {/* COD */}
-        <label
-          className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
-          ${
-            method === "cod"
-              ? "border-cyan-400 bg-cyan-400/10"
-              : "border-white/10 hover:border-cyan-400/40"
-          }`}
-        >
-
-          <div>
-            <p className="font-semibold text-white">
-              Cash on Delivery
-            </p>
-
-            <p className="text-xs text-gray-400">
-              Pay when you receive
-            </p>
-          </div>
-
-          <input
-            type="radio"
-            checked={method === "cod"}
-            onChange={() => setMethod("cod")}
-          />
-
-        </label>
-
-      </div>
-
-      {/* BUTTON */}
-      <button
-        onClick={handlePlaceOrder}
-        disabled={loading}
-        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 rounded-lg transition disabled:opacity-50"
+      {/* RAZORPAY */}
+      <label
+        className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
+        ${
+          method === "razorpay"
+            ? "border-[#0ea5e9] bg-[#0ea5e9]/10"
+            : "border-gray-200 hover:border-[#0ea5e9]/40"
+        }`}
       >
-        {loading ? "Processing..." : "PLACE ORDER"}
-      </button>
+
+        <div>
+          <p className="font-semibold text-black">
+            Razorpay
+          </p>
+
+          <p className="text-xs text-gray-500">
+            UPI • Cards • Wallets • Net Banking
+          </p>
+        </div>
+
+        <input
+          type="radio"
+          checked={method === "razorpay"}
+          onChange={() => setMethod("razorpay")}
+        />
+
+      </label>
+
+      {/* COD */}
+      <label
+        className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
+        ${
+          method === "cod"
+            ? "border-[#0ea5e9] bg-[#0ea5e9]/10"
+            : "border-gray-200 hover:border-[#0ea5e9]/40"
+        }`}
+      >
+
+        <div>
+          <p className="font-semibold text-black">
+            Cash on Delivery
+          </p>
+
+          <p className="text-xs text-gray-500">
+            Pay when you receive
+          </p>
+        </div>
+
+        <input
+          type="radio"
+          checked={method === "cod"}
+          onChange={() => setMethod("cod")}
+        />
+
+      </label>
 
     </div>
-  );
+
+    {/* BUTTON */}
+    <button
+      onClick={handlePlaceOrder}
+      disabled={loading}
+      className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+    >
+      {loading ? "Processing..." : "PLACE ORDER"}
+    </button>
+
+  </div>
+);
 }

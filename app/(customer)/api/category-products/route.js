@@ -44,36 +44,45 @@ export async function GET(req) {
     return Response.json([]);
   }
 
-  console.time("db:products_query");
+console.time("db:products_query");
 
-  const products = await prisma.product_list.findMany({
-    where: {
-      category_id: category.id,
-      is_deleted: false,
-      is_active: true,
-    },
+const products = await prisma.product_list.findMany({
+  where: {
+    category_id: category.id,
+    is_deleted: false,
+    is_active: true,
+  },
 
-    include: {
-      variants: true,
+  select: {
+    id: true,
+    name: true,
+    slug: true,
+    regular_price: true,
+    sale_price: true,
 
-      images: {
-        where: { is_primary: true },
+    images: {
+      where: { is_primary: true },
+      select: {
+        image_url: true,
       },
-
-      category: true,
-
-      pricing: customer?.customer_group_id
-        ? {
-            where: {
-              customer_group_id: customer.customer_group_id,
-            },
-            take: 1,
-          }
-        : false,
+      take: 1,
     },
-  });
 
-  console.timeEnd("db:products_query");
+    pricing: customer?.customer_group_id
+      ? {
+          where: {
+            customer_group_id: customer.customer_group_id,
+          },
+          select: {
+            price: true,
+          },
+          take: 1,
+        }
+      : false,
+  },
+});
+
+console.timeEnd("db:products_query");
 
   console.log("products found:", products.length);
 

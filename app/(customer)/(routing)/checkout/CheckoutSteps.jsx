@@ -33,17 +33,15 @@ export default function CheckoutSteps({ step }) {
   return (
     <div className="flex items-center justify-between sm:justify-center gap-2 sm:gap-8 w-full">
 
-      <Step number={1} label="Address" />
+
+      {/* LINE */}
+
+      <Step number={1} label="Review" />
 
       {/* LINE */}
       <div className="flex-1 sm:w-16 h-[1px] bg-white/10" />
 
-      <Step number={2} label="Review" />
-
-      {/* LINE */}
-      <div className="flex-1 sm:w-16 h-[1px] bg-white/10" />
-
-      <Step number={3} label="Payment" />
+      <Step number={2} label="Payment" />
 
     </div>
   );

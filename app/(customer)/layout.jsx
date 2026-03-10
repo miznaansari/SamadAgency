@@ -134,7 +134,6 @@ export default async function RootLayout({ children }) {
           ${geistSans.variable}
           ${geistMono.variable}
           antialiased 
-        bg-black
         `}
       >
         <CartProvider isLoggedIn={isLoggedIn}>

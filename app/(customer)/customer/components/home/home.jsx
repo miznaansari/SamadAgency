@@ -58,7 +58,7 @@ export default function Home() {
         >
           MOBILE
           <br />
-          <span className="text-[#0ea5e9]">
+          <span className="text-[#347eb3]">
             ACCESSORIES
           </span>
         </motion.h1>
@@ -81,7 +81,7 @@ export default function Home() {
 
           <Link
             href="/shop"
-            className="group inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[#0ea5e9] text-white font-semibold hover:bg-[#0284c7] transition"
+            className="group inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[#347eb3] text-white font-semibold hover:bg-[#0284c7] transition"
           >
             SHOP PRODUCTS
 
@@ -90,7 +90,7 @@ export default function Home() {
 
           <Link
             href="/contact-us"
-            className="px-8 py-3 rounded-xl border border-[#0ea5e9] text-[#0ea5e9] font-semibold hover:bg-[#0ea5e9]/10 transition"
+            className="px-8 py-3 rounded-xl border border-[#347eb3] text-[#347eb3] font-semibold hover:bg-[#347eb3]/10 transition"
           >
             CONTACT WHOLESALE
           </Link>

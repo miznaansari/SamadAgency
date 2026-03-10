@@ -3,8 +3,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDownIcon, CheckIcon, InboxIcon } from "@heroicons/react/24/outline";
+import { useCart } from "@/app/context/CartContext";
+import { useToast } from "@/app/admin/context/ToastProvider";
 
 export default function CategoryShowProduct({ categories }) {
+
+  const { reloadCart } = useCart();
+  const {showToast} = useToast();
 
   const [openCategory, setOpenCategory] = useState(null);
   const [products, setProducts] = useState({});
@@ -50,17 +55,28 @@ export default function CategoryShowProduct({ categories }) {
 
     const quantity = qty[product.id] || 1;
 
-    await fetch("/api/cart/add", {
+   const res =  await fetch("/api/cart/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         productId: product.id,
-        variantId: product.variants?.[0]?.id || null,
         quantity,
       }),
     });
+
+    if (!res.ok) {
+      showToast({type:"error", message:"Failed to add to cart"});
+      return;
+    }
+    else {      showToast({type:"success", message:"Added to cart"});
+    }
+
+    console.log(';asd')
+    await reloadCart();
+
+    console.log(';asd')
 
   };
 
@@ -128,23 +144,23 @@ export default function CategoryShowProduct({ categories }) {
 
                     {/* PRODUCTS */}
 
-                   {products[cat.slug] && products[cat.slug].length === 0 && (
+                    {products[cat.slug] && products[cat.slug].length === 0 && (
 
-  <div className="flex flex-col items-center justify-center py-10 text-gray-500">
+                      <div className="flex flex-col items-center justify-center py-10 text-gray-500">
 
-   <InboxIcon className="w-10 h-10 mb-3 text-gray-400" />
+                        <InboxIcon className="w-10 h-10 mb-3 text-gray-400" />
 
-    <p className="text-sm font-medium">
-      No products available in this category
-    </p>
+                        <p className="text-sm font-medium">
+                          No products available in this category
+                        </p>
 
-  </div>
+                      </div>
 
-)}
+                    )}
 
-{products[cat.slug] && products[cat.slug].length > 0 && (
+                    {products[cat.slug] && products[cat.slug].length > 0 && (
 
-  <table className="w-full text-sm">
+                      <table className="w-full text-sm">
 
                         <thead className="bg-gray-50">
                           <tr>

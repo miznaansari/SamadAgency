@@ -1,9 +1,9 @@
 export default function ReviewStep({ cartData, onNext, onBack }) {
 
   return (
-    <div className="bg-[#1a1a1a] border border-white/10 rounded-xl p-6">
+    <div className="bg-white border border-gray-200 rounded-xl p-6">
 
-      <h2 className="text-lg font-semibold mb-6">
+      <h2 className="text-lg font-semibold mb-6 text-black">
         REVIEW YOUR ORDER
       </h2>
 
@@ -13,7 +13,7 @@ export default function ReviewStep({ cartData, onNext, onBack }) {
 
           <div
             key={item.id}
-            className="flex items-center gap-4 border border-white/10 rounded-xl p-4"
+            className="flex items-center gap-4 border border-gray-200 rounded-xl p-4"
           >
 
             <img
@@ -23,17 +23,17 @@ export default function ReviewStep({ cartData, onNext, onBack }) {
 
             <div className="flex-1">
 
-              <p className="font-semibold">
+              <p className="font-semibold text-black">
                 {item.product.name}
               </p>
 
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-500">
                 Size: {item.product.size}
               </p>
 
             </div>
 
-            <div className="text-cyan-400 font-semibold">
+            <div className="text-[#0ea5e9] font-semibold">
               ₹{item.product.price}
             </div>
 
@@ -45,7 +45,7 @@ export default function ReviewStep({ cartData, onNext, onBack }) {
 
       <button
         onClick={onNext}
-        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 rounded-lg"
+        className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition"
       >
         CONTINUE TO PAYMENT
       </button>

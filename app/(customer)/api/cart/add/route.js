@@ -21,7 +21,7 @@ export async function POST(req) {
     ========================= */
     const body = await req.json();
 
-    const { productId, variantId, quantity } = body;
+    const { productId, quantity } = body;
 
     if (!productId || !quantity) {
       return NextResponse.json(
@@ -58,39 +58,8 @@ export async function POST(req) {
     /* =========================
        📏 VARIANT CHECK
     ========================= */
-    let variant = null;
 
-    if (variantId) {
-      variant = await prisma.product_variant.findFirst({
-        where: {
-          id: variantId,
-          product_list_id: productId,
-          is_deleted: false,
-        },
-      });
-
-      if (!variant) {
-        return NextResponse.json(
-          { message: "Variant not found" },
-          { status: 404 }
-        );
-      }
-
-      if (variant.stock_qty < quantity) {
-        return NextResponse.json(
-          { message: "Insufficient variant stock" },
-          { status: 400 }
-        );
-      }
-    } else {
-      // No variant → check product stock
-      if (product.stock_qty < quantity) {
-        return NextResponse.json(
-          { message: "Insufficient stock" },
-          { status: 400 }
-        );
-      }
-    }
+   
 
     /* =========================
        🔁 CHECK EXISTING CART
@@ -99,7 +68,6 @@ export async function POST(req) {
       where: {
         customer_list_id: user.id,
         product_list_id: productId,
-        product_variant_id: variantId || null,
         is_deleted: false,
       },
     });
@@ -109,22 +77,7 @@ export async function POST(req) {
     if (existingCart) {
       const newQty = existingCart.quantity + quantity;
 
-      // stock re-check
-      if (variant) {
-        if (variant.stock_qty < newQty) {
-          return NextResponse.json(
-            { message: "Exceeds variant stock" },
-            { status: 400 }
-          );
-        }
-      } else {
-        if (product.stock_qty < newQty) {
-          return NextResponse.json(
-            { message: "Exceeds stock" },
-            { status: 400 }
-          );
-        }
-      }
+   
 
       cartItem = await prisma.customer_cart.update({
         where: { id: existingCart.id },
@@ -137,7 +90,6 @@ export async function POST(req) {
         data: {
           customer_list_id: user.id,
           product_list_id: productId,
-          product_variant_id: variantId || null,
           quantity,
         },
       });

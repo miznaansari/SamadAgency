@@ -12,9 +12,9 @@ export default async function Page() {
 
   let pricedCartData = [];
   let isGuest = false;
-let user;
+  let user;
   try {
-   user  = await requireUser();
+    user = await requireUser();
 
     if (!user?.id) {
       isGuest = true;
@@ -59,13 +59,15 @@ let user;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-3 md:pb-8 pt-0">
-      <div className="py-3 sticky top-14 md:top-18 bg-black z-1 flex items-center justify-between border-b border-white/10 ">
+
+      <div className="py-3 sticky top-14 md:top-18 bg-white z-10 flex items-center justify-between border-b border-gray-200">
+
         <div className="flex items-center gap-3 justify-between">
 
           {/* LEFT */}
           <Link
             href="/shop"
-            className="flex items-center gap-2 text-sm text-gray-400 hover:text-cyan-400 transition"
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#0ea5e9] transition"
           >
             <ArrowLeftIcon className="h-5 w-5" />
 
@@ -75,18 +77,18 @@ let user;
           </Link>
 
           {/* CENTER */}
-          <h1 className="text-sm sm:text-base md:text-lg font-semibold tracking-wide text-white">
+          <h1 className="text-sm sm:text-base md:text-lg font-semibold tracking-wide text-black">
 
             <span className="sm:hidden">Cart</span>
             <span className="hidden sm:inline">Your Cart</span>
 
-            <span className="ml-1 text-cyan-400">
+            <span className="ml-1 text-[#0ea5e9]">
               ({isGuest ? "" : pricedCartData.length})
             </span>
 
           </h1>
 
-          {/* RIGHT placeholder (keeps center aligned) */}
+          {/* RIGHT placeholder */}
           <div className="w-[28px]" />
 
         </div>
@@ -95,23 +97,31 @@ let user;
         <ClearCartButton isGuest={isGuest} />
 
       </div>
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-1">
 
         <div className="lg:col-span-2">
           <MyCart
             cartData={pricedCartData}
             isGuest={user?.id ? false : true}
           />
+
         </div>
 
-        <div className="lg:col-span-1">
-          <CartTotal
-            cartData={pricedCartData}
-            isGuest={isGuest}
-          />
-        </div>
-
+        {/* <div className="lg:col-span-1">
+        <CartTotal
+          cartData={pricedCartData}
+          isGuest={isGuest}
+        />
+      </div> */}
+ <Link
+        href={`/checkout`}
+        className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold text-center p-3 rounded-lg transition"
+      >
+        CONTINUE TO CHECKOUT
+      </Link>
       </div>
+
     </div>
   );
 }

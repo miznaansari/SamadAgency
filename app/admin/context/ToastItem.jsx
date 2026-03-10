@@ -12,25 +12,28 @@ export default function ToastItem({ toast, onClose }) {
   return (
     <div
       className={`relative w-80 rounded-xl p-[1px]
-      ${isSuccess
-        ? "bg-gradient-to-r from-[#0ea5e9]/40 to-[#38bdf8]/40"
-        : "bg-gradient-to-r from-red-500/40 to-red-400/40"}
+      ${
+        isSuccess
+          ? "bg-gradient-to-r from-[#0ea5e9]/40 to-[#38bdf8]/40"
+          : "bg-gradient-to-r from-red-500/40 to-red-400/40"
+      }
       animate-slide-in`}
     >
       {/* INNER CARD */}
       <div
         className="flex items-center gap-3 p-4 rounded-xl
-        bg-[#0f0f0f]/90 backdrop-blur-xl
-        border border-white/10
-        shadow-[0_0_25px_rgba(0,0,0,0.6)]"
+        bg-white
+        border border-gray-200
+        shadow-md"
       >
         {/* ICON */}
         <div
           className={`h-9 w-9 flex items-center justify-center rounded-full
-          ${isSuccess
-            ? "bg-[#0ea5e9]/20 text-[#38bdf8] shadow-[0_0_15px_rgba(14,165,233,0.5)]"
-            : "bg-red-500/20 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.5)]"}
-        `}
+          ${
+            isSuccess
+              ? "bg-[#0ea5e9]/15 text-[#0ea5e9]"
+              : "bg-red-100 text-red-500"
+          }`}
         >
           {isSuccess ? (
             <CheckBadgeIcon className="h-5 w-5" />
@@ -43,12 +46,12 @@ export default function ToastItem({ toast, onClose }) {
         <div className="flex-1">
           <p
             className={`text-sm font-semibold tracking-wide
-            ${isSuccess ? "text-[#38bdf8]" : "text-red-400"}`}
+            ${isSuccess ? "text-[#0ea5e9]" : "text-red-500"}`}
           >
             {isSuccess ? "Success" : "Error"}
           </p>
 
-          <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">
+          <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
             {toast.message}
           </p>
         </div>
@@ -56,9 +59,9 @@ export default function ToastItem({ toast, onClose }) {
         {/* CLOSE */}
         <button
           onClick={onClose}
-          className="p-1 rounded-md hover:bg-white/10 transition"
+          className="p-1 rounded-md hover:bg-gray-100 transition"
         >
-          <XMarkIcon className="h-4 w-4 text-gray-400 hover:text-white" />
+          <XMarkIcon className="h-4 w-4 text-gray-500 hover:text-black" />
         </button>
       </div>
     </div>

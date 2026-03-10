@@ -6,7 +6,7 @@ export default function CheckoutLayout({ children }) {
     <html lang="en">
       <body>
         <Providers>
-          <div className="bg-[#0f0f0f]">
+          <div className="bg-white">
           {children}
           </div>
           </Providers>

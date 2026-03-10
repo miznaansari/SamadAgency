@@ -53,10 +53,11 @@ model customer_list {
 model customer_session {
   id               Int           @id @default(autoincrement()) @db.UnsignedInt
   customer_list_id Int           @db.UnsignedInt
-  token            String        @db.VarChar(255)
+  token            String        @unique @db.VarChar(255)
   token_expiry     DateTime
   is_expired       Boolean       @default(false)
   created_at       DateTime      @default(now()) @db.Timestamp(0)
+
   customer         customer_list @relation(fields: [customer_list_id], references: [id], onDelete: Cascade)
 
   @@index([customer_list_id])
@@ -100,7 +101,7 @@ model product_category {
   children    product_category[]    @relation("CategoryTree")
   seo         product_category_seo?
   products    product_list[]
-
+ @@index([slug])   // ✅ ADD THIS
   @@unique([parent_id, slug])
   @@index([path])
 }

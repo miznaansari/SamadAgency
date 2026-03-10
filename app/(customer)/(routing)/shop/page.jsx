@@ -58,13 +58,15 @@ export default function ShopPage() {
   };
 
   return (
-    <div className="bg-[#0f0f0f] max-w-7xl mx-auto min-h-screen text-white  ">
+    <div className="bg-white max-w-7xl mx-auto min-h-screen text-black">
+
       <ShopHeader count={products.length} />
-      {/* ================= CATEGORY TABS ================= */}
+
+      {/* CATEGORY TABS */}
 
       <div className="flex items-center p-2 gap-3 mb-6 overflow-x-auto">
 
-        {["", "t-shirt", "hoodie", "oversized"].map((c) => {
+        {["", "airpods", "charger", "data-cable", "handsfree", "neckband", "power-bank"].map((c) => {
           const active = query.category === c;
 
           return (
@@ -72,9 +74,10 @@ export default function ShopPage() {
               key={c || "all"}
               onClick={() => updateQuery("category", c)}
               className={`px-4 py-2 text-xs rounded-full border whitespace-nowrap transition
-                ${active
-                  ? "bg-[#22d3ee] text-black border-[#22d3ee]"
-                  : "border-white/10 text-gray-400 hover:border-[#22d3ee]/50 hover:text-white"
+                ${
+                  active
+                    ? "bg-[#0ea5e9] text-white border-[#0ea5e9]"
+                    : "border-gray-300 text-gray-500 hover:border-[#0ea5e9] hover:text-black"
                 }
               `}
             >
@@ -82,45 +85,47 @@ export default function ShopPage() {
             </button>
           );
         })}
+
       </div>
 
-      {/* ================= FILTER BAR ================= */}
+      {/* FILTER BAR */}
 
-      <div className="rounded m-2 border border-white/10 bg-[#111] p-4 mb-6">
+      <div className="rounded m-2 border border-gray-200 bg-gray-50 p-4 mb-6">
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
           {/* LEFT */}
+
           <div className="flex items-center gap-4 flex-wrap">
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-500">
               Price Range: ₹0 - ₹3400
             </p>
 
-            {/* TAGS */}
-
             <div className="flex gap-2 flex-wrap">
+
               {["New", "Trending", "Bestseller", "Limited", "Sale"].map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 text-xs rounded-full border border-white/10 text-gray-400 hover:border-[#22d3ee]/50 hover:text-white cursor-pointer"
+                  className="px-3 py-1 text-xs rounded-full border border-gray-300 text-gray-500 hover:border-[#0ea5e9] hover:text-black cursor-pointer"
                 >
                   {t}
                 </span>
               ))}
+
             </div>
           </div>
 
           {/* RIGHT */}
 
-          <div className="flex  items-center gap-3">
+          <div className="flex items-center gap-3">
 
             {/* SORT */}
 
             <select
               value={query.sort}
               onChange={(e) => updateQuery("sort", e.target.value)}
-              className="bg-[#0f0f0f] border border-white/10 px-3 py-2 rounded-lg text-xs focus:outline-none focus:border-[#22d3ee]"
+              className="bg-white border border-gray-300 px-3 py-2 rounded-lg text-xs focus:outline-none focus:border-[#0ea5e9]"
             >
               <option value="">Featured</option>
               <option value="price_asc">Price Low → High</option>
@@ -131,7 +136,7 @@ export default function ShopPage() {
 
             <button
               onClick={() => setOpenFilter(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#22d3ee]/40 text-[#22d3ee] text-xs hover:bg-[#22d3ee]/10 transition"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#0ea5e9] text-[#0ea5e9] text-xs hover:bg-[#0ea5e9]/10 transition"
             >
               <FunnelIcon className="w-4 h-4" />
               Filter
@@ -139,11 +144,11 @@ export default function ShopPage() {
 
             {/* GRID / LIST ICON */}
 
-            <button className="p-2 rounded-lg border border-white/10 text-gray-400 hover:text-white">
+            <button className="p-2 rounded-lg border border-gray-300 text-gray-500 hover:text-black">
               <Squares2X2Icon className="w-4 h-4" />
             </button>
 
-            <button className="p-2 rounded-lg border border-white/10 text-gray-400 hover:text-white">
+            <button className="p-2 rounded-lg border border-gray-300 text-gray-500 hover:text-black">
               <Bars3Icon className="w-4 h-4" />
             </button>
 
@@ -151,7 +156,7 @@ export default function ShopPage() {
         </div>
       </div>
 
-      {/* ================= GRID ================= */}
+      {/* PRODUCT GRID */}
 
       <div className="grid p-2 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
 
@@ -161,7 +166,7 @@ export default function ShopPage() {
 
       </div>
 
-      {/* ================= PAGINATION ================= */}
+      {/* PAGINATION */}
 
       <div className="flex justify-center mt-10 gap-2 flex-wrap">
 
@@ -171,13 +176,12 @@ export default function ShopPage() {
           return (
             <button
               key={i}
-              onClick={() =>
-                updateQuery("page", i + 1)
-              }
+              onClick={() => updateQuery("page", i + 1)}
               className={`px-3 py-1.5 text-sm rounded-lg transition
-                ${active
-                  ? "bg-[#22d3ee] text-black"
-                  : "bg-[#151515] text-gray-400 border border-white/10 hover:border-[#22d3ee]/40 hover:text-white"
+                ${
+                  active
+                    ? "bg-[#0ea5e9] text-white"
+                    : "bg-white text-gray-500 border border-gray-300 hover:border-[#0ea5e9] hover:text-black"
                 }
               `}
             >
@@ -188,7 +192,7 @@ export default function ShopPage() {
 
       </div>
 
-      {/* ================= MOBILE FILTER ================= */}
+      {/* MOBILE FILTER */}
 
       <SwipeableDrawer
         open={openFilter}

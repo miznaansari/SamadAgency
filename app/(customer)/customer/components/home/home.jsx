@@ -26,13 +26,13 @@ export default function Home() {
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <Image
-          src="/model/mode4.png"
+          src="/model/product.jpeg"
           alt="Accessories"
           fill
           priority
           className="object-cover object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/40 to-white" />
       </div>
 
       {/* CONTENT */}

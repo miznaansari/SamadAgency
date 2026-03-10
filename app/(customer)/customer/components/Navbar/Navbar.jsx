@@ -342,10 +342,11 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         absolute -top-1 -right-1
         flex h-4 w-4 items-center justify-center
         rounded-full
-        bg-[rgb(var(--bg))]
+        bg-[rgb(var(--text))]
         text-[10px]
         font-semibold
-        text-black
+        text-white
+        
       "
                 >
                   {cartItems.length}

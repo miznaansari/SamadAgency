@@ -2,10 +2,10 @@
 
 export default function AnnouncementBar() {
   const text =
-    "FREE SHIPPING ABOVE ₹999 ★ CUSTOM PRINTS ★ PREMIUM QUALITY ★ 7-DAY RETURNS ★ NEW DROPS WEEKLY ★";
+    "WHOLESALE MOBILE ACCESSORIES ★ AIRPODS ★ CHARGERS ★ DATA CABLES ★ HANDSFREE ★ NECKBANDS ★ POWER BANKS ★ PAN INDIA DELIVERY ★";
 
   return (
-    <div className="w-full overflow-hidden bg-cyan-400 text-black text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em]">
+    <div className="w-full overflow-hidden bg-gray-100 border-b border-gray-200 text-black text-[11px] md:text-xs font-semibold uppercase tracking-[0.25em]">
       
       <div className="flex w-max whitespace-nowrap animate-marquee py-2">
         <span className="mx-6">{text}</span>

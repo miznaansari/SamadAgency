@@ -29,7 +29,7 @@ export default function AboutPage() {
 
               <div className="space-y-6 text-sm leading-relaxed text-gray-800">
                 <p>
-                  At The Clevar, we’re proud to be a 100% Australian owned and
+                  At Samad Agency, we’re proud to be a 100% Australian owned and
                   operated business, supplying high-quality electrical and
                   telecommunication solutions to clients across the country.
                   Whether you’re a contractor, project manager, or business
@@ -42,7 +42,7 @@ export default function AboutPage() {
                   Driven by integrity and a commitment to our customers, we’re
                   not just a supplier — we’re your project partner. Our clients
                   trust us because we’re responsive, fast, and genuinely
-                  invested in helping them succeed. That’s the The Clevar
+                  invested in helping them succeed. That’s the Samad Agency
                   difference.
                 </p>
               </div>
@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div className="relative h-[420px] w-full overflow-hidden rounded">
               <Image
                 src="/images/page/about.png"
-                alt="The Clevar Warehouse"
+                alt="Samad Agency Warehouse"
                 fill
                 className="object-cover"
                 priority

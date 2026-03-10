@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
 
           <p className="text-xs tracking-widest text-gray-500 uppercase">
-            The Clevar
+            Samad Agency
           </p>
 
           <h1 className="mt-4 text-4xl md:text-5xl font-extrabold text-white leading-tight">
@@ -54,7 +54,7 @@ export default function AboutPage() {
             </h2>
 
             <p className="text-gray-400 leading-relaxed text-sm md:text-base">
-              The Clevar is not just a clothing brand — it’s a movement.
+              Samad Agency is not just a clothing brand — it’s a movement.
               We design pieces that reflect individuality, confidence, and modern street culture.
             </p>
 
@@ -86,7 +86,7 @@ export default function AboutPage() {
 
             <div className="rounded-3xl bg-[#151515] border border-white/10 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.8)]">
 
-              <img src="/images/logo3.png" alt="The Clevar Logo" className=" object-contain" />
+              <img src="/images/logo3.png" alt="Samad Agency Logo" className=" object-contain" />
 
             </div>
 

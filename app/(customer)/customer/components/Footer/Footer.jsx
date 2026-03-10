@@ -11,7 +11,7 @@ export default function Footer({ category = [] }) {
   );
 
   return (
-    <footer className="bg-black text-gray-400 border-t border-white/10">
+    <footer className="bg-white text-gray-600 border-t border-gray-200">
 
       <div className="max-w-7xl mx-auto px-6 py-16">
 
@@ -22,32 +22,42 @@ export default function Footer({ category = [] }) {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/images/logo4.png"
-                alt="The Clevar"
+                src="/images/logo/samadLogoremove.png"
+                alt="Samad Agency"
                 width={140}
                 height={40}
               />
             </div>
 
             <p className="text-sm leading-relaxed mb-6">
-              Premium Gen-Z fashion redefining the street culture.
-              Built for the bold. Designed for expression.
+              Wholesale mobile accessories supplier delivering quality
+              products across India including Airpods, Chargers, Data Cables,
+              Handsfree, Neckbands, and Power Banks.
             </p>
 
             {/* Social Icons */}
             <div className="flex gap-4">
-              <a href="#" className="border border-white/20 p-2 hover:border-cyan-400 hover:text-cyan-400 transition">
+              <a
+                href="#"
+                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+              >
                 IG
               </a>
-              <a href="#" className="border border-white/20 p-2 hover:border-cyan-400 hover:text-cyan-400 transition">
+              <a
+                href="#"
+                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+              >
                 TW
               </a>
-              <a href="#" className="border border-white/20 p-2 hover:border-cyan-400 hover:text-cyan-400 transition">
+              <a
+                href="#"
+                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+              >
                 YT
               </a>
             </div>
 
-            <p className="text-xs text-gray-600 mt-6">
+            <p className="text-xs text-gray-500 mt-6">
               v{pkg.version}
             </p>
           </div>
@@ -65,7 +75,6 @@ export default function Footer({ category = [] }) {
           <FooterColumn
             title="SUPPORT"
             links={[
-              { label: "Sizing Guide", href: "/size-guide" },
               { label: "Shipping Info", href: "/shipping" },
               { label: "Returns & Exchanges", href: "/returns" },
               { label: "Track Order", href: "/track-order" },
@@ -75,22 +84,22 @@ export default function Footer({ category = [] }) {
 
           {/* NEWSLETTER */}
           <div>
-            <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">
-              JOIN THE SIGNAL
+            <h4 className="text-black text-sm font-semibold mb-4 uppercase tracking-wider">
+              NEWSLETTER
             </h4>
 
             <p className="text-sm mb-6">
-              Get early access to drops, exclusive discounts,
-              and street energy straight to your inbox.
+              Get updates about new arrivals, wholesale deals,
+              and latest accessories offers.
             </p>
 
             <div className="flex">
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="w-full bg-black border border-white/20 px-4 py-2 text-sm focus:outline-none focus:border-cyan-400"
+                className="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-[#0ea5e9]"
               />
-              <button className="bg-cyan-400 text-black px-4 hover:bg-cyan-300 transition">
+              <button className="bg-[#0ea5e9] text-white px-4 hover:bg-[#0284c7] transition">
                 →
               </button>
             </div>
@@ -98,30 +107,41 @@ export default function Footer({ category = [] }) {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 mt-14 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4">
+        <div className="border-t border-gray-200 mt-14 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
 
- <p className="text-center">
-  © 2026 The Clevar. All Rights Reserved. 
-  Developed & Designed by{" "}
-  <a href="https://www.mizna.me/" target="_blank" rel="noopener noreferrer">
-    Mohd Mizna Ansari
-  </a>
-</p>
+          <p className="text-center">
+            © 2026 Samad Agency. All Rights Reserved. 
+            Developed & Designed by{" "}
+            <a
+              href="https://www.mizna.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0ea5e9] hover:underline"
+            >
+              Mohd Mizna Ansari
+            </a>
+          </p>
+
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-cyan-400">
+            <Link href="/privacy-policy" className="hover:text-[#0ea5e9]">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-cyan-400">
+            <Link href="/terms" className="hover:text-[#0ea5e9]">
               Terms
             </Link>
-            <Link href="/cookies" className="hover:text-cyan-400">
+            <Link href="/cookies" className="hover:text-[#0ea5e9]">
               Cookies
             </Link>
           </div>
 
-          <p className="text-gray-500 flex gap-2">
-            MADE WITH <span className="text-red-500"><HeartIcon height={20} /></span> FOR THE CULTURE
+          <p className="text-gray-500 flex items-center gap-2">
+            MADE WITH
+            <span className="text-red-500">
+              <HeartIcon height={20} />
+            </span>
+            FOR THE CULTURE
           </p>
+
         </div>
       </div>
     </footer>
@@ -133,7 +153,7 @@ export default function Footer({ category = [] }) {
 function FooterColumn({ title, links = [] }) {
   return (
     <div>
-      <h4 className="text-white text-sm font-semibold mb-4 uppercase tracking-wider">
+      <h4 className="text-black text-sm font-semibold mb-4 uppercase tracking-wider">
         {title}
       </h4>
 
@@ -142,7 +162,7 @@ function FooterColumn({ title, links = [] }) {
           <li key={i}>
             <Link
               href={link.href}
-              className="hover:text-cyan-400 transition"
+              className="hover:text-[#0ea5e9] transition"
             >
               {link.label}
             </Link>

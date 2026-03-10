@@ -113,7 +113,7 @@ export default function Navbar({ menuData = [], isLoggedIn }) {
       <Link href={'/'} className="cursor-pointer" >
   <img
     src="/images/logo4.png"
-    alt="The Clevar"
+    alt="Samad Agency"
     width="160"
     height="60"
   />
@@ -403,7 +403,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         >
           {/* HEADER */}
           <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
-            <Image src="/images/logo4.png" alt="The Clevar" width={120} height={50} />
+            <Image src="/images/logo4.png" alt="Samad Agency" width={120} height={50} />
             <button
               className="text-2xl"
               onClick={() => setDrawerOpen(false)}

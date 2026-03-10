@@ -15,7 +15,7 @@ export default function Home() {
             </div>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-gray-700">
-              Fast-growing and customer-focused, The Clevar goes beyond the
+              Fast-growing and customer-focused, Samad Agency goes beyond the
               shelves to source, supply, or custom order the right electrical
               products for you — no matter how unique your needs.
             </p>

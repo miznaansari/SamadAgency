@@ -88,12 +88,11 @@ export default function Navbar({ menuData = [], isLoggedIn }) {
 
   return (
     <nav
-    aria-label="Primary Navigation"
+      aria-label="Primary Navigation"
       className="sticky top-0 z-10 w-full
-             bg-black
+            bg-[rgb(var(--bg))]
              h-full
-             border-b border-white/10
-             shadow-[0_8px_30px_rgba(0,0,0,0.6)]
+             border-b border-black/10
              
              z-20"
     >
@@ -106,18 +105,18 @@ export default function Navbar({ menuData = [], isLoggedIn }) {
           onClick={() => setDrawerOpen(true)}
           aria-label="Open Menu"
         >
-          <span className="block w-6 h-[2px] bg-white mb-1" />
-          <span className="block w-6 h-[2px] bg-white mb-1" />
-          <span className="block w-6 h-[2px] bg-white" />
+          <span className="block w-6 h-[2px]     bg-[rgb(var(--text))] mb-1" />
+          <span className="block w-6 h-[2px] bg-[rgb(var(--text))] mb-1" />
+          <span className="block w-6 h-[2px] bg-[rgb(var(--text))]" />
         </button>
-      <Link href={'/'} className="cursor-pointer" >
-  <img
-    src="/images/logo4.png"
-    alt="The Clevar"
-    width="160"
-    height="60"
-  />
-</Link>
+        <Link href={'/'} className="cursor-pointer" >
+          <img
+            src="/images/logo/samadLogoremove.png"
+            alt="Samad Agency"
+            width="120"
+            height="50"
+          />
+        </Link>
 
 
         {/* ================= DESKTOP MENU ================= */}
@@ -162,8 +161,8 @@ export default function Navbar({ menuData = [], isLoggedIn }) {
     
     transition-colors
     ${openNewMenu === menu.title
-                      ? "text-sky-600"
-                      : "text-gray-200 hover:text-sky-400"
+                      ? "text-[rgb(var(--text))]"
+                      : "text-[rgb(var(--text))] hover:text-[rgb(var(--text))]"
                     }
   `}>
                     <Link href={menu.path} className="flex items-center gap-1">
@@ -316,12 +315,12 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
           <Divider />
 
           <Link
-          href={'/cart'}
+            href={'/cart'}
             aria-label="Open cart"
             className="
     relative
     flex items-center gap-2
-    text-white
+    text-[rgb(var(--text))]
     hover:text-gray-700
     transition
     cursor-pointer
@@ -343,7 +342,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         absolute -top-1 -right-1
         flex h-4 w-4 items-center justify-center
         rounded-full
-        bg-white
+        bg-[rgb(var(--bg))]
         text-[10px]
         font-semibold
         text-black
@@ -403,7 +402,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         >
           {/* HEADER */}
           <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
-            <Image src="/images/logo4.png" alt="The Clevar" width={120} height={50} />
+            <Image src="/images/logo4.png" alt="Samad Agency" width={120} height={50} />
             <button
               className="text-2xl"
               onClick={() => setDrawerOpen(false)}
@@ -522,5 +521,5 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
   );
 }
 function Divider() {
-  return <span className="h-6 w-px mx-0 bg-white/40 hidden md:block" />;
+  return <span className="h-6 w-px mx-0 bg-black/40 hidden md:block" />;
 }

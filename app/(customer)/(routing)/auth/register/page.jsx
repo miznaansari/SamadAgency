@@ -57,7 +57,7 @@ export default function RegisterPage() {
 
           <Image
             src="/images/logo4.png"
-            alt="The Clevar"
+            alt="Samad Agency"
             width={480}
             height={80}
             priority
@@ -66,7 +66,7 @@ export default function RegisterPage() {
           <h2 className="mt-6 text-3xl font-semibold">
             Join{" "}
             <span className="text-[#38bdf8]">
-              The Clevar
+              Samad Agency
             </span>
           </h2>
 
@@ -95,7 +95,7 @@ export default function RegisterPage() {
           {/* Logo */}
           <Image
             src="/images/logo4.png"
-            alt="The Clevar"
+            alt="Samad Agency"
             width={140}
             height={60}
             priority

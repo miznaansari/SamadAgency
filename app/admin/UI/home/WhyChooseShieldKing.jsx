@@ -16,7 +16,7 @@ export default function WhyChoosetheclevar() {
           {/* LEFT CONTENT */}
           <div>
             <h2 className="text-3xl font-extrabold text-black">
-              Why Choose The Clevar?
+              Why Choose Samad Agency?
             </h2>
 
             <div className="my-6 h-[2px] w-48 bg-black" />
@@ -30,7 +30,7 @@ export default function WhyChoosetheclevar() {
                     100% Australian Owned & Operated
                   </h4>
                   <p className="mt-1 text-sm text-gray-700">
-                    The Clevar is proudly Australian — delivering trusted
+                    Samad Agency is proudly Australian — delivering trusted
                     electrical and telecom solutions with local expertise.
                   </p>
                 </div>
@@ -44,7 +44,7 @@ export default function WhyChoosetheclevar() {
                     Your One-Stop Shop
                   </h4>
                   <p className="mt-1 text-sm text-gray-700">
-                    Why deal with 10 suppliers? At The Clevar, everything’s
+                    Why deal with 10 suppliers? At Samad Agency, everything’s
                     under one roof — so your project runs faster and smoother
                     saving you time, hassle and stress.
                   </p>

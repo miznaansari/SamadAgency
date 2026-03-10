@@ -29,7 +29,7 @@ export default function ProfileDropdown({isLoggedIn}) {
       {/* PROFILE BUTTON */}
       <div
         onClick={() => setOpen(!open)} // mobile click
-        className="flex items-center gap-2 text-white hover:text-[#38bdf8] transition cursor-pointer"
+        className="flex items-center gap-2 text-[rgb(var(--text))] hover:text-[#38bdf8] transition cursor-pointer"
       >
         <UserIcon className="w-6 h-6" />
 
@@ -45,7 +45,7 @@ export default function ProfileDropdown({isLoggedIn}) {
           rounded-2xl
           backdrop-blur-xl
           border border-white/10
-          bg-[#0f0f0f]/95
+          bg-[rgb(var(--bg))]/95
           shadow-[0_0_30px_rgba(14,165,233,0.15)]
           transition-all duration-300
           ${open ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}
@@ -53,7 +53,7 @@ export default function ProfileDropdown({isLoggedIn}) {
       >
         {/* TOP SECTION */}
         <div className="p-4 border-b border-white/10">
-          <p className="text-sm font-medium text-white">
+          <p className="text-sm font-medium text-[rgb(var(--text))]">
             {userName ? `Hello ${userName}` : "Hello User"}
           </p>
           <p className="text-xs text-gray-400">

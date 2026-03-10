@@ -84,7 +84,7 @@ export default function Navbar({ menuData = [] }) {
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         {/* LOGO */}
         <div className="cursor-pointer" onClick={() => router.push("/")}>
-          <Image src="/images/logo4.png" alt="The Clevar" width={140} height={60} />
+          <Image src="/images/logo4.png" alt="Samad Agency" width={140} height={60} />
         </div>
 
 
@@ -475,7 +475,7 @@ export default function Navbar({ menuData = [] }) {
         >
           {/* HEADER */}
           <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
-            <Image src="/images/logo4.png" alt="The Clevar" width={120} height={50} />
+            <Image src="/images/logo4.png" alt="Samad Agency" width={120} height={50} />
             <button
               className="text-2xl"
               onClick={() => setDrawerOpen(false)}

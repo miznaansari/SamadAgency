@@ -68,7 +68,7 @@ export default function AdminLogin({ adminToken }) {
         />
 
         <h1 className="text-3xl font-semibold mb-4">
-          The Clevar Admin Panel
+          Samad Agency Admin Panel
         </h1>
 
         <p className="text-slate-300 leading-relaxed max-w-md">
@@ -142,7 +142,7 @@ export default function AdminLogin({ adminToken }) {
           </form>
 
           <p className="text-xs text-slate-400 text-center mt-8">
-            © {new Date().getFullYear()} The Clevar
+            © {new Date().getFullYear()} Samad Agency
           </p>
 
         </div>

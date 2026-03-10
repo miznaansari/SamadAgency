@@ -21,18 +21,18 @@ export default function Home() {
   };
 
   return (
-    <section className="relative min-h-[100dvh] md:min-h-[90dvh] flex items-center justify-center overflow-hidden bg-[#0f0f0f]">
+    <section className="relative min-h-[100dvh] md:min-h-[90dvh] flex items-center justify-center overflow-hidden bg-white">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <Image
           src="/model/mode4.png"
-          alt="Model"
+          alt="Accessories"
           fill
           priority
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white" />
       </div>
 
       {/* CONTENT */}
@@ -46,30 +46,31 @@ export default function Home() {
         {/* TAG */}
         <motion.div
           variants={item}
-          className="inline-flex items-center px-4 py-1 rounded-full border border-cyan-400/40 text-cyan-300 text-xs tracking-widest mb-6 backdrop-blur-md"
+          className="inline-flex items-center px-4 py-1 rounded-full border border-[#0ea5e9]/40 text-[#0ea5e9] text-xs tracking-widest mb-6 backdrop-blur-md"
         >
-          ⚡ 2026 DROP IS HERE
+          ⚡ NEW ARRIVALS AVAILABLE
         </motion.div>
 
         {/* TITLE */}
         <motion.h1
           variants={item}
-          className="text-5xl md:text-7xl font-extrabold text-white tracking-tight"
+          className="text-5xl md:text-7xl font-extrabold text-black tracking-tight"
         >
-          WEAR THE
+          MOBILE
           <br />
-          <span className="text-cyan-400 drop-shadow-[0_0_25px_rgba(34,211,238,0.7)]">
-            VOID
+          <span className="text-[#0ea5e9]">
+            ACCESSORIES
           </span>
         </motion.h1>
 
         {/* DESCRIPTION */}
         <motion.p
           variants={item}
-          className="mt-6 text-gray-300 max-w-xl mx-auto text-lg leading-relaxed"
+          className="mt-6 text-gray-600 max-w-xl mx-auto text-lg leading-relaxed"
         >
-          GenZ Alpha Streetwear. Custom Tees. Heavy Hoodies. Oversized Drip.
-          Built for those who exist beyond the algorithm.
+          Wholesale supplier of premium mobile accessories including
+          Airpods, Chargers, Data Cables, Handsfree, Neckbands, and Power Banks.
+          Quality products with reliable delivery across India.
         </motion.p>
 
         {/* BUTTONS */}
@@ -77,42 +78,45 @@ export default function Home() {
           variants={item}
           className="mt-10 flex items-center justify-center gap-4 flex-wrap"
         >
-        <Link
-  href="/shop"
-  className="group inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-cyan-400 text-black font-semibold hover:bg-cyan-300 transition shadow-[0_0_25px_rgba(34,211,238,0.5)]"
->
-  SHOP NOW
-
-  <ArrowRightIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-</Link>
 
           <Link
-            href="/custom"
-            className="px-8 py-3 rounded-xl border border-pink-500 text-pink-400 font-semibold hover:bg-pink-500/10 transition shadow-[0_0_20px_rgba(236,72,153,0.5)]"
+            href="/shop"
+            className="group inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-[#0ea5e9] text-white font-semibold hover:bg-[#0284c7] transition"
           >
-            CUSTOM ORDER
+            SHOP PRODUCTS
+
+            <ArrowRightIcon className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+
+          <Link
+            href="/contact-us"
+            className="px-8 py-3 rounded-xl border border-[#0ea5e9] text-[#0ea5e9] font-semibold hover:bg-[#0ea5e9]/10 transition"
+          >
+            CONTACT WHOLESALE
           </Link>
         </motion.div>
 
         {/* STATS */}
         <motion.div
           variants={container}
-          className="mt-14 flex items-center justify-center gap-10 text-gray-300 text-sm"
+          className="mt-14 flex items-center justify-center gap-10 text-gray-600 text-sm"
         >
+
           <motion.div variants={item}>
-            <p className="text-xl font-bold text-white">50K+</p>
-            <p className="text-gray-400 text-xs">CUSTOMERS</p>
+            <p className="text-xl font-bold text-black">1000+</p>
+            <p className="text-gray-500 text-xs">PRODUCTS</p>
           </motion.div>
 
           <motion.div variants={item}>
-            <p className="text-xl font-bold text-white">4.9★</p>
-            <p className="text-gray-400 text-xs">RATING</p>
+            <p className="text-xl font-bold text-black">500+</p>
+            <p className="text-gray-500 text-xs">RESELLERS</p>
           </motion.div>
 
           <motion.div variants={item}>
-            <p className="text-xl font-bold text-white">200+</p>
-            <p className="text-gray-400 text-xs">DESIGNS</p>
+            <p className="text-xl font-bold text-black">PAN INDIA</p>
+            <p className="text-gray-500 text-xs">DELIVERY</p>
           </motion.div>
+
         </motion.div>
 
       </motion.div>

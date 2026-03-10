@@ -85,7 +85,7 @@ export default function PaymentStep() {
       currency: data.currency,
       order_id: data.razorpayOrderId,
 
-      name: "The Clevar",
+      name: "Samad Agency",
       description: "Order Payment",
 
       handler: async function (response) {

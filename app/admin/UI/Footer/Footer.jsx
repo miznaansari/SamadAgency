@@ -15,7 +15,7 @@ export default function Footer() {
                         <div className="mb-4 flex items-center gap-2">
                             <Image
                                 src="/images/page/footer.png"
-                                alt="The Clevar"
+                                alt="Samad Agency"
                                 width={180}
                                 height={40}
                             />
@@ -96,7 +96,7 @@ export default function Footer() {
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 text-sm">
                     <p>
                         Copyright © 2025{" "}
-                        <span className="font-semibold">The Clevar</span>. All Rights Reserved
+                        <span className="font-semibold">Samad Agency</span>. All Rights Reserved
                     </p>
 
                     <Image

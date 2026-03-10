@@ -52,7 +52,7 @@ export default function WhatWeDo() {
         <div className="mb-14 text-center">
           <h2 className="text-3xl font-bold text-black">What we Do</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-gray-600">
-            The Clevar is one Stop shop for all things electrical and
+            Samad Agency is one Stop shop for all things electrical and
             telecommunications. We offer a complete range of products and
             services including.
           </p>

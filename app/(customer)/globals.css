@@ -52,3 +52,13 @@
 button {
   cursor: pointer;
 }
+
+:root {
+  --primary:0, 174, 239, 1;   /* #3170B7 */
+  --secondary: 14 165 233; /* #0ea5e9 */
+  --bg: 255 255 255;   /* white */
+    --text: 0 0 0; 
+  --hover:0, 174, 239, 1;
+  --inputField:196, 196, 196, 1;
+  --inputFieldFocusBorder:1, 114, 188, 1;
+}

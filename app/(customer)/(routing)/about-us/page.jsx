@@ -6,8 +6,8 @@ import FAQAccordion from "../../customer/components/home/FAQAccordion";
 import ServiceHighlights from "../../customer/components/home/ServiceHighlights";
 
 export const metadata = {
-    title: "About Us | The Clevar",
-    description: "The Clevar Website-meta",
+    title: "About Us | Samad Agency",
+    description: "Samad Agency Website-meta",
 };
 
 export default function Page() {

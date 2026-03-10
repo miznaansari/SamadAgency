@@ -52,25 +52,25 @@ export const metadata = {
   metadataBase: new URL("https://theclevar.com"),
 
  title: {
-  default: "The Clevar | Custom Dresses & Premium Fashion",
-  template: "%s | The Clevar",
+  default: "Samad Agency | Custom Dresses & Premium Fashion",
+  template: "%s | Samad Agency",
 },
 
   description:
-    "The Clevar provides advanced custom dresses and premium fashion solutions across India. Trusted, reliable, and professional services.",
+    "Samad Agency provides advanced custom dresses and premium fashion solutions across India. Trusted, reliable, and professional services.",
 
-  applicationName: "The Clevar",
+  applicationName: "Samad Agency",
 
   keywords: [
-    "The Clevar",
+    "Samad Agency",
     "Custom Dresses ",
     "Premium Fashion",
     "theclevar",
     "Fashion Company",
   ],
 
-  authors: [{ name: "The Clevar" }],
-  creator: "The Clevar",
+  authors: [{ name: "Samad Agency" }],
+  creator: "Samad Agency",
 
 
   manifest: "/manifest.webmanifest",
@@ -84,11 +84,11 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "The Clevar | Custom Dresses & Premium Fashion",
+    title: "Samad Agency | Custom Dresses & Premium Fashion",
     description:
       "Professional custom dresses and premium fashion solutions across India.",
     url: "https://theclevar.com",
-    siteName: "The Clevar",
+    siteName: "Samad Agency",
     locale: "en_IN",
     type: "website",
   },

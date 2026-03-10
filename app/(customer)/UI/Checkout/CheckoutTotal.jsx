@@ -112,7 +112,7 @@ export default function CheckoutTotal({ cartData = [] }) {
       amount: data.amount,
       currency: data.currency,
       order_id: data.razorpayOrderId,
-      name: "The Clevar",
+      name: "Samad Agency",
       description: "Order Payment",
       handler: async function (response) {
         await fetch("/api/razorpay/verify-payment", {

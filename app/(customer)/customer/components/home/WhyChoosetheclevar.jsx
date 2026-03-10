@@ -15,7 +15,7 @@ export default function WhyChoosetheclevar() {
           {/* LEFT CONTENT */}
           <div>
             <h2 className="text-3xl font-extrabold text-white">
-              Why Choose The Clevar?
+              Why Choose Samad Agency?
             </h2>
 
             <div className="my-6 h-[2px] w-48 bg-[#0ea5e9]" />
@@ -30,7 +30,7 @@ export default function WhyChoosetheclevar() {
                     Premium Quality Fabric
                   </h4>
                   <p className="mt-1 text-sm text-gray-300">
-                    At The Clevar, we never compromise with quality. Every
+                    At Samad Agency, we never compromise with quality. Every
                     t-shirt and shirt is crafted with comfortable,
                     long-lasting premium fabric.
                   </p>

@@ -19,7 +19,7 @@ export default function Banner({ products }) {
           </h2>
 
           <p className="text-gray-400 mt-2">
-            Discover trending styles from The Clevar
+            Discover trending styles from Samad Agency
           </p>
         </div>
 

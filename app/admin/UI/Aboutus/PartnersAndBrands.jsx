@@ -40,7 +40,7 @@ export default function PartnersAndBrands() {
           </h3>
 
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-gray-700">
-            The Clevar is a proud member of Gemcell Electrical Group — Australia’s
+            Samad Agency is a proud member of Gemcell Electrical Group — Australia’s
             largest electrical buying group.
             <br />
             <br />

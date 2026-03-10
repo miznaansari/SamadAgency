@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --max-width-7xl: 1600px;
+}
+
+
+.striped-cols {
+  background: #0f0f0f;
+}
+.striped-cols5 {
+  background-image: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 20%,
+    #f7f7f7 20%,
+    #f7f7f7 40%,
+    #ffffff 40%,
+    #ffffff 60%,
+    #f7f7f7 60%,
+    #f7f7f7 80%,
+    #ffffff 80%,
+    #ffffff 100%
+  );
+  background-size: 100% 100%;
+}
+/* ================================
+   Global Slim Scrollbar (Modern)
+================================ */
+
+/* ================================
+   CLEVAR GEN Z ALPHA SCROLLBAR
+================================ */
+/* ================================
+   CLEVAR MINIMAL FLOATING SCROLLBAR
+================================ */
+
+/* globals.css */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+button {
+  cursor: pointer;
+}

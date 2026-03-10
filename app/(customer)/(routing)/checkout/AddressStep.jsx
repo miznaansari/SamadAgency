@@ -1,14 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createAddress } from "./actions";
 
 export default function AddressStep({ addresses, onNext }) {
 
   const [selected, setSelected] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
+  const [form, setForm] = useState({
+    first_name: "",
+    last_name: "",
+    address_1: "",
+    city: "",
+    state: "",
+    postal_code: "",
+    phone: "",
+    email: "",
+    country: "India"
+  });
 
   /* =========================
      LOAD DEFAULT ADDRESS
   ========================= */
+
   useEffect(() => {
 
     const stored = localStorage.getItem("shipping_address_id");
@@ -28,9 +43,6 @@ export default function AddressStep({ addresses, onNext }) {
 
   }, [addresses]);
 
-  /* =========================
-     HANDLE SELECT
-  ========================= */
   const handleSelect = (id) => {
     setSelected(id);
 
@@ -38,9 +50,6 @@ export default function AddressStep({ addresses, onNext }) {
     localStorage.setItem("billing_address_id", id);
   };
 
-  /* =========================
-     NEXT STEP
-  ========================= */
   const handleNext = () => {
 
     if (!selected) return;
@@ -51,10 +60,22 @@ export default function AddressStep({ addresses, onNext }) {
     onNext();
   };
 
-  return (
-    <div className="bg-[#1a1a1a] border border-white/10 rounded-xl p-6">
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      <h2 className="text-lg font-semibold mb-6 text-white">
+    const res = await createAddress(form);
+
+    if (res?.id) {
+      setSelected(res.id);
+      setShowForm(false);
+      location.reload();
+    }
+  };
+
+  return (
+    <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+
+      <h2 className="text-lg font-semibold mb-6 text-black">
         SELECT DELIVERY ADDRESS
       </h2>
 
@@ -67,8 +88,8 @@ export default function AddressStep({ addresses, onNext }) {
             className={`block p-4 rounded-xl border cursor-pointer transition
             ${
               selected === a.id
-                ? "border-cyan-400 bg-cyan-400/5"
-                : "border-white/10 hover:border-cyan-400/40"
+                ? "border-cyan-500 bg-cyan-50"
+                : "border-gray-200 hover:border-cyan-400"
             }`}
           >
 
@@ -76,15 +97,15 @@ export default function AddressStep({ addresses, onNext }) {
 
               <div>
 
-                <p className="font-semibold text-white">
+                <p className="font-semibold text-black">
                   {a.first_name} {a.last_name}
                 </p>
 
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-600">
                   {a.address_1}
                 </p>
 
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-600">
                   {a.city}, {a.state} - {a.postal_code}
                 </p>
 
@@ -94,6 +115,7 @@ export default function AddressStep({ addresses, onNext }) {
                 type="radio"
                 checked={selected === a.id}
                 onChange={() => handleSelect(a.id)}
+                className="accent-cyan-500"
               />
 
             </div>
@@ -102,13 +124,97 @@ export default function AddressStep({ addresses, onNext }) {
 
         ))}
 
+        {/* ADD ADDRESS CARD */}
+
+        <div
+          onClick={() => setShowForm(true)}
+          className="p-4 border-2 border-dashed border-gray-300 rounded-xl text-center cursor-pointer hover:border-cyan-400"
+        >
+          <p className="text-sm text-gray-600 font-medium">
+            + Add New Address
+          </p>
+        </div>
+
       </div>
 
-      {/* BUTTON */}
+      {/* ADDRESS FORM */}
+
+      {showForm && (
+
+        <form
+          onSubmit={handleSubmit}
+          className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+
+          <input
+            placeholder="First Name"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, first_name:e.target.value})}
+          />
+
+          <input
+            placeholder="Last Name"
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, last_name:e.target.value})}
+          />
+
+          <input
+            placeholder="Phone"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, phone:e.target.value})}
+          />
+
+          <input
+            placeholder="Email"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, email:e.target.value})}
+          />
+
+          <input
+            placeholder="Address"
+            required
+            className="border rounded-lg p-2 md:col-span-2"
+            onChange={(e)=>setForm({...form, address_1:e.target.value})}
+          />
+
+          <input
+            placeholder="City"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, city:e.target.value})}
+          />
+
+          <input
+            placeholder="State"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, state:e.target.value})}
+          />
+
+          <input
+            placeholder="Postal Code"
+            required
+            className="border rounded-lg p-2"
+            onChange={(e)=>setForm({...form, postal_code:e.target.value})}
+          />
+
+          <button className="md:col-span-2 bg-cyan-500 text-white py-3 rounded-lg">
+            Save Address
+          </button>
+
+        </form>
+
+      )}
+
+      {/* NEXT BUTTON */}
+
       <button
         onClick={handleNext}
         disabled={!selected}
-        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 rounded-lg transition disabled:opacity-50"
+        className="w-full mt-6 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
       >
         CONTINUE TO REVIEW
       </button>

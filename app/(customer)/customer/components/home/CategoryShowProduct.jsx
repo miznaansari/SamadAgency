@@ -5,11 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDownIcon, CheckIcon, InboxIcon } from "@heroicons/react/24/outline";
 import { useCart } from "@/app/context/CartContext";
 import { useToast } from "@/app/admin/context/ToastProvider";
+import { useRouter } from "next/navigation";
 
 export default function CategoryShowProduct({ categories }) {
-
+ const router = useRouter();
   const { reloadCart } = useCart();
-  const {showToast} = useToast();
+  const { showToast } = useToast();
 
   const [openCategory, setOpenCategory] = useState(null);
   const [products, setProducts] = useState({});
@@ -55,7 +56,7 @@ export default function CategoryShowProduct({ categories }) {
 
     const quantity = qty[product.id] || 1;
 
-   const res =  await fetch("/api/cart/add", {
+    const res = await fetch("/api/cart/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,12 +66,19 @@ export default function CategoryShowProduct({ categories }) {
         quantity,
       }),
     });
-
-    if (!res.ok) {
-      showToast({type:"error", message:"Failed to add to cart"});
+    console.log('res', res)
+    if (res.statusText === "Unauthorized") {
+      showToast({ type: "error", message: "Please login to add to cart" });
+      router.push("/auth/login");
       return;
     }
-    else {      showToast({type:"success", message:"Added to cart"});
+
+    if (!res.ok) {
+      showToast({ type: "error", message: "Failed to add to cart" });
+      return;
+    }
+    else {
+      showToast({ type: "success", message: "Added to cart" });
     }
 
     console.log(';asd')

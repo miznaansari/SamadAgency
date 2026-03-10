@@ -28,7 +28,6 @@ export default async function Page() {
         },
       });
 
-      if (!customer) return null;
 
       const customerGroupId = customer.customer_group_id;
       const priceTier = customer.price_tier;

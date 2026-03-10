@@ -42,16 +42,21 @@ return (
 
         {/* LEFT */}
         <div className="lg:col-span-2">
-
-          {step === 1 && (
+  {step === 1 && (
+              <AddressStep
+                addresses={addresses}
+                onNext={() => setStep(2)}
+              />
+            )}
+          {step === 2 && (
             <ReviewStep
               cartData={cartData}
-              onNext={() => setStep(2)}
+              onNext={() => setStep(3)}
               onBack={() => setStep(1)}
             />
           )}
 
-          {step === 2 && (
+          {step === 3 && (
             <PaymentStep
               onBack={() => setStep(2)}
             />

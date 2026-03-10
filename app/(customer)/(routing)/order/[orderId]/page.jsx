@@ -20,7 +20,6 @@ export default function OrderDetailsPage() {
   const intervalRef = useRef(null);
   const timeoutRef = useRef(null);
 
-  /* ================= FETCH ================= */
   const fetchStatus = async () => {
     try {
       const res = await fetch("/api/paypal/verify-order", {
@@ -74,92 +73,62 @@ export default function OrderDetailsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0f0f0f] text-white px-4 md:px-8 py-6 space-y-6">
+      <div className="min-h-screen  px-6 py-6 space-y-6">
 
-      {/* ================= HERO ================= */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#151515] p-6">
+        <div className="rounded-2xl border border-gray-200 bg-white p-6">
+          <div className="flex justify-between">
+            <div className="space-y-3">
+              <div className="h-3 w-28 bg-gray-200 rounded animate-pulse" />
+              <div className="h-5 w-56 bg-gray-200 rounded animate-pulse" />
+              <div className="h-3 w-40 bg-gray-200 rounded animate-pulse" />
+            </div>
 
-        {/* Glow */}
-        <div className="absolute -top-20 -right-20 h-60 w-60 bg-[#38bdf8]/20 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 h-60 w-60 bg-[#a78bfa]/20 blur-3xl" />
-
-        <div className="relative z-10 flex justify-between items-center">
-
-          <div className="space-y-3">
-            <div className="h-3 w-28 rounded bg-white/10 shimmer" />
-            <div className="h-5 w-56 rounded bg-white/10 shimmer" />
-            <div className="h-3 w-40 rounded bg-white/10 shimmer" />
+            <div className="space-y-2 text-right">
+              <div className="h-6 w-16 bg-gray-200 rounded animate-pulse" />
+              <div className="h-4 w-20 bg-gray-200 rounded animate-pulse" />
+            </div>
           </div>
-
-          <div className="text-right space-y-2">
-            <div className="h-6 w-16 rounded-full bg-[#22c55e]/20 shimmer" />
-            <div className="h-4 w-20 rounded bg-white/10 shimmer" />
-          </div>
-
         </div>
-      </div>
 
-      {/* ================= MAIN GRID ================= */}
-      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-3 gap-6">
 
-        {/* ================= ITEMS ================= */}
-        <div className="lg:col-span-2 rounded-2xl border border-white/10 bg-[#151515]">
+          <div className="lg:col-span-2 rounded-2xl border border-gray-200 bg-white">
 
-          <div className="p-4 border-b border-white/10">
-            <div className="h-4 w-24 bg-white/10 rounded shimmer" />
-          </div>
+            <div className="p-4 border-b border-gray-200">
+              <div className="h-4 w-24 bg-gray-200 rounded animate-pulse" />
+            </div>
 
-          {[1, 2].map((i) => (
-            <div key={i} className="flex justify-between items-center p-4 border-b border-white/5">
+            {[1, 2].map((i) => (
+              <div key={i} className="flex justify-between items-center p-4 border-b border-gray-100">
 
-              <div className="flex gap-3 items-center">
-                <div className="h-14 w-14 rounded-lg bg-white/10 shimmer" />
+                <div className="flex gap-3 items-center">
+                  <div className="h-14 w-14 bg-gray-200 rounded animate-pulse" />
 
-                <div className="space-y-2">
-                  <div className="h-4 w-40 bg-white/10 rounded shimmer" />
-                  <div className="h-3 w-24 bg-white/10 rounded shimmer" />
+                  <div className="space-y-2">
+                    <div className="h-4 w-40 bg-gray-200 rounded animate-pulse" />
+                    <div className="h-3 w-24 bg-gray-200 rounded animate-pulse" />
+                  </div>
                 </div>
+
+                <div className="h-4 w-16 bg-gray-200 rounded animate-pulse" />
               </div>
+            ))}
+          </div>
 
-              <div className="h-4 w-16 bg-white/10 rounded shimmer" />
-            </div>
-          ))}
-        </div>
+          <div className="rounded-2xl border border-gray-200 bg-white p-5 space-y-4">
 
-        {/* ================= SUMMARY ================= */}
-        <div className="rounded-2xl border border-white/10 bg-[#151515] p-5 space-y-4">
+            <div className="h-4 w-32 bg-gray-200 rounded animate-pulse" />
 
-          <div className="h-4 w-32 bg-white/10 rounded shimmer" />
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="flex justify-between">
+                <div className="h-3 w-24 bg-gray-200 rounded animate-pulse" />
+                <div className="h-3 w-16 bg-gray-200 rounded animate-pulse" />
+              </div>
+            ))}
 
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex justify-between">
-              <div className="h-3 w-24 bg-white/10 rounded shimmer" />
-              <div className="h-3 w-16 bg-white/10 rounded shimmer" />
-            </div>
-          ))}
-
-          <div className="border-t border-white/10 pt-3 flex justify-between">
-            <div className="h-4 w-24 bg-white/10 rounded shimmer" />
-            <div className="h-4 w-20 bg-[#38bdf8]/20 rounded shimmer" />
           </div>
         </div>
       </div>
-
-      {/* ================= ACCORDION (ADDRESS) ================= */}
-      <div className="space-y-4">
-
-        {[1, 2].map((i) => (
-          <div key={i} className="rounded-2xl border border-white/10 bg-[#151515] p-4">
-            <div className="flex justify-between items-center">
-              <div className="h-4 w-32 bg-white/10 rounded shimmer" />
-              <div className="h-4 w-4 bg-white/10 rounded shimmer" />
-            </div>
-          </div>
-        ))}
-
-      </div>
-
-    </div>
     );
   }
 
@@ -174,63 +143,64 @@ export default function OrderDetailsPage() {
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] text-white px-4 md:px-8 py-6 space-y-6">
+    <div className="min-h-screen  px-6 py-6 space-y-6">
 
-      {/* ================= HERO ================= */}
-      {/* ================= HERO ================= */}
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#151515] p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      {/* HERO */}
 
-        {/* 🔥 Glow Background */}
-        <div className="pointer-events-none absolute -top-20 -right-20 h-60 w-60 rounded-full bg-[#38bdf8]/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-[#a78bfa]/20 blur-3xl" />
+      <div className="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col md:flex-row md:justify-between md:items-center">
 
-        {/* Content */}
-        <div className="relative z-10">
+        <div>
           <p
             onClick={() => router.back()}
-            className="text-sm text-gray-400 cursor-pointer hover:text-white"
+            className="text-sm text-gray-500 cursor-pointer hover:text-black"
           >
             ← Back to Orders
           </p>
 
-          <h1 className="text-xl md:text-2xl font-bold mt-1">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900 mt-1">
             Order #{order?.order_number}
           </h1>
 
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-500 text-sm">
             {new Date(order?.created_at).toLocaleString()}
           </p>
         </div>
 
-        <div className="relative z-10 text-right">
+        <div className="text-right">
           <StatusChip value={order?.status} />
 
-          <p className="text-xs text-gray-400 mt-2">Total</p>
-          <p className="text-2xl font-bold text-[#38bdf8]">
+          <p className="text-xs text-gray-500 mt-2">Total</p>
+
+          <p className="text-2xl font-bold text-[#0ea5e9]">
             ₹{order?.total}
           </p>
         </div>
       </div>
 
-      {/* ================= MAIN GRID ================= */}
+      {/* GRID */}
+
       <div className="grid lg:grid-cols-3 gap-6">
 
-        {/* ================= LEFT ================= */}
+        {/* ITEMS */}
+
         <div className="lg:col-span-2 space-y-6">
 
-          {/* ITEMS */}
-          <div className="rounded-2xl border border-white/10 bg-[#151515]">
-            <h3 className="p-4 border-b border-white/10 font-semibold">
+          <div className="rounded-2xl border border-gray-200 bg-white">
+
+            <h3 className="p-4 border-b border-gray-200 font-semibold text-gray-900">
               Items
             </h3>
 
             {items?.map((item) => (
               <div
                 key={item.id}
-                className="flex items-center justify-between p-4 border-b border-white/5 last:border-none"
+                className="flex items-center justify-between p-4 border-b border-gray-100 last:border-none"
               >
+
                 <div className="flex gap-3">
-                  <div className="h-14 w-14 rounded-lg overflow-hidden bg-[#111]">
+
+                  <div className="h-14 w-14 rounded-lg overflow-hidden bg-gray-100">
+
                     <Image
                       src={
                         item.product?.images?.[0]?.image_url ||
@@ -241,101 +211,120 @@ export default function OrderDetailsPage() {
                       height={56}
                       className="object-cover"
                     />
+
                   </div>
 
                   <div>
-                    <p className="font-medium">{item.product_title}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="font-medium text-gray-900">
+                      {item.product_title}
+                    </p>
+
+                    <p className="text-xs text-gray-500">
                       Qty: {item.quantity}
                     </p>
                   </div>
                 </div>
 
-                <p className="font-semibold text-[#38bdf8]">
+                <p className="font-semibold text-[#0ea5e9]">
                   ₹{item.line_total}
                 </p>
+
               </div>
             ))}
+
           </div>
-
-          {/* ADDRESSES */}
-
         </div>
 
-        {/* ================= RIGHT (STICKY SUMMARY) ================= */}
+        {/* SUMMARY */}
+
         <div className="space-y-6">
 
-          <div className="rounded-2xl border border-white/10 bg-[#151515] p-5 ">
+          <div className="rounded-2xl border border-gray-200 bg-white p-5">
 
-            <h3 className="font-semibold mb-4">Order Summary</h3>
+            <h3 className="font-semibold mb-4 text-gray-900">
+              Order Summary
+            </h3>
 
             <SummaryRow label="Subtotal" value={order?.sub_total} />
             <SummaryRow label="Shipping" value={order?.shipping_amount} />
             <SummaryRow label="GST" value={order?.tax_amount} />
 
-            <div className="border-t border-white/10 my-3" />
+            <div className="border-t border-gray-200 my-3" />
 
-            <div className="flex justify-between font-bold text-lg text-[#38bdf8]">
+            <div className="flex justify-between font-bold text-lg text-[#0ea5e9]">
               <span>Total</span>
               <span>₹{order?.total}</span>
             </div>
-          </div>
-          
 
-          {/* PAYMENTS */}
+          </div>
+
           <Card title="Payments">
+
             {paypal?.length ? (
               paypal.map((tx) => (
                 <div key={tx.id} className="mb-3 text-sm">
-                  <p className="text-gray-400">{tx.providerTxnId}</p>
-                  <p className="text-[#38bdf8] font-semibold">
+
+                  <p className="text-gray-500">
+                    {tx.providerTxnId}
+                  </p>
+
+                  <p className="text-[#0ea5e9] font-semibold">
                     ₹{tx.amount}
                   </p>
-                  <p className="text-xs text-gray-500">
+
+                  <p className="text-xs text-gray-400">
                     {new Date(tx.createdAt).toLocaleString()}
                   </p>
+
                 </div>
               ))
             ) : (
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-500 text-sm">
                 No transactions
               </p>
             )}
+
           </Card>
+
           <div className="space-y-4">
 
-            <Accordion title="Shipping Address" >
+            <Accordion title="Shipping Address">
               {shippingLines.map((l, i) => (
-                <p key={i} className="text-sm text-gray-300">{l}</p>
+                <p key={i} className="text-sm text-gray-700">
+                  {l}
+                </p>
               ))}
             </Accordion>
 
             <Accordion title="Billing Address">
+
               {billingLines.map((l, i) => (
-                <p key={i} className="text-sm text-gray-300">{l}</p>
+                <p key={i} className="text-sm text-gray-700">
+                  {l}
+                </p>
               ))}
 
               {order?.gst_number && (
-                <p className="mt-3 text-xs text-[#38bdf8]">
+                <p className="mt-3 text-xs text-[#0ea5e9]">
                   GST: {order.gst_number}
                 </p>
               )}
+
             </Accordion>
 
           </div>
-
         </div>
       </div>
     </div>
   );
 }
 
-/* ================= COMPONENTS ================= */
+/* COMPONENTS */
 
 function Card({ title, children }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#151515] p-5">
-      <h4 className="mb-3 font-semibold">{title}</h4>
+    <div className="rounded-2xl border border-gray-200 bg-white p-5">
+      <h4 className="mb-3 font-semibold text-gray-900">{title}</h4>
       {children}
     </div>
   );
@@ -343,7 +332,7 @@ function Card({ title, children }) {
 
 function SummaryRow({ label, value }) {
   return (
-    <div className="flex justify-between text-sm text-gray-300 mb-2">
+    <div className="flex justify-between text-sm text-gray-600 mb-2">
       <span>{label}</span>
       <span>₹{value}</span>
     </div>

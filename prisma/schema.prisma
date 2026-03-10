@@ -35,11 +35,15 @@ model customer_list {
   phone                    String?
   user_name                String?
   whatsapp                 String?
+
+  google_uid               String?            @unique   // ✅ ADD THIS
+
   price_tier               PriceTier?
   image_gallery_id         Int?               @db.UnsignedInt
+
   addresses                customer_address[]
-   route_logs               customer_route_logs[]   // ✅ ADD THIS
-    page_views               page_views[]   // ✅ ADD THIS
+  route_logs               customer_route_logs[]
+  page_views               page_views[]
   group                    customer_groups?   @relation(fields: [customer_group_id], references: [id])
   image_gallery            image_gallery?     @relation(fields: [image_gallery_id], references: [id])
   sessions                 customer_session[]

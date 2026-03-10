@@ -174,16 +174,15 @@ export default function OrderDetailsPage() {
     .split("\n")
     .filter(Boolean);
 
- return (
-  <div className="min-h-screen bg-[#0f0f0f] text-white px-4 md:px-6 py-10">
+return (
+  <div className="min-h-screen bg-white text-black px-4 md:px-6 py-10">
 
     {/* ================= HERO ================= */}
     <div className="text-center mb-10">
 
-      {/* Success Icon */}
       <div className="flex justify-center mb-5">
-        <div className="h-16 w-16 rounded-full bg-[#22c55e] flex items-center justify-center text-black text-3xl">
-          <CheckBadgeIcon color={'white'} />
+        <div className="h-16 w-16 rounded-full bg-green-500 flex items-center justify-center text-white text-3xl">
+          <CheckBadgeIcon />
         </div>
       </div>
 
@@ -191,44 +190,42 @@ export default function OrderDetailsPage() {
         ORDER CONFIRMED!
       </h1>
 
-      <p className="text-gray-400 mt-2 text-sm">
+      <p className="text-gray-600 mt-2 text-sm">
         Thank you for your order. We'll send you shipping confirmation once your items are on the way.
       </p>
 
-      <div className="mt-5 inline-block border border-cyan-400 text-cyan-400 px-5 py-2 rounded-lg text-sm">
+      <div className="mt-5 inline-block border border-cyan-500 text-cyan-600 px-5 py-2 rounded-lg text-sm">
         ORDER ID #{order?.order_number}
       </div>
     </div>
 
-
     {/* ================= INFO GRID ================= */}
-    <div className="grid md:grid-cols-3 gap-6 border border-white/10 rounded-xl bg-[#111] p-6 mb-8">
+    <div className="grid md:grid-cols-3 gap-6 border border-gray-200 rounded-xl bg-white p-6 mb-8">
 
       {/* DELIVERY ADDRESS */}
       <div>
-        <p className="text-xs text-cyan-400 mb-2 font-semibold">
+        <p className="text-xs text-cyan-600 mb-2 font-semibold">
           DELIVERY ADDRESS
         </p>
 
         {shippingLines.map((line, i) => (
-          <p key={i} className="text-sm text-gray-300">
+          <p key={i} className="text-sm text-gray-700">
             {line}
           </p>
         ))}
       </div>
 
-
       {/* PAYMENT */}
       <div>
-        <p className="text-xs text-cyan-400 mb-2 font-semibold">
+        <p className="text-xs text-cyan-600 mb-2 font-semibold">
           PAYMENT METHOD
         </p>
 
-        <p className="text-sm text-gray-300">
+        <p className="text-sm text-gray-700">
           {paypal?.[0]?.provider || "PayPal"}
         </p>
 
-        <p className="text-green-400 text-sm">
+        <p className="text-green-600 text-sm">
           Status: completed
         </p>
 
@@ -239,14 +236,13 @@ export default function OrderDetailsPage() {
         )}
       </div>
 
-
       {/* DELIVERY ESTIMATE */}
       <div>
-        <p className="text-xs text-cyan-400 mb-2 font-semibold">
+        <p className="text-xs text-cyan-600 mb-2 font-semibold">
           ESTIMATED DELIVERY
         </p>
 
-        <p className="text-sm text-gray-300">
+        <p className="text-sm text-gray-700">
           {new Date(order?.created_at).toLocaleDateString()}
         </p>
 
@@ -256,9 +252,8 @@ export default function OrderDetailsPage() {
       </div>
     </div>
 
-
     {/* ================= ITEMS ================= */}
-    <div className="border border-white/10 rounded-xl bg-[#111] p-5 mb-6">
+    <div className="border border-gray-200 rounded-xl bg-white p-5 mb-6">
 
       <h3 className="text-sm font-semibold mb-4">
         ORDER ITEMS ({items?.length})
@@ -267,12 +262,11 @@ export default function OrderDetailsPage() {
       {items?.map((item) => (
         <div
           key={item.id}
-          className="flex items-center justify-between border border-white/10 rounded-lg p-4 mb-4"
+          className="flex items-center justify-between border border-gray-200 rounded-lg p-4 mb-4"
         >
-
           <div className="flex items-center gap-3">
 
-            <div className="h-14 w-14 bg-black rounded-md overflow-hidden">
+            <div className="h-14 w-14 bg-gray-100 rounded-md overflow-hidden">
               <Image
                 src={
                   item.product?.images?.[0]?.image_url ||
@@ -289,39 +283,41 @@ export default function OrderDetailsPage() {
                 {item.product_title}
               </p>
 
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 Qty: {item.quantity}
               </p>
             </div>
           </div>
 
-          <p className="text-cyan-400 font-semibold">
+          <p className="text-cyan-600 font-semibold">
             ₹{item.line_total}
           </p>
         </div>
       ))}
     </div>
 
-
     {/* ================= PRICE SUMMARY ================= */}
-    <div className="border border-white/10 rounded-xl bg-[#111] p-5">
+    <div className="border border-gray-200 rounded-xl bg-white p-5">
 
       <div className="flex justify-between text-sm mb-2">
-        <span className="text-gray-400">Subtotal</span>
+        <span className="text-gray-600">Subtotal</span>
         <span>₹{order?.sub_total}</span>
       </div>
 
       <div className="flex justify-between text-sm mb-2">
-        <span className="text-gray-400">Shipping</span>
-        <span>{order?.shipping_amount ? `₹${order?.shipping_amount}` : "Free"}</span>
+        <span className="text-gray-600">Shipping</span>
+        <span>
+          {order?.shipping_amount ? `₹${order?.shipping_amount}` : "Free"}
+        </span>
       </div>
 
-      <div className="border-t border-white/10 my-3"></div>
+      <div className="border-t border-gray-200 my-3"></div>
 
-      <div className="flex justify-between font-bold text-lg text-cyan-400">
+      <div className="flex justify-between font-bold text-lg text-cyan-600">
         <span>TOTAL PAID</span>
         <span>₹{order?.total}</span>
       </div>
+
     </div>
 
   </div>

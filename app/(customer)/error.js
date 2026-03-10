@@ -61,18 +61,15 @@ export default function Error({ error }) {
   const { title, description } = messages[errorType];
 
   return (
-    <div className="
-       flex items-center justify-center 
-      bg-[#0f0f0f] px-4 
-    ">
+    <div className="flex items-center justify-center bg-gray-50 px-4 min-h-screen">
 
       <div className="
         w-full max-w-md
         rounded-2xl
         mt-10
-        bg-[#1a1a1a]
-        border border-white/10
-        shadow-[0_10px_40px_rgba(0,0,0,0.9)]
+        bg-white
+        border border-gray-200
+        shadow-lg
         p-8 text-center
       ">
 
@@ -81,18 +78,18 @@ export default function Error({ error }) {
           mx-auto mb-5 flex h-14 w-14 items-center justify-center
           rounded-full
           bg-[#0ea5e9]/10
-          border border-[#38bdf8]/20
+          border border-[#0ea5e9]/20
         ">
           <span className="text-2xl">⚠</span>
         </div>
 
         {/* TITLE */}
-        <h2 className="text-xl font-semibold text-white">
+        <h2 className="text-xl font-semibold text-black">
           {title}
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="mt-2 text-sm text-[#9ca3af]">
+        <p className="mt-2 text-sm text-gray-500">
           {description}
         </p>
 
@@ -104,9 +101,9 @@ export default function Error({ error }) {
               onClick={() => router.back()}
               className="
                 flex-1 h-11 rounded-xl
-                border border-white/10
-                text-sm font-medium text-[#d1d5db]
-                hover:bg-white/5
+                border border-gray-200
+                text-sm font-medium text-gray-600
+                hover:bg-gray-100
                 transition
               "
             >
@@ -119,13 +116,9 @@ export default function Error({ error }) {
             className="
               flex-1 h-11 rounded-xl
               text-sm font-semibold text-white
-
               bg-[#0ea5e9]
-              hover:bg-[#38bdf8]
-
-              shadow-[0_0_20px_rgba(14,165,233,0.35)]
+              hover:bg-[#0284c7]
               transition-all duration-200
-              hover:scale-[1.02]
             "
           >
             Refresh

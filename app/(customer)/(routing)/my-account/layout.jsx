@@ -32,7 +32,7 @@ export default async function MyAccountLayout({ children }) {
         <>
             {/* <MyAccountHeader /> */}
 
-            <div className="min-h-screen bg-[#0f0f0f]">
+            <div className="min-h-screen ">
                 <div className="mx-auto flex max-w-7xl gap-6 px-2 md:px-6 py-2 md:py-4">
                     {/* <AccountSidebar /> */}
 

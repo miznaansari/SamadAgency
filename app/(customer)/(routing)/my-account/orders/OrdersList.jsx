@@ -4,9 +4,6 @@ import OrderCard from "./OrderCard";
 import OrderCardMobile from "./OrderCardMobile";
 
 export default async function OrdersList({ customerId }) {
-  console.log('customerId', customerId)
-  // ⚠️ replace customer_list_id with auth user id
-  // const customerId = 1;
 
   const orders = await prisma.order_list.findMany({
     where: { customer_list_id: customerId },
@@ -21,53 +18,47 @@ export default async function OrdersList({ customerId }) {
 
   if (!orders.length) {
     return (
-      <p className="text-sm text-gray-600">
+      <div className="min-h-[400px] flex items-center justify-center text-gray-600 text-sm">
         You have no orders yet.
-      </p>
+      </div>
     );
   }
 
   return (
-    <div className="bg-[#0f0f0f] min-h-screen p-2 md:p-6 text-white">
-      <div className="mx-auto max-w-6xl space-y-6">
+    <div className="bg-white min-h-screen text-black">
+      <div className="mx-auto max-w-6xl p-4 md:p-6 space-y-6">
 
+        {/* HEADER */}
+        <div>
+          <h1 className="text-xl md:text-2xl font-semibold">
+            Order History
+          </h1>
+
+          <p className="text-sm text-gray-500 mt-1">
+            View and track your recent purchases
+          </p>
+        </div>
 
         {/* ORDERS CARD */}
-        <div className="rounded-xl  border-white/10 ">
+        <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-6 shadow-sm">
 
-          {/* CARD HEADER */}
-          <div className=" px-6 py-4 font-medium">
-            Order History
-            <p className="text-sm text-gray-400">
-              View and track your recent purchases
-            </p>
-          </div>
-
-          {/* LIST */}
-          <div className="">
-
-            {orders.length === 0 && (
-              <div className="p-10 text-center text-gray-400">
-                No orders found
-              </div>
-            )}
-            <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {orders.map(order => (
-                <OrderCard key={order.id} order={order} />
-              ))}
-            </div>
+          {/* DESKTOP GRID */}
+          <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-6">
             {orders.map((order) => (
-
-
-              <div className="block md:hidden">
-                <OrderCardMobile order={order} />
-              </div>
+              <OrderCard key={order.id} order={order} />
             ))}
-
           </div>
+
+          {/* MOBILE LIST */}
+          <div className="md:hidden space-y-4">
+            {orders.map((order) => (
+              <OrderCardMobile key={order.id} order={order} />
+            ))}
+          </div>
+
         </div>
+
       </div>
     </div>
   );
-
 }

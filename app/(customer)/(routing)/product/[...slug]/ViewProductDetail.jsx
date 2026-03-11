@@ -13,12 +13,15 @@ import {
 
 import ProductInfoTabs from "./ProductInfoTabs";
 import ServiceHighlights from "@/app/(customer)/customer/components/home/ServiceHighlights";
+  import { useRouter } from "next/navigation";
 
 export default function ProductDetailClient({
   product,
   isLoggedIn,
   relatedProducts,
 }) {
+
+const router = useRouter();
   const { showToast } = useToast();
   const { cartItems, reloadCart } = useCart();
 
@@ -45,45 +48,35 @@ export default function ProductDetailClient({
       return guestCart[product.id] || null;
     }
   }, [cartItems, product.id, isLoggedIn]);
+const handleAddToCart = async () => {
+  if (isAdding) return;
+  setIsAdding(true);
 
-  const handleAddToCart = async () => {
-    if (isAdding) return;
-    setIsAdding(true);
-
-    try {
-      if (isLoggedIn) {
-        await addToCartDB({
-          productId: product.id,
-          variantId: selectedVariant?.id,
-          qty,
-        });
-
-        await reloadCart();
-      } else {
-        const existingCart =
-          JSON.parse(localStorage.getItem("guest_cart")) || {};
-
-        existingCart[product.id] = {
-          product_id: product.id,
-          name: product.name,
-          price,
-          image: product.mainImage?.[0]?.url || null,
-          quantity: qty,
-          variant_id: selectedVariant?.id || null,
-          variant_size: selectedVariant?.size || null,
-        };
-
-        localStorage.setItem("guest_cart", JSON.stringify(existingCart));
-      }
-
-      showToast({ type: "success", message: "Added to Cart" });
-    } catch {
-      showToast({ type: "error", message: "Something went wrong" });
-    } finally {
-      setIsAdding(false);
+  try {
+    // ❗ If not logged in → redirect to login
+    if (!isLoggedIn) {
+      showToast({ type: "info", message: "Please login to add to cart" });
+      router.push(`/auth/login?redirect=${encodeURIComponent(`/product/${product.slug}`)}`);
+      return;
     }
-  };
 
+    // Logged in → add to DB cart
+    await addToCartDB({
+      productId: product.id,
+      variantId: selectedVariant?.id,
+      qty,
+    });
+
+    await reloadCart();
+
+    showToast({ type: "success", message: "Added to Cart" });
+
+  } catch {
+    showToast({ type: "error", message: "Something went wrong" });
+  } finally {
+    setIsAdding(false);
+  }
+};
   const handleRemove = async () => {
     try {
       if (isLoggedIn && cartItem) {

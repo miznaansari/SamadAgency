@@ -59,7 +59,7 @@ const handleGoogleLogin = async () => {
 };
   if (isLoggedIn) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className=" flex items-center justify-center bg-white">
         <div className="flex flex-col items-center gap-6">
           {/* Spinner */}
           <div className="relative">
@@ -145,7 +145,7 @@ const handleGoogleLogin = async () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-white">
+    <div className=" flex bg-white pt-10">
 
       {/* LEFT BRAND PANEL */}
       <div className="hidden lg:flex w-1/2 pt-10 justify-center text-black p-0">
@@ -179,9 +179,9 @@ const handleGoogleLogin = async () => {
       </div>
 
       {/* RIGHT LOGIN FORM */}
-      <div className="flex w-full lg:w-1/2 justify-center items-center p-6">
+      <div className="flex w-full lg:w-1/2 justify-center items-center p-6 pt-0">
 
-        <div className="w-full max-w-md rounded-2xl bg-white shadow-lg border border-gray-200 p-8">
+        <div className="w-full max-w-md rounded-2xl bg-white p-2">
 
           {/* Logo */}
           <Image

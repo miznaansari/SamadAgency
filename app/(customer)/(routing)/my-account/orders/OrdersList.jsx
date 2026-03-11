@@ -26,7 +26,7 @@ export default async function OrdersList({ customerId }) {
 
   return (
     <div className="bg-white min-h-screen text-black">
-      <div className="mx-auto max-w-6xl p-4 md:p-6 space-y-6">
+      <div className="mx-auto max-w-6xl p-2 md:p-6 space-y-6">
 
         {/* HEADER */}
         <div>
@@ -40,7 +40,7 @@ export default async function OrdersList({ customerId }) {
         </div>
 
         {/* ORDERS CARD */}
-        <div className="rounded-2xl border border-gray-200 bg-white p-4 md:p-6 shadow-sm">
+        <div className=" bg-white p-0 md:p-6">
 
           {/* DESKTOP GRID */}
           <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-3 gap-6">

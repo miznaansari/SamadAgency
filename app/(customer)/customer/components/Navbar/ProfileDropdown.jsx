@@ -81,7 +81,7 @@ export default function ProfileDropdown({isLoggedIn}) {
         onClick={()=>setOpen(false)}
           href="/my-account/orders"
           className="
-            block px-4 py-3 text-sm text-gray-300
+            block px-4 py-3 text-sm text-black
             hover:bg-white/5 hover:text-[#38bdf8]
             transition
           "

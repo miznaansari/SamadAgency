@@ -98,9 +98,9 @@ export default function OrderCardMobile({ order }) {
           <div className="flex items-center gap-3">
 
             {/* Price */}
-            <div className="text-sm font-semibold text-gray-900">
+            {/* <div className="text-sm font-semibold text-gray-900">
               ₹{!isNaN(total) ? total.toFixed(2) : "0.00"}
-            </div>
+            </div> */}
 
             {/* Arrow */}
             <div className="rounded-full p-1 bg-gray-100 group-hover:bg-gray-200 transition">

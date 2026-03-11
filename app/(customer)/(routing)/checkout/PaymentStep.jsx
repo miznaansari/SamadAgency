@@ -19,7 +19,7 @@ export default function PaymentStep() {
 
   const { showToast } = useToast();
 
-  const [method, setMethod] = useState("razorpay");
+  const [method, setMethod] = useState("cod");
   const [loading, setLoading] = useState(false);
 
   const localOrderIdRef = useRef(null);
@@ -184,7 +184,7 @@ return (
     <div className="space-y-4">
 
       {/* RAZORPAY */}
-      <label
+      {/* <label
         className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
         ${
           method === "razorpay"
@@ -209,7 +209,7 @@ return (
           onChange={() => setMethod("razorpay")}
         />
 
-      </label>
+      </label> */}
 
       {/* COD */}
       <label

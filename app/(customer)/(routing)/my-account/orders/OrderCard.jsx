@@ -50,17 +50,17 @@ export default function OrderCard({ order }) {
 
           {/* Total */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-gray-500">
+            {/* <p className="text-xs uppercase tracking-widest text-gray-500">
               Total
-            </p>
+            </p> */}
 
-            <p className="
+            {/* <p className="
               text-3xl font-extrabold
               bg-gradient-to-r from-[#0ea5e9] to-[#6366f1]
               bg-clip-text text-transparent
             ">
               ${order.total.toFixed(2)}
-            </p>
+            </p> */}
           </div>
 
           {/* Footer */}

@@ -1,5 +1,5 @@
 "use client";
-
+import { Button } from "@/components/ui/button"
 import React, { useEffect } from "react";
 import { addProduct } from "./actions";
 import { useToast } from "@/app/admin/context/ToastProvider";
@@ -13,7 +13,12 @@ const initialState = {
   errors: {},
   values: {},
 };
-
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 export default function AddProductForm({ categories }) {
   const router = useRouter();
 
@@ -75,7 +80,17 @@ const updateVariant = (index, field, value) => {
 
         <form action={action} noValidate>
           <div className="p-6 space-y-8">
-
+  <div>
+    <Accordion type="single" collapsible defaultValue="item-1">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+    <AccordionContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+      <Button>Click me</Button>
+    </div>
             {/* BASIC INFORMATION */}
             <section className="space-y-4">
               <h2 className="text-xl font-semibold">Basic Information</h2>

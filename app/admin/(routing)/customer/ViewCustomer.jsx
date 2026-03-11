@@ -258,7 +258,7 @@ export default function ViewCustomer({
         {/* Card Header */}
         <div className="flex items-center justify-between border-b gap-4 border-gray-200 px-2 py-1">
           <div className="w-full flex items-center ">
-asdasd
+
             <ProductSearch
               title="Customers List"
               searchPlaceholder="Search customer..."

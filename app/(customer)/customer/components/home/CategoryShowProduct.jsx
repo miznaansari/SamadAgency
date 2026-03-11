@@ -296,11 +296,11 @@ const handleImageClick = (product) => {
       </div>
       {openGallery && (
   <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
-    <div className="bg-white p-4 rounded-lg max-w-3xl w-full relative">
+    <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
 
       <button
         onClick={() => setOpenGallery(false)}
-        className="absolute top-3 right-3 z-90 text-black text-lg"
+        className="absolute top-10 right-3 z-90 text-black text-lg"
       >
         ✕
       </button>

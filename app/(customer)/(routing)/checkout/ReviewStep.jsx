@@ -1,5 +1,5 @@
 export default function ReviewStep({ cartData, onNext, onBack }) {
-
+console.log('cartData',cartData)
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6">
 
@@ -26,17 +26,13 @@ export default function ReviewStep({ cartData, onNext, onBack }) {
               <p className="font-semibold text-black">
                 {item.product.name}
               </p>
-
-              <p className="text-sm text-gray-500">
-                Size: {item.product.size}
-              </p>
+                
+<p>Quantity: {item.quantity} </p>
+            
 
             </div>
 
-            <div className="text-[#0ea5e9] font-semibold">
-              ₹{item.product.price}
-            </div>
-
+      
           </div>
 
         ))}
@@ -47,7 +43,7 @@ export default function ReviewStep({ cartData, onNext, onBack }) {
         onClick={onNext}
         className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition"
       >
-        CONTINUE TO PAYMENT
+        CONTINUE TO ORDER
       </button>
 
     </div>

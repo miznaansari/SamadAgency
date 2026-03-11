@@ -1,6 +1,22 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+import {
+  Command,
+  CommandInput,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "@/components/ui/command";
+
+import { ChevronsUpDown, Check } from "lucide-react";
 
 export default function CategorySelect({
   categories,
@@ -8,58 +24,62 @@ export default function CategorySelect({
   onChange,
   error,
 }) {
-  const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
-  const ref = useRef(null);
 
-  const filtered = categories.filter((cat) =>
-    cat.path.toLowerCase().includes(query.toLowerCase())
+  const selected = categories.find(
+    (c) => value?.split("||")[0] == c.id
   );
 
   return (
-    <div className="relative" ref={ref}>
-      {/* <label className="label">Category</label> */}
+    <div className="space-y-1">
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            className={`w-full justify-between ${
+              error ? "border-red-500" : ""
+            }`}
+          >
+            {selected ? selected.path : "Select category..."}
 
-      {/* INPUT */}
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setOpen(true);
-        }}
-        onFocus={() => setOpen(true)}
-        placeholder="Type to search category..."
-        className="input p-2 border border-gray-300 rounded w-full"
-      />
+            <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
+          </Button>
+        </PopoverTrigger>
 
-      {/* DROPDOWN */}
-      {open && (
-        <ul className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded border bg-white shadow">
-          {filtered.length === 0 && (
-            <li className="p-2 text-sm text-gray-400">
-              No category found
-            </li>
-          )}
+        <PopoverContent className="w-full p-0">
+          <Command>
+            <CommandInput placeholder="Search category..." />
 
-          {filtered.map((cat) => (
-            <li
-              key={cat.id}
-              onClick={() => {
-                setQuery(cat.path);
-                onChange(`${cat.id}||${cat.path}`);
-                setOpen(false);
-              }}
-              className="cursor-pointer p-2 hover:bg-gray-100 text-sm"
-            >
-              {cat.path}
-            </li>
-          ))}
-        </ul>
-      )}
+            <CommandEmpty>No category found.</CommandEmpty>
+
+            <CommandGroup className="max-h-60 overflow-auto">
+              {categories.map((cat) => (
+                <CommandItem
+                  key={cat.id}
+                  value={cat.path}
+                  onSelect={() => {
+                    onChange(`${cat.id}||${cat.path}`);
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={`mr-2 h-4 w-4 ${
+                      selected?.id === cat.id
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }`}
+                  />
+                  {cat.path}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
 
       {error && (
-        <p className="text-sm text-red-500 mt-1">{error}</p>
+        <p className="text-sm text-red-500">{error}</p>
       )}
     </div>
   );

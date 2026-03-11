@@ -138,7 +138,7 @@ export default function EditProduct({ categories, product }) {
               </div>
 
               <Input
-                label="SKU"
+                label="Model"
                 name="sku"
                 defaultValue={state.values?.sku}
               />
@@ -174,7 +174,7 @@ export default function EditProduct({ categories, product }) {
             </section>
 
             {/* ───────── INVENTORY ───────── */}
-            <section className="space-y-4">
+            {/* <section className="space-y-4">
               <h2 className="font-semibold text-xl ">Inventory</h2>
 
               <div className="grid md:grid-cols-3 gap-6">
@@ -214,7 +214,7 @@ export default function EditProduct({ categories, product }) {
                   error={state.errors?.stepper_value}
                 />
               </div>
-            </section>
+            </section> */}
 
             {/* ───────── IMAGES ───────── */}
             <section className="space-y-4">

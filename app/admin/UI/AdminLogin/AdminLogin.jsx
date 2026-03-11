@@ -110,7 +110,7 @@ export default function AdminLogin({ adminToken }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@theclevar.com"
-                className="w-full border border-slate-300 rounded-md px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-900"
+                className="w-full border text-base border-slate-300 rounded-md px-4 py-2.5  outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
 
@@ -126,7 +126,7 @@ export default function AdminLogin({ adminToken }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full border border-slate-300 rounded-md px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-900"
+                className="w-full border text-base border-slate-300 rounded-md px-4 py-2.5  outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>
 

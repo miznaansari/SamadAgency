@@ -32,14 +32,10 @@ const variants = JSON.parse(values.variants || "[]");
     if (!values.meta_description?.trim()) {
         errors.meta_description = "Meta description is required";
     }
-    if (!values.focus_keyword?.trim()) {
-        errors.focus_keyword = "Focus keyword is required";
-    }
+ 
 
 
-if (!variants.length) {
-    errors.variants = "At least one size variant is required";
-}
+
 
 
     let category_id;
@@ -69,16 +65,9 @@ if (!variants.length) {
         }
     }
 
-    if (!values.regular_price || Number(values.regular_price) <= 0) {
-        errors.regular_price = "Regular price must be greater than 0";
-    }
-         if (!values.stepper_value || Number(values.stepper_value) <= 0) {
-        errors.stepper_value = "Stepper value must be greater than 0";
-    }
+ 
+  
 
-    if (!values.stock_qty || Number(values.stock_qty) < 0) {
-        errors.stock_qty = "Stock quantity is required";
-    }
     const stockQty = Number(values.stock_qty);
     const lowStockThreshold = Number(values.low_stock_threshold ?? 0);
 
@@ -87,9 +76,7 @@ if (!variants.length) {
             "Low stock threshold must be 0 or greater";
     }
 
-    if (Number.isNaN(stockQty) || stockQty < 0) {
-        errors.stock_qty = "Stock quantity must be 0 or greater";
-    }
+ 
 
     if (
         !errors.stock_qty &&
@@ -139,36 +126,33 @@ if (!variants.length) {
         console.log('======================0===================')
 
         /* ---------------- CREATE PRODUCT ---------------- */
-        const product = await prisma.product_list.create({
-            data: {
-                name: values.name,
-                slug,
-               sku: values.sku ? values.sku.toUpperCase() : null,
+      const product = await prisma.product_list.create({
+  data: {
+    name: values.name,
+    slug,
+    sku: values.sku ? values.sku.toUpperCase() : null,
 
-                low_stock_threshold: Number(values.low_stock_threshold) || null,
-                category_id: category_id,
-                stepper_value:Number(values.stepper_value) ||null,
-                description: values.description || null,
-                regular_price: Number(values.regular_price),
-                sale_price: values.sale_price
-                    ? Number(values.sale_price)
-                    : null,
-                stock_qty: Number(values.stock_qty),
-                is_active: true,
-            },
-        });
+    low_stock_threshold: Number(values.low_stock_threshold) || null,
+    stepper_value: Number(values.stepper_value) || null,
+
+    description: values.description || null,
+    regular_price: Number(values.regular_price) || 0,
+    sale_price: values.sale_price ? Number(values.sale_price) : null,
+    stock_qty: Number(values.stock_qty) || 0,
+
+    is_active: true,
+
+    category: {
+      connect: {
+        id: category_id,
+      },
+    },
+  },
+});
         console.log('======================1===================')
 
         /* ---------------- PRODUCT VARIANTS ---------------- */
-if (variants.length > 0) {
-    await prisma.product_variant.createMany({
-        data: variants.map((v) => ({
-            product_list_id: product.id,
-            size: v.size,
-            stock_qty: Number(v.stock_qty),
-        })),
-    });
-}
+
 
         /* ---------------- PRODUCT IMAGE ---------------- */
         if (images.length > 0) {

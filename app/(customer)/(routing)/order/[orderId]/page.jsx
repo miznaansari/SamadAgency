@@ -169,11 +169,11 @@ export default function OrderDetailsPage() {
         <div className="text-right">
           <StatusChip value={order?.status} />
 
-          <p className="text-xs text-gray-500 mt-2">Total</p>
+          {/* <p className="text-xs text-gray-500 mt-2">Total</p>
 
           <p className="text-2xl font-bold text-[#0ea5e9]">
             ₹{order?.total}
-          </p>
+          </p> */}
         </div>
       </div>
 
@@ -201,14 +201,14 @@ export default function OrderDetailsPage() {
 
                   <div className="h-14 w-14 rounded-lg overflow-hidden bg-gray-100">
 
-                    <Image
+                    <img
                       src={
                         item.product?.images?.[0]?.image_url ||
                         "/images/not-found.png"
                       }
                       alt=""
-                      width={56}
-                      height={56}
+                      width="56"
+                      height="56"
                       className="object-cover"
                     />
 
@@ -225,9 +225,9 @@ export default function OrderDetailsPage() {
                   </div>
                 </div>
 
-                <p className="font-semibold text-[#0ea5e9]">
+                {/* <p className="font-semibold text-[#0ea5e9]">
                   ₹{item.line_total}
-                </p>
+                </p> */}
 
               </div>
             ))}
@@ -239,7 +239,7 @@ export default function OrderDetailsPage() {
 
         <div className="space-y-6">
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-5">
+          {/* <div className="rounded-2xl border border-gray-200 bg-white p-5">
 
             <h3 className="font-semibold mb-4 text-gray-900">
               Order Summary
@@ -256,9 +256,9 @@ export default function OrderDetailsPage() {
               <span>₹{order?.total}</span>
             </div>
 
-          </div>
+          </div> */}
 
-          <Card title="Payments">
+          {/* <Card title="Payments">
 
             {paypal?.length ? (
               paypal.map((tx) => (
@@ -284,7 +284,7 @@ export default function OrderDetailsPage() {
               </p>
             )}
 
-          </Card>
+          </Card> */}
 
           <div className="space-y-4">
 

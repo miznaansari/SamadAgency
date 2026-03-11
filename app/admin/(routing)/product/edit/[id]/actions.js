@@ -29,8 +29,6 @@ export async function updateProduct(prevState, formData) {
     if (!values.name?.trim()) errors.name = "Product name is required";
     if (!values.meta_title?.trim()) errors.meta_title = "Meta title is required";
     if (!values.meta_description?.trim()) errors.meta_description = "Meta description is required";
-    if (!values.focus_keyword?.trim()) errors.focus_keyword = "Focus keyword is required";
-    if (!values.stepper_value?.trim()) errors.stepper_value = "Stepper value is required";
 
     let category_id;
     let category_path;
@@ -82,15 +80,9 @@ export async function updateProduct(prevState, formData) {
 
     /* ---------------- PRICE & STOCK ---------------- */
 
-    if (!values.regular_price || Number(values.regular_price) <= 0) {
-        errors.regular_price = "Regular price must be greater than 0";
-    }
 
-    if (!values.stock_qty || Number(values.stock_qty) < 0) {
-        errors.stock_qty = "Stock quantity is required";
-    }
 
-    const stockQty = Number(values.stock_qty);
+   const stockQty = values.stock_qty ? Number(values.stock_qty) : 0;
     const lowStockThreshold = values.low_stock_threshold
         ? Number(values.low_stock_threshold)
         : null;
@@ -134,7 +126,7 @@ export async function updateProduct(prevState, formData) {
     console.log("✅ Admin Verified:", admin.id);
 
     try {
-        /* ---------------- UNIQUE SLUG ---------------- */
+        /* ---- ------------ UNIQUE SLUG ---------------- */
 
         const baseSlug = generateSlug(values.name);
         let slug = baseSlug;
@@ -164,7 +156,9 @@ export async function updateProduct(prevState, formData) {
                 name: values.name,
                 slug,
                 sku: values.sku || null,
-                category: { connect: { id: category_id } },
+category: {
+  connect: { id: category_id }
+},
                 low_stock_threshold: lowStockThreshold,
                 description: values.description || null,
                 stepper_value: Number(values.stepper_value) || null,

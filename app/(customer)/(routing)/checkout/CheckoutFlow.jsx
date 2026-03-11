@@ -38,7 +38,7 @@ return (
       <CheckoutSteps step={step} />
 
       {/* LAYOUT */}
-      <div className="grid lg:grid-cols-3 gap-8 mt-8">
+      <div className="grid lg:grid-cols-1 gap-8 mt-8">
 
         {/* LEFT */}
         <div className="lg:col-span-2">
@@ -65,7 +65,7 @@ return (
         </div>
 
         {/* RIGHT */}
-        <CheckoutTotal cartData={cartData} />
+        {/* <CheckoutTotal cartData={cartData} /> */}
 
       </div>
 

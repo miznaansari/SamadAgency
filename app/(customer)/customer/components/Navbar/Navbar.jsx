@@ -202,7 +202,7 @@ backdrop-blur-xl
                           menu.children.map((lvl2) => (
 
                             <div key={lvl2.title} className="p-6 !min-w-[200px] break-inside-avoid">
-                              <h4 className="font-semibold mb-3 text-white ">
+                              <h4 className="font-semibold mb-3 text-black ">
                                 <Link href={lvl2.path} className="flex items-center gap-1">
 
                                   {lvl2.title}
@@ -232,7 +232,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
                                         {lvl3.children.map((lvl4) => (
                                           <li
                                             key={lvl4.title}
-                                            className="px-2 py-1 !mb-0 text-sm rounded hover:bg-sky-500 hover:text-white z-90 bg-white"
+                                            className="px-2 py-1 !mb-0 text-sm rounded hover:bg-sky-500 hover:text-black z-90 bg-white"
                                           >
                                             <Link href={lvl4.path} className="block">
                                               {lvl4.title}
@@ -314,8 +314,11 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
 
           <Divider />
 
-          <Link
-            href={'/cart'}
+          <button
+            
+            onClick={(()=>{
+              setOpen(true)
+            })}
             aria-label="Open cart"
             className="
     relative
@@ -345,7 +348,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         bg-[rgb(var(--text))]
         text-[10px]
         font-semibold
-        text-white
+        text-black
         
       "
                 >
@@ -371,7 +374,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
 
             </div>
 
-          </Link>
+          </button>
 
 
 
@@ -388,7 +391,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
       >
         {/* BACKDROP */}
         <div
-          className={`absolute inset-0 bg-white/60 transition-opacity duration-300
+          className={`absolute inset-0 bg-white transition-opacity duration-300
           ${drawerOpen ? "opacity-100" : "opacity-0"}`}
           onClick={() => setDrawerOpen(false)}
         />
@@ -397,15 +400,15 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
         <div
           className={`absolute left-0 top-0 h-full w-[100%] 
           bg-gradient-to-b from-[#0f0f0f] via-[#111827] to-[#020617]
-          text-white
+          text-black
           transform transition-transform duration-300 ease-in-out
           ${drawerOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
           {/* HEADER */}
-          <div className="flex items-center justify-between px-4 py-4 border-b border-white/10">
-            <Image src="/images/logo4.png" alt="Samad Agency" width={120} height={50} />
+          <div className="flex items-center bg-white justify-between px-4 py-4 border-b border-white/10">
+            <Image src="/images/logo/samadLogoremove.png" alt="Samad Agency" width={120} height={50} />
             <button
-              className="text-2xl"
+              className="text-2xl text-black"
               onClick={() => setDrawerOpen(false)}
               aria-label="Close Menu"
             >
@@ -414,7 +417,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
           </div>
 
           {/* MENU CONTENT */}
-          <div className="overflow-y-auto h-full pb-24">
+          <div className="overflow-y-auto bg-white h-full pb-24">
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-24">
 
               {/* HOME */}
@@ -422,8 +425,8 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
                 href="/"
                 onClick={() => setDrawerOpen(false)}
                 className="block px-4 py-3 rounded-xl
-    bg-white/5 hover:bg-white/10
-    text-sky-400 text-[15px] font-semibold
+     hover:bg-white/10 text-black
+     text-[15px] font-semibold
     transition-all"
               >
                 Home
@@ -437,21 +440,21 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
                   <div
                     key={l1.title}
                     className={`rounded-xl transition-all duration-300
-        ${isOpen ? "bg-white/5 border border-white/10" : ""}`}
+        ${isOpen ? "bg-black/05 border text-black border-black" : ""}`}
                   >
                     {/* LEVEL 1 */}
                     <div
                       className="flex items-center justify-between px-4 py-3 cursor-pointer"
                       onClick={() => (l1.children ? toggle(l1.title) : navigate(l1.path))}
                     >
-                      <span className="text-[15px] font-medium text-white">
+                      <span className="text-[15px] font-medium text-black">
                         {l1.title}
                       </span>
 
                       {l1.children && (
                         <ChevronDown
-                          className={`w-4 h-4 text-gray-400 transition-transform duration-300
-              ${isOpen ? "rotate-180 text-sky-400" : ""}`}
+                          className={`w-4 h-4 text-black transition-transform duration-300
+              ${isOpen ? "rotate-180 " : ""}`}
                         />
                       )}
                     </div>
@@ -471,7 +474,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
                               {/* LEVEL 2 ITEM */}
                               <div
                                 className="flex items-center justify-between px-3 py-2 rounded-lg
-                    text-sm text-gray-300 hover:bg-white/10 transition cursor-pointer"
+                    text-sm text-black hover:bg-white/10 transition cursor-pointer"
                                 onClick={() =>
                                   l2.children ? toggle(key2) : navigate(l2.path)
                                 }
@@ -498,7 +501,7 @@ border border-white/10 rounded p-2 space-y-2 max-h-[200px] overflow-y-auto z-[99
                                       href={l3.path}
                                       onClick={() => setDrawerOpen(false)}
                                       className="block px-3 py-2 rounded-md text-[13px]
-                          text-gray-400 hover:text-white hover:bg-white/10
+                          text-gray-400 hover:text-black hover:bg-white/10
                           transition"
                                     >
                                       {l3.title}

@@ -8,7 +8,7 @@ export default function CartSummary({ items, loading }) {
   );
 
   const gst = subtotal * 0.1;
-  const delivery = subtotal > 1000 ? 0 : 49; // example logic
+  const delivery = subtotal > 1000 ? 0 : 49;
   const total = subtotal + gst + delivery;
 
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0);
@@ -16,31 +16,30 @@ export default function CartSummary({ items, loading }) {
   return (
     <div
       className="rounded-2xl p-5 space-y-4
-      bg-gradient-to-b from-[#1a1a1a] to-[#111]
-      border border-white/10
-      shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+      bg-white
+      border border-gray-200
+      shadow-sm"
     >
       {/* HEADER */}
       <div className="flex items-center justify-between">
-        <h4 className="text-white font-semibold text-[15px]">
+        <h4 className="text-gray-900 font-semibold text-[15px]">
           Order Summary
         </h4>
 
-        <span className="text-xs text-gray-400">
+        <span className="text-xs text-gray-500">
           {totalItems} item{totalItems !== 1 && "s"}
         </span>
       </div>
 
       {/* PRICE BREAKDOWN */}
       <div className="space-y-3 text-sm">
-        {/* SUBTOTAL */}
+
         <Row
           label="Subtotal"
           loading={loading}
           value={`₹${subtotal.toFixed(2)}`}
         />
 
-        {/* GST */}
         <Row
           label="GST (10%)"
           loading={loading}
@@ -49,16 +48,16 @@ export default function CartSummary({ items, loading }) {
 
         {/* DELIVERY */}
         <div className="flex justify-between items-center">
-          <span className="text-gray-400">Delivery</span>
+          <span className="text-gray-500">Delivery</span>
 
           {loading ? (
-            <div className="h-4 w-16 bg-white/10 rounded animate-pulse" />
+            <div className="h-4 w-16 bg-gray-200 rounded animate-pulse" />
           ) : delivery === 0 ? (
-            <span className="text-green-400 font-medium">
+            <span className="text-emerald-600 font-medium">
               Free
             </span>
           ) : (
-            <span className="text-gray-200">
+            <span className="text-gray-700">
               ₹{delivery.toFixed(2)}
             </span>
           )}
@@ -66,18 +65,18 @@ export default function CartSummary({ items, loading }) {
       </div>
 
       {/* DIVIDER */}
-      <div className="border-t border-white/10 pt-4" />
+      <div className="border-t border-gray-200 pt-4" />
 
       {/* TOTAL */}
       <div className="flex items-center justify-between">
-        <span className="text-white text-[15px] font-semibold">
+        <span className="text-gray-900 text-[15px] font-semibold">
           Total Amount
         </span>
 
         {loading ? (
-          <div className="h-5 w-24 bg-white/10 rounded animate-pulse" />
+          <div className="h-5 w-24 bg-gray-200 rounded animate-pulse" />
         ) : (
-          <span className="text-xl font-bold text-[#38bdf8]">
+          <span className="text-xl font-bold text-[#0ea5e9]">
             ₹{total.toFixed(2)}
           </span>
         )}
@@ -85,7 +84,7 @@ export default function CartSummary({ items, loading }) {
 
       {/* SAVINGS */}
       {!loading && delivery === 0 && (
-        <div className="text-xs text-green-400">
+        <div className="text-xs text-emerald-600">
           🎉 You saved ₹49 on delivery
         </div>
       )}
@@ -96,15 +95,16 @@ export default function CartSummary({ items, loading }) {
 /* =========================
    REUSABLE ROW
 ========================= */
+
 function Row({ label, value, loading }) {
   return (
     <div className="flex justify-between items-center">
-      <span className="text-gray-400">{label}</span>
+      <span className="text-gray-500">{label}</span>
 
       {loading ? (
-        <div className="h-4 w-16 bg-white/10 rounded animate-pulse" />
+        <div className="h-4 w-16 bg-gray-200 rounded animate-pulse" />
       ) : (
-        <span className="text-gray-200">{value}</span>
+        <span className="text-gray-700">{value}</span>
       )}
     </div>
   );

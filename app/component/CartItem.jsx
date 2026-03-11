@@ -89,95 +89,101 @@ export default function CartItem({ item, isLoggedIn }) {
 
   return (
     <div
-      className="group flex gap-4 p-2 md:p-4 rounded-xl
-      bg-[#141414] border border-white/10
+      className="
+      group flex gap-4 p-4 rounded-2xl
+      bg-white border border-gray-200
       hover:border-[#0ea5e9]/40
-      transition-all duration-300"
+      hover:shadow-sm
+      transition
+    "
     >
       {/* IMAGE */}
-      <img
-        src={
-          item.image ||
-          item.product?.images?.[0]?.image_url ||
-          "/images/not-found.png"
-        }
-        alt=""
-        className="h-16 w-16 rounded-lg object-cover bg-[#1a1a1a]"
-      />
+      <div className="h-16 w-16 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
+        <img
+          src={
+            item.image ||
+            item.product?.images?.[0]?.image_url ||
+            "/images/not-found.png"
+          }
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      </div>
 
       {/* CONTENT */}
-      <div className=" flex ">
-        {/* NAME */}
-        <div className="flex-col justify-between">
-          <p className="text-sm font-medium text-white leading-snug line-clamp-2">
-            {item.name || item.product?.name}
-          </p>
+      <div className="flex flex-1 justify-between">
 
-          {/* META ROW */}
-          <div className="flex items-center justify-between mt-1">
+        {/* LEFT */}
+        <div className="flex flex-col justify-between">
+
+          <div>
+            {/* NAME */}
+            <p className="text-sm font-medium text-gray-900 leading-snug line-clamp-2">
+              {item.name || item.product?.name}
+            </p>
+
             {/* SIZE */}
             {item.variant?.size && (
-              <span className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500 mt-1">
                 Size:{" "}
-                <span className="text-gray-200">
+                <span className="text-gray-700">
                   {item.variant.size}
                 </span>
-              </span>
+              </p>
             )}
-
           </div>
-          <div> 
 
-            {/* UNIT PRICE */}
-            <span className="text-xs text-gray-400">
-              ₹{price.toFixed(2)} / item
-            </span>
-          </div>
+      
+
         </div>
 
-        {/* ACTION ROW */}
-        <div className="flex items-center flex-col justify-between ">
+        {/* RIGHT */}
+        <div className="flex flex-col items-end justify-between">
+
+          {/* REMOVE */}
+          <button
+            onClick={removeItem}
+            className="
+            p-1 rounded-md
+            text-gray-400
+            hover:text-red-500
+            hover:bg-red-50
+            transition
+          "
+          >
+            <TrashIcon className="h-4 w-4" />
+          </button>
+
           {/* QTY */}
-<div
-            className="flex mt-2 items-center rounded-lg overflow-hidden
-            bg-[#0f0f0f] border border-white/10"
+          <div
+            className="
+            flex items-center rounded-lg
+            bg-gray-50 border border-gray-200
+            overflow-hidden
+          "
           >
             <button
               onClick={decreaseQty}
-              className="px-2 py-1 hover:bg-white/10 transition active:scale-90"
+              className="px-2 py-1 hover:bg-gray-200 transition"
             >
-              <MinusIcon className="w-4 h-4 text-gray-300" />
+              <MinusIcon className="w-4 h-4 text-gray-600" />
             </button>
 
-            <span className="px-3 text-sm text-white font-medium">
+            <span className="px-3 text-sm font-medium text-gray-900">
               {localQty}
             </span>
 
             <button
               onClick={increaseQty}
-              className="px-2 py-1 hover:bg-white/10 transition active:scale-90"
+              className="px-2 py-1 hover:bg-gray-200 transition"
             >
-              <PlusIcon className="w-4 h-4 text-gray-300" />
+              <PlusIcon className="w-4 h-4 text-gray-600" />
             </button>
           </div>
 
-          {/* TOTAL */}
-          <div className="text-right flex items-center gap-3">
-            <p className="text-xs text-gray-500">Total</p>
-            <p className="text-sm font-semibold text-[#38bdf8]">
-              ₹{(price * localQty).toFixed(2)}
-            </p>
-          </div>
         </div>
-      </div>
 
-      {/* REMOVE */}
-      <button
-        onClick={removeItem}
-        className="opacity-0 opacity-100 transition"
-      >
-        <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-400" />
-      </button>
+      </div>
     </div>
   );
 }

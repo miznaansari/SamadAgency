@@ -1,4 +1,9 @@
 "use client";
+
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+
 export default function FormInput({
   label,
   name,
@@ -10,39 +15,35 @@ export default function FormInput({
   textarea = false,
 }) {
   return (
-    <div className="form-control w-full">
-      <label className="label">
-        <span className="label-text font-medium">
-          {label}
-          {required && <span className="text-error ml-1">*</span>}
-        </span>
-      </label>
+    <div className="space-y-2 w-full">
+      <Label htmlFor={name} className="font-medium">
+        {label}
+        {required && <span className="text-red-500 ml-1">*</span>}
+      </Label>
 
       {textarea ? (
-        <textarea
+        <Textarea
+          id={name}
           name={name}
           defaultValue={defaultValue}
           placeholder={placeholder}
-          className={`textarea textarea-bordered w-full ${
-            error ? "textarea-error" : ""
-          }`}
+          className={error ? "border-red-500 focus-visible:ring-red-500" : ""}
         />
       ) : (
-        <input
+        <Input
+          id={name}
           type={type}
           name={name}
           defaultValue={defaultValue}
           placeholder={placeholder}
-          className={`input input-bordered w-full ${
-            error ? "input-error" : ""
-          }`}
+          className={error ? "border-red-500 focus-visible:ring-red-500" : ""}
         />
       )}
 
       {error && (
-        <label className="label">
-          <span className="label-text-alt text-error">{error}</span>
-        </label>
+        <p className="text-sm text-red-500">
+          {error}
+        </p>
       )}
     </div>
   );

@@ -61,11 +61,9 @@ const products = await prisma.product_list.findMany({
     sale_price: true,
 
     images: {
-      where: { is_primary: true },
       select: {
         image_url: true,
-      },
-      take: 1,
+      }
     },
 
     pricing: customer?.customer_group_id

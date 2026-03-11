@@ -11,12 +11,13 @@ import { useCart } from "@/app/context/CartContext";
 import { useToast } from "@/app/admin/context/ToastProvider";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import ImageGallery from "react-image-gallery";
 export default function CategoryShowProduct({ categories }) {
   const router = useRouter();
   const { reloadCart } = useCart();
   const { showToast } = useToast();
-
+const [openGallery, setOpenGallery] = useState(false);
+const [galleryImages, setGalleryImages] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(null);
@@ -139,6 +140,16 @@ useEffect(() => {
 
   preloadProducts();
 }, [categories]);
+const handleImageClick = (product) => {
+  const images =
+    product.images?.map((img) => ({
+      original: img.image_url,
+      thumbnail: img.image_url,
+    })) || [];
+
+  setGalleryImages(images);
+  setOpenGallery(true);
+};
   return (
     <div className="max-w-7xl mx-auto bg-white px-4 py-10">
       <div className="space-y-3">
@@ -228,10 +239,11 @@ useEffect(() => {
                                   <td className="p-3">{index + 1}</td>
 
                                   <td className="p-3">
-                                    <img
-                                      src={image}
-                                      className="w-12 h-12 object-cover rounded"
-                                    />
+                                 <img
+  src={image}
+  onClick={() => handleImageClick(product)}
+  className="w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
+/>
                                   </td>
 <Link href={`/product/${product.slug}`}>
                                   <td className="p-3 font-medium">
@@ -282,6 +294,25 @@ useEffect(() => {
           );
         })}
       </div>
+      {openGallery && (
+  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
+    <div className="bg-white p-4 rounded-lg max-w-3xl w-full relative">
+
+      <button
+        onClick={() => setOpenGallery(false)}
+        className="absolute top-3 right-3 z-90 text-black text-lg"
+      >
+        ✕
+      </button>
+
+      <ImageGallery
+        items={galleryImages}
+        showPlayButton={false}
+        showFullscreenButton={false}
+      />
+    </div>
+  </div>
+)}
     </div>
   );
 }

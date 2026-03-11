@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../../node_modules/react-image-gallery/styles/image-gallery.css";
 
 import TopNavbar from "./customer/components/Navbar/TopNavbar";
 import BNavbar from "./customer/components/Navbar/BNavbar";

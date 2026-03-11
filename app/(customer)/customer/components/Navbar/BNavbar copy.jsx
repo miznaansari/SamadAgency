@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 ========================= */
 
 export default async function BNavbar() {
+  const isLoggedIn = await requireUser();
   /* ---------------- FETCH DATA ---------------- */
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/categories`, {
     cache: "no-store", // or 'force-cache' / revalidate

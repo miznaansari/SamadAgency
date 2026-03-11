@@ -124,7 +124,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 
   const isLoggedIn = await requireUser();
-
+console.log('isLoggedInisLoggedIn',isLoggedIn)
   return (
     <html lang="en" className="mobile_mode">
       <body
@@ -137,7 +137,7 @@ export default async function RootLayout({ children }) {
         `}
       >
         <CartProvider isLoggedIn={isLoggedIn}>
-          <BNavbar isLoggedIn={isLoggedIn} />
+          <BNavbar isLoggedIn={isLoggedIn.id ? true : false} />
 
           <ToastProvider>
             <CartDrawer isLoggedIn={isLoggedIn} />

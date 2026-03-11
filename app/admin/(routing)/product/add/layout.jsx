@@ -10,9 +10,9 @@ export default async function ProductLayout({ children }) {
     <div className=" ml-2 mt-2">
       
       {/* 🔹 TOP BAR */}
-      <div className="">
+      {/* <div className="">
         <AddProductTop />
-      </div>
+      </div> */}
 
       {/* 🔹 PAGE CONTENT */}
       <main className=" ">

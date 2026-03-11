@@ -16,8 +16,8 @@ export default function CategoryShowProduct({ categories }) {
   const router = useRouter();
   const { reloadCart } = useCart();
   const { showToast } = useToast();
-const [openGallery, setOpenGallery] = useState(false);
-const [galleryImages, setGalleryImages] = useState([]);
+  const [openGallery, setOpenGallery] = useState(false);
+  const [galleryImages, setGalleryImages] = useState([]);
   const [openCategory, setOpenCategory] = useState(null);
   const [products, setProducts] = useState({});
   const [loading, setLoading] = useState(null);
@@ -50,13 +50,25 @@ const [galleryImages, setGalleryImages] = useState([]);
     }
   };
 
-  const handleQtyChange = (id, value) => {
+const handleQtyChange = (productId, value) => {
+
+  // allow empty (user deleting)
+  if (value === "") {
     setQty((prev) => ({
       ...prev,
-      [id]: Math.max(1, value),
+      [productId]: ""
     }));
-  };
+    return;
+  }
 
+  // allow only numbers
+  if (!/^\d+$/.test(value)) return;
+
+  setQty((prev) => ({
+    ...prev,
+    [productId]: Number(value)
+  }));
+};
   const handleAddToCart = async (product) => {
     const quantity = qty[product.id] || 1;
 
@@ -108,48 +120,48 @@ const [galleryImages, setGalleryImages] = useState([]);
       setAdding((prev) => ({ ...prev, [product.id]: false }));
     }
   };
-useEffect(() => {
-  const preloadProducts = async () => {
-    if (!categories?.length) return;
+  useEffect(() => {
+    const preloadProducts = async () => {
+      if (!categories?.length) return;
 
-    try {
-      const results = await Promise.all(
-        categories.map(async (cat) => {
-          const res = await fetch(
-            `/api/category-products?category=${cat.slug}`
-          );
-          const data = await res.json();
+      try {
+        const results = await Promise.all(
+          categories.map(async (cat) => {
+            const res = await fetch(
+              `/api/category-products?category=${cat.slug}`
+            );
+            const data = await res.json();
 
-          return {
-            slug: cat.slug,
-            products: data,
-          };
-        })
-      );
+            return {
+              slug: cat.slug,
+              products: data,
+            };
+          })
+        );
 
-      const formatted = {};
-      results.forEach((item) => {
-        formatted[item.slug] = item.products;
-      });
+        const formatted = {};
+        results.forEach((item) => {
+          formatted[item.slug] = item.products;
+        });
 
-      setProducts(formatted);
-    } catch (err) {
-      console.error("Preload failed", err);
-    }
+        setProducts(formatted);
+      } catch (err) {
+        console.error("Preload failed", err);
+      }
+    };
+
+    preloadProducts();
+  }, [categories]);
+  const handleImageClick = (product) => {
+    const images =
+      product.images?.map((img) => ({
+        original: img.image_url,
+        thumbnail: img.image_url,
+      })) || [];
+
+    setGalleryImages(images);
+    setOpenGallery(true);
   };
-
-  preloadProducts();
-}, [categories]);
-const handleImageClick = (product) => {
-  const images =
-    product.images?.map((img) => ({
-      original: img.image_url,
-      thumbnail: img.image_url,
-    })) || [];
-
-  setGalleryImages(images);
-  setOpenGallery(true);
-};
   return (
     <div className="max-w-7xl mx-auto bg-white px-4 py-10">
       <div className="space-y-3">
@@ -239,31 +251,27 @@ const handleImageClick = (product) => {
                                   <td className="p-3">{index + 1}</td>
 
                                   <td className="p-3">
-                                 <img
-  src={image}
-  onClick={() => handleImageClick(product)}
-  className="w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
-/>
+                                    <img
+                                      src={image}
+                                      onClick={() => handleImageClick(product)}
+                                      className="w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
+                                    />
                                   </td>
-<Link href={`/product/${product.slug}`}>
-                                  <td className="p-3 font-medium">
-                                    {product.name}
-                                  </td>
+                                  <Link href={`/product/${product.slug}`}>
+                                    <td className="p-3 font-medium">
+                                      {product.name}
+                                    </td>
                                   </Link>
 
                                   <td className="p-3">
-                                    <input
-                                      type="number"
-                                      min={1}
-                                      value={qty[product.id] || 1}
-                                      onChange={(e) =>
-                                        handleQtyChange(
-                                          product.id,
-                                          Number(e.target.value)
-                                        )
-                                      }
-                                      className="w-16 border text-base rounded px-2 py-1"
-                                    />
+<input
+  type="text"
+  inputMode="numeric"
+  pattern="[0-9]*"
+  value={qty[product.id] ?? ""}
+  onChange={(e) => handleQtyChange(product.id, e.target.value)}
+  className="w-16 border text-base rounded px-2 py-1"
+/>
                                   </td>
 
                                   <td className="p-3">
@@ -295,24 +303,24 @@ const handleImageClick = (product) => {
         })}
       </div>
       {openGallery && (
-  <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
-    <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
+          <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
 
-      <button
-        onClick={() => setOpenGallery(false)}
-        className="absolute top-10 right-3 z-90 text-black text-lg"
-      >
-        ✕
-      </button>
+            <button
+              onClick={() => setOpenGallery(false)}
+              className="absolute top-10 right-3 z-90 text-black text-lg"
+            >
+              ✕
+            </button>
 
-      <ImageGallery
-        items={galleryImages}
-        showPlayButton={false}
-        showFullscreenButton={false}
-      />
-    </div>
-  </div>
-)}
+            <ImageGallery
+              items={galleryImages}
+              showPlayButton={false}
+              showFullscreenButton={false}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -38,11 +38,9 @@ export default function UploadImage({
         uploadedUrls.push(data.imageUrl);
       }
 
-      setImageUrls((prev) => {
-        const updated = [...prev, ...uploadedUrls];
-        onSuccess?.(updated); // ✅ RETURN ALL URLS
-        return updated;
-      });
+     setImageUrls((prev) => [...prev, ...uploadedUrls]);
+
+onSuccess?.(uploadedUrls); // ✅ return only new images
 
       // reset input
       e.target.value = "";

@@ -79,7 +79,7 @@ const updateVariant = (index, field, value) => {
             {/* BASIC INFORMATION */}
             <section className="space-y-4">
               <h2 className="text-xl font-semibold">Basic Information</h2>
-
+asd<button className="btn">Default</button>
               <div className="grid md:grid-cols-2 gap-6">
                 <FormInput
                   label="Product Name"
@@ -104,7 +104,7 @@ const updateVariant = (index, field, value) => {
               </div>
 
               <FormInput
-                label="SKU"
+                label="MODEL"
                 name="sku"
                 defaultValue={state.values?.sku}
                 error={state.errors?.sku}

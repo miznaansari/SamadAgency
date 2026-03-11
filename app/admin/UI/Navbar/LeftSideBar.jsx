@@ -96,7 +96,7 @@ export default function LeftSidebar() {
       >
         <div className="mb-8 flex items-center gap-2 px-4 py-3">
           <Image
-            src="/images/logo4.png"
+            src="/images/logo/samadLogoremove.png"
             alt="Logo"
             width={150}
             height={100}

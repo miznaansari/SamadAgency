@@ -60,7 +60,7 @@ export default function AdminLogin({ adminToken }) {
       <div className="hidden md:flex w-1/2 bg-slate-900 text-white flex-col justify-center px-16">
 
         <Image
-          src="/images/logo4.png"
+          src="/images/logo/samadLogoremove.png"
           alt="logo"
           width={200}
           height={70}

@@ -195,12 +195,7 @@ export default function ProductGrid({ products, customerId }) {
               {/* PRICE */}
               <div className="flex mt-auto items-center justify-between">
 
-                <p className="text-lg font-semibold text-black">
-                  ₹{product.price}
-                  <span className="ml-1 text-xs text-gray-500">
-                    ex. GST
-                  </span>
-                </p>
+              
 
                 {qty > 0 && (
                   <span

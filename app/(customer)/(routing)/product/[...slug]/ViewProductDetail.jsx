@@ -195,50 +195,10 @@ export default function ProductDetailClient({
             </div>
 
             <div className="text-sm text-gray-500">
-              👁 {product.views} views
+              {product.views} views
             </div>
 
-            {/* VARIANTS */}
-            {product.variants?.length > 0 && (
-              <div>
-
-                <div className="flex justify-between mb-2">
-                  <p className="text-gray-500 text-sm">
-                    SELECT OPTION
-                  </p>
-                </div>
-
-                <div className="flex gap-3 flex-wrap">
-
-                  {product.variants.map((variant) => {
-
-                    const isSelected = selectedVariant?.id === variant.id
-                    const isOut = variant.stock_qty <= 0
-
-                    return (
-                      <button
-                        key={variant.id}
-                        disabled={isOut}
-                        onClick={() => setSelectedVariant(variant)}
-                        className={`px-4 py-2 text-sm rounded-md border transition
-                        ${
-                          isSelected
-                            ? "border-[#0ea5e9] text-[#0ea5e9]"
-                            : "border-gray-200 hover:border-[#0ea5e9]"
-                        }
-                        ${isOut ? "opacity-40 cursor-not-allowed" : ""}
-                        `}
-                      >
-                        {variant.size}
-                      </button>
-                    )
-
-                  })}
-
-                </div>
-
-              </div>
-            )}
+           
 
             {/* QTY */}
             <div className="flex items-center gap-3">

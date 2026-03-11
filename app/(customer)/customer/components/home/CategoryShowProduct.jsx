@@ -10,6 +10,7 @@ import {
 import { useCart } from "@/app/context/CartContext";
 import { useToast } from "@/app/admin/context/ToastProvider";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function CategoryShowProduct({ categories }) {
   const router = useRouter();
@@ -232,10 +233,11 @@ useEffect(() => {
                                       className="w-12 h-12 object-cover rounded"
                                     />
                                   </td>
-
+<Link href={`/product/${product.slug}`}>
                                   <td className="p-3 font-medium">
                                     {product.name}
                                   </td>
+                                  </Link>
 
                                   <td className="p-3">
                                     <input

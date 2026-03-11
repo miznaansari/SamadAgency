@@ -137,7 +137,7 @@ console.log('isLoggedInisLoggedIn',isLoggedIn)
         `}
       >
         <CartProvider isLoggedIn={isLoggedIn}>
-          <BNavbar isLoggedIn={isLoggedIn.id ? true : false} />
+          <BNavbar isLoggedIn={isLoggedIn?.id ? true : false} />
 
           <ToastProvider>
             <CartDrawer isLoggedIn={isLoggedIn} />

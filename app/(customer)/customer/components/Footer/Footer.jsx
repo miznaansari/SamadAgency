@@ -79,6 +79,7 @@ export default function Footer({ category = [] }) {
               { label: "Returns & Exchanges", href: "/returns" },
               { label: "Track Order", href: "/track-order" },
               { label: "Contact Us", href: "/contact-us" },
+              { label: "Admin Access", href: "/admin" },
             ]}
           />
 

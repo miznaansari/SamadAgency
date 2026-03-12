@@ -168,26 +168,26 @@ Phone: ${a.phone}
 
 
     /* SEND WHATSAPP MESSAGE */
-    try {
-      console.log('try to send sms ')
-      console.log('shippingAddr',shippingAddr)
-      const phone = shippingAddr.phone.replace(/\D/g, ""); // remove spaces
-console.log('phone',phone)
-      const message = `🛒 Order Confirmed!
+//     try {
+//       console.log('try to send sms ')
+//       console.log('shippingAddr',shippingAddr)
+//       const phone = shippingAddr.phone.replace(/\D/g, ""); // remove spaces
+// console.log('phone',phone)
+//       const message = `🛒 Order Confirmed!
 
-Order Number: ${order.order_number}
+// Order Number: ${order.order_number}
 
-Total Amount: ₹${total}
+// Total Amount: ₹${total}
 
-Delivery Method: ${deliveryMethod ? "Home Delivery" : "Store Pickup"
-        }
+// Delivery Method: ${deliveryMethod ? "Home Delivery" : "Store Pickup"
+//         }
 
-Thank you for shopping with us ❤️`;
-console.log('senidng')
-      await sendWhatsAppMessage(`91${phone}`, message);
-    } catch (err) {
-      console.error("WhatsApp send failed:", err);
-    }
+// Thank you for shopping with us ❤️`;
+// console.log('senidng')
+//       await sendWhatsAppMessage(`91${phone}`, message);
+//     } catch (err) {
+//       console.error("WhatsApp send failed:", err);
+//     }
 
     /* CLEAR CART */
     await prisma.customer_cart.updateMany({

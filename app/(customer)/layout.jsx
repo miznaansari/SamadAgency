@@ -17,6 +17,7 @@ import { verifyToken } from "@/lib/jwt";
 import TopNavbarClient from "./customer/components/Navbar/TopNavbarClient";
 import { requireUser } from "@/lib/requireUser";
 import { clientFetch } from "@/lib/clientFetch";
+import ClarityInit from "@/lib/ClarityInit";
 
 /* =========================
    FONTS
@@ -139,7 +140,7 @@ console.log('isLoggedInisLoggedIn',isLoggedIn)
       >
         <CartProvider isLoggedIn={isLoggedIn}>
           <BNavbar isLoggedIn={isLoggedIn?.id ? true : false} />
-
+  <ClarityInit />
           <ToastProvider>
             <CartDrawer isLoggedIn={isLoggedIn} />
             <NextTopLoader showSpinner={false} />

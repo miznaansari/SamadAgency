@@ -10,6 +10,7 @@ import { SidebarProvider } from "./context/SidebarContext";
 import ContentWrapper from "./ContentWrapper";
 import { requireAdmin } from "@/lib/requireAdmin";
 import NextTopLoader from "nextjs-toploader";
+import ClarityInit from "@/lib/ClarityInit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,7 @@ export default async function RootLayout({ children }) {
             <div className="bg-gray-50">
               {/* LEFT SIDEBAR */}
               {/* {adminToken && <LeftSideBar />} */}
-
+  <ClarityInit />
               {/* RIGHT CONTENT AREA */}
                 <ToastProvider>
             <NextTopLoader showSpinner={false} />

@@ -254,7 +254,7 @@ export default function CategoryShowProduct({ categories }) {
                                     <img
                                       src={image}
                                       onClick={() => handleImageClick(product)}
-                                      className="w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
+                                      className="min-w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
                                     />
                                   </td>
                                   <Link href={`/product/${product.slug}`}>

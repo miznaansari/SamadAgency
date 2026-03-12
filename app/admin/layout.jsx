@@ -11,6 +11,7 @@ import ContentWrapper from "./ContentWrapper";
 import { requireAdmin } from "@/lib/requireAdmin";
 import NextTopLoader from "nextjs-toploader";
 import ClarityInit from "@/lib/ClarityInit";
+import "../../node_modules/react-image-gallery/styles/image-gallery.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

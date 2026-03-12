@@ -50,25 +50,25 @@ export default function CategoryShowProduct({ categories }) {
     }
   };
 
-const handleQtyChange = (productId, value) => {
+  const handleQtyChange = (productId, value) => {
 
-  // allow empty (user deleting)
-  if (value === "") {
+    // allow empty (user deleting)
+    if (value === "") {
+      setQty((prev) => ({
+        ...prev,
+        [productId]: ""
+      }));
+      return;
+    }
+
+    // allow only numbers
+    if (!/^\d+$/.test(value)) return;
+
     setQty((prev) => ({
       ...prev,
-      [productId]: ""
+      [productId]: Number(value)
     }));
-    return;
-  }
-
-  // allow only numbers
-  if (!/^\d+$/.test(value)) return;
-
-  setQty((prev) => ({
-    ...prev,
-    [productId]: Number(value)
-  }));
-};
+  };
   const handleAddToCart = async (product) => {
     const quantity = qty[product.id] || 1;
 
@@ -264,14 +264,14 @@ const handleQtyChange = (productId, value) => {
                                   </Link>
 
                                   <td className="p-3">
-<input
-  type="text"
-  inputMode="numeric"
-  pattern="[0-9]*"
-  value={qty[product.id] ?? ""}
-  onChange={(e) => handleQtyChange(product.id, e.target.value)}
-  className="w-16 border text-base rounded px-2 py-1"
-/>
+                                    <input
+                                      type="text"
+                                      inputMode="numeric"
+                                      pattern="[0-9]*"
+                                      value={qty[product.id] ?? ""}
+                                      onChange={(e) => handleQtyChange(product.id, e.target.value)}
+                                      className="w-16 border text-base rounded px-2 py-1"
+                                    />
                                   </td>
 
                                   <td className="p-3">

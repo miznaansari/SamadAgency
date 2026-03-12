@@ -10,6 +10,7 @@ import { clientFetch } from "@/lib/clientFetch";
 import { useToast } from "../../context/ToastProvider";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import StatusToggle from "./StatusToggle";
+import ImageGallery from "react-image-gallery";
 
 export default function ViewProduct({
   products,
@@ -18,6 +19,8 @@ export default function ViewProduct({
 }) {
   // console.log('productsproducts',products)
   const { showToast } = useToast();
+  const [openGallery, setOpenGallery] = useState(false);
+  const [galleryImages, setGalleryImages] = useState([]);
 
 
   const router = useRouter();
@@ -26,7 +29,16 @@ export default function ViewProduct({
   const [openDelete, setOpenDelete] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
+  const handleImageClick = (product) => {
+    const images =
+      product.images?.map((img) => ({
+        original: img.image_url,
+        thumbnail: img.image_url,
+      })) || [];
 
+    setGalleryImages(images);
+    setOpenGallery(true);
+  };
   const columns = [
     {
       key: "sno",
@@ -80,12 +92,19 @@ export default function ViewProduct({
       label: "Product",
       render: (p) => (
         <>
-        <span className="font-medium text-gray-900">
-          {p.name}
-        </span><br />
-          <span className="font-small text-gray-500">
-          {p.sku}
-        </span>
+          <div className="flex items-center gap-3">
+            <img src={p.images?.[0]?.image_url} alt=""
+              className="min-w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
+
+    onClick={() => handleImageClick(p)}
+            />
+            <span className="font-medium text-gray-900">
+              {p.name}
+            </span><br />
+            <span className="font-small text-gray-500">
+              {p.sku}
+            </span>
+          </div>
         </>
       ),
     },
@@ -102,50 +121,50 @@ export default function ViewProduct({
     {
       key: "regular_price",
       label: "Price",
-      render: (p) => `$${p.regular_price}`,
+      render: (p) => `₹${p.regular_price}`,
     },
     {
-  key: "is_active",
-  label: "Status",
-  render: (row) => <StatusToggle id={row.id} isActive={row.is_active} />,
-},
-{
-  key: "stock",
-  label: "Stock",
-  render: (p) => {
-    let label = "Stock";
-    let bg = "bg-green-100 text-green-700";
+      key: "is_active",
+      label: "Status",
+      render: (row) => <StatusToggle id={row.id} isActive={row.is_active} />,
+    },
+    {
+      key: "stock",
+      label: "Stock",
+      render: (p) => {
+        let label = "Stock";
+        let bg = "bg-green-100 text-green-700";
 
-    if (p.stock_qty === 0) {
-      label = "Out of Stock";
-      bg = "bg-red-100 text-red-700";
-    } else if (
-      p.low_stock_threshold !== null &&
-      p.stock_qty <= p.low_stock_threshold
-    ) {
-      label = "Low ";
-      bg = "bg-yellow-100 text-yellow-700";
-    }
+        if (p.stock_qty === 0) {
+          label = "Out of Stock";
+          bg = "bg-red-100 text-red-700";
+        } else if (
+          p.low_stock_threshold !== null &&
+          p.stock_qty <= p.low_stock_threshold
+        ) {
+          label = "Low ";
+          bg = "bg-yellow-100 text-yellow-700";
+        }
 
-    return (
-      <div className="relative group inline-block">
-        <span
-          className={`rounded-full px-2 py-1 text-xs font-medium ${bg}`}
-        >
-          {label}
-        </span>
+        return (
+          <div className="relative group inline-block">
+            <span
+              className={`rounded-full px-2 py-1 text-xs font-medium ${bg}`}
+            >
+              {label}
+            </span>
 
-        {/* Tooltip */}
-    
-         <span className="pointer-events-none z-90 absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100">
-                     Stock Qty: {p.stock_qty}
+            {/* Tooltip */}
+
+            <span className="pointer-events-none z-90 absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100">
+              Stock Qty: {p.stock_qty}
 
             </span>
-      </div>
-    );
-  },
-}
-,
+          </div>
+        );
+      },
+    }
+    ,
     {
       key: "created_at",
       label: "Created",
@@ -168,20 +187,20 @@ export default function ViewProduct({
 
 
 
-              {/* Search */}
-              <ProductSearch title="Products List" />
+            {/* Search */}
+            <ProductSearch title="Products List" />
 
 
 
 
-              {/* Add Product Button */}
-              <Link
-                href="/admin/product/add"
-                className="flex items-center w-28 md:w-50 justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-blue-700"
-              >
-                <span className="md:hidden">+ Add</span>
-                <span className="hidden md:inline">+ Add Product</span>
-              </Link>
+            {/* Add Product Button */}
+            <Link
+              href="/admin/product/add"
+              className="flex items-center w-28 md:w-50 justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition hover:bg-blue-700"
+            >
+              <span className="md:hidden">+ Add</span>
+              <span className="hidden md:inline">+ Add Product</span>
+            </Link>
 
           </div>
         </div>
@@ -255,7 +274,25 @@ export default function ViewProduct({
           </div>
         </div>
       )}
+ {openGallery && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
+          <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
 
+            <button
+              onClick={() => setOpenGallery(false)}
+              className="absolute top-10 right-3 z-90 text-black text-lg"
+            >
+              ✕
+            </button>
+
+            <ImageGallery
+              items={galleryImages}
+              showPlayButton={false}
+              showFullscreenButton={false}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 

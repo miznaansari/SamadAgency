@@ -177,13 +177,13 @@ const handleAddToCart = async () => {
                 ₹{price}
               </span>
 
-              <span className="line-through text-gray-500">
+              {/* <span className="line-through text-gray-500">
                 ₹{originalPrice}
-              </span>
+              </span> */}
 
-              <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded">
+              {/* <span className="bg-green-100 text-green-600 text-xs px-3 py-1 rounded">
                 32% OFF
-              </span>
+              </span> */}
 
             </div>
 

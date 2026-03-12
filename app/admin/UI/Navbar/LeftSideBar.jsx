@@ -46,7 +46,9 @@ export default function LeftSidebar() {
       icon: TruckIcon,
       children: [{ title: "View Orders", href: "/admin/orders" }],
     },
+  
     { title: "Wishlist", icon: StarIcon, href: "/admin/wishlist" },
+    { title: "Whatsapp", icon: TruckIcon, href: "/admin/whatsapp" },
     { title: "Contact Form", icon: ChatBubbleBottomCenterIcon, href: "/admin/contact" },
 
   ];

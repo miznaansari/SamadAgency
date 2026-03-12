@@ -96,14 +96,16 @@ export default function ViewProduct({
             <img src={p.images?.[0]?.image_url} alt=""
               className="min-w-12 h-12 object-cover rounded cursor-pointer hover:scale-105 transition"
 
-    onClick={() => handleImageClick(p)}
+              onClick={() => handleImageClick(p)}
             />
-            <span className="font-medium text-gray-900">
+            <div className="">
+            <span className="font-medium text-gray-900 text-md">
               {p.name}
             </span><br />
-            <span className="font-small text-gray-500">
+            <span className="font-small text-gray-500 text-xs">
               {p.sku}
             </span>
+            </div>
           </div>
         </>
       ),
@@ -113,11 +115,11 @@ export default function ViewProduct({
       label: "Category",
       render: (p) => p.category?.name || "-",
     },
-    {
-      key: "slug",
-      label: "Slug",
-      render: (p) => p.slug || "-",
-    },
+    // {
+    //   key: "slug",
+    //   label: "Slug",
+    //   render: (p) => p.slug || "-",
+    // },
     {
       key: "regular_price",
       label: "Price",
@@ -128,43 +130,43 @@ export default function ViewProduct({
       label: "Status",
       render: (row) => <StatusToggle id={row.id} isActive={row.is_active} />,
     },
-    {
-      key: "stock",
-      label: "Stock",
-      render: (p) => {
-        let label = "Stock";
-        let bg = "bg-green-100 text-green-700";
+    // {
+    //   key: "stock",
+    //   label: "Stock",
+    //   render: (p) => {
+    //     let label = "Stock";
+    //     let bg = "bg-green-100 text-green-700";
 
-        if (p.stock_qty === 0) {
-          label = "Out of Stock";
-          bg = "bg-red-100 text-red-700";
-        } else if (
-          p.low_stock_threshold !== null &&
-          p.stock_qty <= p.low_stock_threshold
-        ) {
-          label = "Low ";
-          bg = "bg-yellow-100 text-yellow-700";
-        }
+    //     if (p.stock_qty === 0) {
+    //       label = "Out of Stock";
+    //       bg = "bg-red-100 text-red-700";
+    //     } else if (
+    //       p.low_stock_threshold !== null &&
+    //       p.stock_qty <= p.low_stock_threshold
+    //     ) {
+    //       label = "Low ";
+    //       bg = "bg-yellow-100 text-yellow-700";
+    //     }
 
-        return (
-          <div className="relative group inline-block">
-            <span
-              className={`rounded-full px-2 py-1 text-xs font-medium ${bg}`}
-            >
-              {label}
-            </span>
+    //     return (
+    //       <div className="relative group inline-block">
+    //         <span
+    //           className={`rounded-full px-2 py-1 text-xs font-medium ${bg}`}
+    //         >
+    //           {label}
+    //         </span>
 
-            {/* Tooltip */}
+    //         {/* Tooltip */}
 
-            <span className="pointer-events-none z-90 absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100">
-              Stock Qty: {p.stock_qty}
+    //         <span className="pointer-events-none z-90 absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white opacity-0 transition group-hover:opacity-100">
+    //           Stock Qty: {p.stock_qty}
 
-            </span>
-          </div>
-        );
-      },
-    }
-    ,
+    //         </span>
+    //       </div>
+    //     );
+    //   },
+    // }
+    // ,
     {
       key: "created_at",
       label: "Created",
@@ -274,13 +276,13 @@ export default function ViewProduct({
           </div>
         </div>
       )}
- {openGallery && (
+      {openGallery && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
           <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
 
             <button
               onClick={() => setOpenGallery(false)}
-              className="absolute top-10 right-3 z-90 text-black text-lg"
+              className="absolute top-10 right-3 z-90 text-black text-xl"
             >
               ✕
             </button>

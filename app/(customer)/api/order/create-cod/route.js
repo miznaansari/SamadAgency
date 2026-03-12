@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/requireUser";
+import { sendWhatsAppMessage } from "@/lib/whatsapp";
 
 export async function POST(req) {
   try {
@@ -41,9 +42,9 @@ export async function POST(req) {
           include: {
             pricing: customerGroupId
               ? {
-                  where: { customer_group_id: customerGroupId },
-                  take: 1,
-                }
+                where: { customer_group_id: customerGroupId },
+                take: 1,
+              }
               : false,
             tier_product_pricing: true,
           },
@@ -164,6 +165,29 @@ Phone: ${a.phone}
         status: "PENDING",
       },
     });
+
+
+    /* SEND WHATSAPP MESSAGE */
+    try {
+      console.log('try to send sms ')
+      console.log('shippingAddr',shippingAddr)
+      const phone = shippingAddr.phone.replace(/\D/g, ""); // remove spaces
+console.log('phone',phone)
+      const message = `🛒 Order Confirmed!
+
+Order Number: ${order.order_number}
+
+Total Amount: ₹${total}
+
+Delivery Method: ${deliveryMethod ? "Home Delivery" : "Store Pickup"
+        }
+
+Thank you for shopping with us ❤️`;
+console.log('senidng')
+      await sendWhatsAppMessage(`91${phone}`, message);
+    } catch (err) {
+      console.error("WhatsApp send failed:", err);
+    }
 
     /* CLEAR CART */
     await prisma.customer_cart.updateMany({

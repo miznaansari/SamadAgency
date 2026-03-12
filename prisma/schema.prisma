@@ -464,3 +464,16 @@ enum PageType {
   PRODUCT
   CATEGORY
 }
+
+model WhatsAppSession {
+  id                Int      @id @default(1)
+  is_connected      Boolean  @default(false)
+  phone_number      String?  @db.VarChar(20)
+  session_name      String?  @db.VarChar(50)
+  last_qr           String?  @db.LongText
+  last_connected_at DateTime?
+  last_disconnected_at DateTime?
+  disconnect_reason String?  @db.VarChar(255)
+  created_at        DateTime @default(now())
+  updated_at        DateTime @updatedAt
+}

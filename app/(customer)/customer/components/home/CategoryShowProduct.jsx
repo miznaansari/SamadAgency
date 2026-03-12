@@ -120,38 +120,23 @@ export default function CategoryShowProduct({ categories }) {
       setAdding((prev) => ({ ...prev, [product.id]: false }));
     }
   };
-  useEffect(() => {
-    const preloadProducts = async () => {
-      if (!categories?.length) return;
+ useEffect(() => {
+  if (!categories?.length) return;
 
-      try {
-        const results = await Promise.all(
-          categories.map(async (cat) => {
-            const res = await fetch(
-              `/api/category-products?category=${cat.slug}`
-            );
-            const data = await res.json();
+  categories.forEach(async (cat) => {
+    try {
+      const res = await fetch(`/api/category-products?category=${cat.slug}`);
+      const data = await res.json();
 
-            return {
-              slug: cat.slug,
-              products: data,
-            };
-          })
-        );
-
-        const formatted = {};
-        results.forEach((item) => {
-          formatted[item.slug] = item.products;
-        });
-
-        setProducts(formatted);
-      } catch (err) {
-        console.error("Preload failed", err);
-      }
-    };
-
-    preloadProducts();
-  }, [categories]);
+      setProducts((prev) => ({
+        ...prev,
+        [cat.slug]: data,
+      }));
+    } catch (err) {
+      console.error("Preload failed:", cat.slug, err);
+    }
+  });
+}, [categories]);
   const handleImageClick = (product) => {
     const images =
       product.images?.map((img) => ({
@@ -302,25 +287,31 @@ export default function CategoryShowProduct({ categories }) {
           );
         })}
       </div>
-      {openGallery && (
-        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6">
-          <div className="bg-white p-0 rounded-lg max-w-3xl w-full relative">
+{openGallery && (
+  <div
+    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6"
+    onClick={(e) => {
+      if (e.target === e.currentTarget) {
+        setOpenGallery(false);
+      }
+    }}
+  >
+    <div className="bg-white rounded-lg max-w-3xl w-full relative">
+      <button
+        onClick={() => setOpenGallery(false)}
+        className="absolute top-10 right-3 z-50 text-black text-xl"
+      >
+        ✕
+      </button>
 
-            <button
-              onClick={() => setOpenGallery(false)}
-              className="absolute top-10 right-3 z-90 text-black text-lg"
-            >
-              ✕
-            </button>
-
-            <ImageGallery
-              items={galleryImages}
-              showPlayButton={false}
-              showFullscreenButton={false}
-            />
-          </div>
-        </div>
-      )}
+      <ImageGallery
+        items={galleryImages}
+        showPlayButton={false}
+        showFullscreenButton={false}
+      />
+    </div>
+  </div>
+)}
     </div>
   );
 }

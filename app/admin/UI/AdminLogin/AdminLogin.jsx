@@ -109,7 +109,7 @@ export default function AdminLogin({ adminToken }) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@theclevar.com"
+                placeholder="admin@samad-agency.com"
                 className="w-full border text-base border-slate-300 rounded-md px-4 py-2.5  outline-none focus:ring-2 focus:ring-slate-900"
               />
             </div>

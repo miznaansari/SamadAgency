@@ -57,7 +57,7 @@ export default function ProfileDropdown({isLoggedIn}) {
             {userName ? `Hello ${userName}` : "Hello User"}
           </p>
           <p className="text-xs text-gray-400">
-            To access your theclevar account
+            To access your samad-agency account
           </p>
           {!isLoggedIn && (
           <Link href="/auth/login" className="text-blue-400 hover:text-blue-300">

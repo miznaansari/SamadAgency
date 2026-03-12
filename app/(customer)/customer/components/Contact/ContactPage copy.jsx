@@ -79,10 +79,10 @@ export default function ContactPage() {
                 <li>
                   <strong className="text-sky-400">Email</strong><br />
                   <a
-                    href="mailto:info@theclevar.com"
+                    href="mailto:info@samad-agency.com"
                     className="hover:text-sky-400"
                   >
-                    info@theclevar.com
+                    info@samad-agency.com
                   </a>
                 </li>
 

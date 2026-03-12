@@ -71,8 +71,8 @@ export default function Footer() {
                                 NSW, 2148
                             </li>
                             <li>
-                                <a href="mailto:sales@theclevar.com.au">
-                                    sales@theclevar.com.au
+                                <a href="mailto:sales@samad-agency.com">
+                                    sales@samad-agency.com
                                 </a>
                             </li>
                             <li>

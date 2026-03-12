@@ -206,7 +206,7 @@ Email: ${address.email}
         payment_source: {
           paypal: {
             experience_context: {
-              brand_name: "theclevar",
+              brand_name: "samad-agency-agencyvar",
               landing_page: "LOGIN",
               user_action: "PAY_NOW",
               return_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout/success`,

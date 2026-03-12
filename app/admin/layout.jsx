@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "theclevar Admin",
+  title: "Samad Agency Admin",
   description: "Admin Dashboard",
 };
 

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 function Spinner() {
   return (
-    <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-[#0ea5e9]" />
+    <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-[#347eb3]" />
   );
 }
 
@@ -99,7 +99,7 @@ export default function MyCart({ cartData = [], isGuest = false }) {
 
       {/* LOGIN BANNER */}
       {isGuest && (
-        <div className="flex items-center justify-between rounded-xl border border-[#0ea5e9]/30 bg-[#0ea5e9]/10 p-4">
+        <div className="flex items-center justify-between rounded-xl border border-[#347eb3]/30 bg-[#347eb3]/10 p-4">
 
           <div className="text-sm text-gray-700">
             Login to save your cart and checkout faster.
@@ -107,7 +107,7 @@ export default function MyCart({ cartData = [], isGuest = false }) {
 
           <Link
             href="/auth/login"
-            className="rounded-lg bg-[#0ea5e9] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0284c7] transition"
+            className="rounded-lg bg-[#347eb3] px-4 py-2 text-sm font-semibold text-white hover:bg-[#0284c7] transition"
           >
             LOGIN
           </Link>
@@ -266,7 +266,7 @@ function CartRow({ item, isGuest, setCart }) {
 
         <Link
           href={`/product/${product.slug}`}
-          className="text-sm sm:text-base font-semibold text-black hover:text-[#0ea5e9] transition truncate"  >
+          className="text-sm sm:text-base font-semibold text-black hover:text-[#347eb3] transition truncate"  >
           {product.name}
         </Link>
 

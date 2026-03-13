@@ -61,7 +61,7 @@ export default function LoadingCheckout() {
             </div>
 
             {/* BUTTON */}
-            <div className="h-12 w-full bg-[#0ea5e9]/20 rounded-lg animate-pulse" />
+            <div className="h-12 w-full bg-[#347eb3]/20 rounded-lg animate-pulse" />
 
           </div>
 
@@ -92,7 +92,7 @@ export default function LoadingCheckout() {
             {/* TOTAL */}
             <div className="flex justify-between mb-6">
               <div className="h-4 w-16 bg-gray-200 rounded animate-pulse" />
-              <div className="h-4 w-20 bg-[#0ea5e9]/30 rounded animate-pulse" />
+              <div className="h-4 w-20 bg-[#347eb3]/30 rounded animate-pulse" />
             </div>
 
             {/* SECURITY BADGE */}

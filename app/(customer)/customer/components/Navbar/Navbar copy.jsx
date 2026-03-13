@@ -203,7 +203,7 @@ export default function Navbar({ menuData = [] }) {
                                         {lvl3.children.map((lvl4) => (
                                           <li
                                             key={lvl4.title}
-                                            className="px-2 py-1 !mb-0 text-xs rounded hover:bg-sky-500 hover:text-white z-90 bg-white"
+                                            className="px-2 py-1 !mb-0 text-xs rounded hover:bg-[#347eb3] hover:text-white z-90 bg-white"
                                           >
                                             <Link href={lvl4.path} className="block">
                                               {lvl4.title}

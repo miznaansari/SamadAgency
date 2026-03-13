@@ -6,7 +6,34 @@ import CheckoutFlow from "./CheckoutFlow";
 export default async function Page() {
 
   const user = await requireUser();
-  if (!user) return null;
+  if (!user) return (
+    <>
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="text-center max-w-md p-8 border border-white/20 rounded-2xl bg-white/5 backdrop-blur">
+        
+        <div className="flex justify-center mb-6">
+          <LockClosedIcon className="w-16 h-16 text-white" />
+        </div>
+
+        <h1 className="text-2xl font-semibold mb-3">
+          Login Required
+        </h1>
+
+        <p className="text-white/70 mb-6">
+          Please login first to access this page.
+        </p>
+
+        <Link
+          href="/auth/login"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition"
+        >
+          Go to Login
+        </Link>
+
+      </div>
+    </div>
+    </>
+  );
 
   const customer = await prisma.customer_list.findUnique({
     where: { id: user.id },

@@ -122,7 +122,7 @@ export default function ContactPage() {
                       name="fullName"
                       required
                       defaultValue={state.values?.fullName || ""}
-                      className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-sky-500"
+                      className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-[#347eb3]"
                     />
 
                     {state.errors?.fullName && (
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     <input
                       name="email"
                       defaultValue={state.values?.email || ""}
-                      className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-sky-500"
+                      className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-[#347eb3]"
                     />
 
                     {state.errors?.email && (
@@ -162,7 +162,7 @@ export default function ContactPage() {
                   <input
                     name="companyName"
                     defaultValue={state.values?.companyName || ""}
-                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-sky-500"
+                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-[#347eb3]"
                   />
                 </div>
 
@@ -175,7 +175,7 @@ export default function ContactPage() {
                   <input
                     name="subject"
                     defaultValue={state.values?.subject || ""}
-                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-sky-500"
+                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-[#347eb3]"
                   />
                 </div>
 
@@ -189,7 +189,7 @@ export default function ContactPage() {
                     name="message"
                     rows="5"
                     defaultValue={state.values?.message || ""}
-                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-sky-500"
+                    className="mt-1 w-full rounded-lg border border-gray-700 bg-[#0f0f0f] px-3 py-2 text-white outline-none focus:border-[#347eb3]"
                   />
                 </div>
 
@@ -197,7 +197,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="w-full rounded-lg bg-sky-500 px-6 py-3 font-semibold text-white shadow-[0_0_20px_rgba(14,165,233,0.6)] transition hover:bg-sky-400 disabled:opacity-60"
+                  className="w-full rounded-lg bg-[#347eb3] px-6 py-3 font-semibold text-white shadow-[0_0_20px_rgba(14,165,233,0.6)] transition hover:bg-sky-400 disabled:opacity-60"
                 >
                   {isPending ? "Sending..." : "Send Message →"}
                 </button>

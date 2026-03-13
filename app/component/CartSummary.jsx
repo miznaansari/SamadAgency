@@ -76,7 +76,7 @@ export default function CartSummary({ items, loading }) {
         {loading ? (
           <div className="h-5 w-24 bg-gray-200 rounded animate-pulse" />
         ) : (
-          <span className="text-xl font-bold text-[#0ea5e9]">
+          <span className="text-xl font-bold text-[#347eb3]">
             ₹{total.toFixed(2)}
           </span>
         )}

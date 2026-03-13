@@ -171,7 +171,7 @@ export default function OrderDetailsPage() {
 
           {/* <p className="text-xs text-gray-500 mt-2">Total</p>
 
-          <p className="text-2xl font-bold text-[#0ea5e9]">
+          <p className="text-2xl font-bold text-[#347eb3]">
             ₹{order?.total}
           </p> */}
         </div>
@@ -225,7 +225,7 @@ export default function OrderDetailsPage() {
                   </div>
                 </div>
 
-                {/* <p className="font-semibold text-[#0ea5e9]">
+                {/* <p className="font-semibold text-[#347eb3]">
                   ₹{item.line_total}
                 </p> */}
 
@@ -251,7 +251,7 @@ export default function OrderDetailsPage() {
 
             <div className="border-t border-gray-200 my-3" />
 
-            <div className="flex justify-between font-bold text-lg text-[#0ea5e9]">
+            <div className="flex justify-between font-bold text-lg text-[#347eb3]">
               <span>Total</span>
               <span>₹{order?.total}</span>
             </div>
@@ -268,7 +268,7 @@ export default function OrderDetailsPage() {
                     {tx.providerTxnId}
                   </p>
 
-                  <p className="text-[#0ea5e9] font-semibold">
+                  <p className="text-[#347eb3] font-semibold">
                     ₹{tx.amount}
                   </p>
 
@@ -305,7 +305,7 @@ export default function OrderDetailsPage() {
               ))}
 
               {order?.gst_number && (
-                <p className="mt-3 text-xs text-[#0ea5e9]">
+                <p className="mt-3 text-xs text-[#347eb3]">
                   GST: {order.gst_number}
                 </p>
               )}

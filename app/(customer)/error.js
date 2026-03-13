@@ -77,8 +77,8 @@ export default function Error({ error }) {
         <div className="
           mx-auto mb-5 flex h-14 w-14 items-center justify-center
           rounded-full
-          bg-[#0ea5e9]/10
-          border border-[#0ea5e9]/20
+          bg-[#347eb3]/10
+          border border-[#347eb3]/20
         ">
           <span className="text-2xl">⚠</span>
         </div>
@@ -116,7 +116,7 @@ export default function Error({ error }) {
             className="
               flex-1 h-11 rounded-xl
               text-sm font-semibold text-white
-              bg-[#0ea5e9]
+              bg-[#347eb3]
               hover:bg-[#0284c7]
               transition-all duration-200
             "

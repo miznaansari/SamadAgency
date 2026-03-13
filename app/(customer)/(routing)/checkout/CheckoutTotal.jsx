@@ -49,7 +49,7 @@ return (
       {/* TOTAL */}
       <div className="flex justify-between text-lg font-semibold text-black">
         <span>TOTAL</span>
-        <span className="text-[#0ea5e9]">
+        <span className="text-[#347eb3]">
           ₹{total.toFixed(2)}
         </span>
       </div>

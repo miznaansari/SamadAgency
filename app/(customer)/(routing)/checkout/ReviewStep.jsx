@@ -41,7 +41,7 @@ console.log('cartData',cartData)
 
       <button
         onClick={onNext}
-        className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition"
+        className="w-full mt-6 bg-[#347eb3] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition"
       >
         CONTINUE TO ORDER
       </button>

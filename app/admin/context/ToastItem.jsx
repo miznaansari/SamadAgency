@@ -12,11 +12,10 @@ export default function ToastItem({ toast, onClose }) {
   return (
     <div
       className={`relative w-80 rounded-xl p-[1px]
-      ${
-        isSuccess
-          ? "bg-gradient-to-r from-[#0ea5e9]/40 to-[#38bdf8]/40"
+      ${isSuccess
+          ? "bg-gradient-to-r from-[#347eb3]/40 to-[#38bdf8]/40"
           : "bg-gradient-to-r from-red-500/40 to-red-400/40"
-      }
+        }
       animate-slide-in`}
     >
       {/* INNER CARD */}
@@ -29,11 +28,10 @@ export default function ToastItem({ toast, onClose }) {
         {/* ICON */}
         <div
           className={`h-9 w-9 flex items-center justify-center rounded-full
-          ${
-            isSuccess
-              ? "bg-[#0ea5e9]/15 text-[#0ea5e9]"
+          ${isSuccess
+              ? "bg-[#347eb3]/15 text-[#347eb3]"
               : "bg-red-100 text-red-500"
-          }`}
+            }`}
         >
           {isSuccess ? (
             <CheckBadgeIcon className="h-5 w-5" />
@@ -46,7 +44,7 @@ export default function ToastItem({ toast, onClose }) {
         <div className="flex-1">
           <p
             className={`text-sm font-semibold tracking-wide
-            ${isSuccess ? "text-[#0ea5e9]" : "text-red-500"}`}
+            ${isSuccess ? "text-[#347eb3]" : "text-red-500"}`}
           >
             {isSuccess ? "Success" : "Error"}
           </p>

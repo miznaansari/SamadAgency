@@ -94,7 +94,7 @@ const handleLogout = () => {
                     href={item.href}
                     className="
                       block px-4 py-2
-                      hover:bg-sky-500 hover:text-white
+                      hover:bg-[#347eb3] hover:text-white
                       transition-colors
                     "
                   >
@@ -106,7 +106,7 @@ const handleLogout = () => {
                   onClick={handleLogout}
                   className="
                     w-full text-left px-4 py-2
-                    hover:bg-sky-500 hover:text-white
+                    hover:bg-[#347eb3] hover:text-white
                     transition-colors
                   "
                 >

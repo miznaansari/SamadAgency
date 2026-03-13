@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -17,14 +16,14 @@ export default function RelatedProduct({ relatedProducts = [] }) {
   if (!relatedProducts.length) return null;
 
   return (
-        <section className="border-t border-b border-white/10 py-12">
+    <section className="border-t border-b border-gray-200 py-12 bg-white">
 
       <div className="mx-auto max-w-7xl px-6">
 
         {/* HEADER */}
         <div className="flex items-center justify-between mb-12">
 
-          <h2 className="text-3xl font-extrabold tracking-widest text-white">
+          <h2 className="text-3xl font-bold tracking-widest text-gray-900">
             YOU MIGHT ALSO LIKE
           </h2>
 
@@ -34,14 +33,14 @@ export default function RelatedProduct({ relatedProducts = [] }) {
 
               <button
                 onClick={() => swiperRef.current?.slidePrev()}
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
               >
                 ←
               </button>
 
               <button
                 onClick={() => swiperRef.current?.slideNext()}
-                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10"
+                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
               >
                 →
               </button>
@@ -86,18 +85,18 @@ export default function RelatedProduct({ relatedProducts = [] }) {
 
 /* PRODUCT CARD */
 
-function ProductCard({ product, index }) {
+function ProductCard({ product }) {
   return (
     <div
       className="
       group
       rounded-2xl
-      bg-[#0b0b0b]
-      border border-white/10
+      bg-white
+      border border-gray-200
       overflow-hidden
       transition-all duration-300
       hover:-translate-y-1
-      hover:shadow-[0_0_25px_rgba(56,189,248,0.25)]
+      hover:shadow-lg
     "
     >
 
@@ -105,20 +104,18 @@ function ProductCard({ product, index }) {
       <Link href={`/product/${product.slug}`}>
         <div className="relative aspect-[4/5] overflow-hidden">
 
-          <Image
+          <img
             src={
               product.images?.[0]?.image_url ||
               "/images/not-found.png"
             }
             alt={product.name}
-            fill
-            priority={index === 0}
-            className="object-cover transition duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
           />
 
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition" />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition" />
 
-          <span className="absolute top-3 left-3 text-[10px] font-bold px-2 py-1 rounded-md bg-cyan-400 text-black">
+          <span className="absolute top-3 left-3 text-[10px] font-bold px-2 py-1 rounded-md bg-sky-500 text-white">
             BESTSELLER
           </span>
 
@@ -128,11 +125,11 @@ function ProductCard({ product, index }) {
       {/* CONTENT */}
       <div className="p-4 space-y-2">
 
-        <p className="text-[10px] uppercase tracking-widest text-cyan-400">
-          {product.category?.name || "OVERSIZED"}
+        <p className="text-[10px] uppercase tracking-widest text-sky-500">
+          {product.category?.name || "CATEGORY"}
         </p>
 
-        <h3 className="text-sm font-semibold text-white leading-tight line-clamp-2">
+        <h3 className="text-sm font-semibold text-gray-900 leading-tight line-clamp-2">
           {product.name}
         </h3>
 
@@ -140,18 +137,17 @@ function ProductCard({ product, index }) {
           {[...Array(5)].map((_, i) => (
             <StarIcon key={i} className="w-4 h-4" />
           ))}
-          <span className="text-gray-400 ml-1">(52)</span>
-
+          <span className="text-gray-500 ml-1">(52)</span>
         </div>
 
         <div className="flex items-center gap-2">
 
-          <span className="text-white font-bold text-sm">
+          <span className="text-gray-900 font-bold text-sm">
             ₹{product.price || product.regular_price}
           </span>
 
           {product.sale_price && (
-            <span className="text-gray-500 text-xs line-through">
+            <span className="text-gray-400 text-xs line-through">
               ₹{product.sale_price}
             </span>
           )}

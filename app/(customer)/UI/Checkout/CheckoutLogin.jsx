@@ -16,12 +16,12 @@ export default function CheckoutLogin() {
         href="/auth/login?redirect=/checkout"
         className="
           rounded-md
-          border border-[#0ea5e9]
+          border border-[#347eb3]
           px-4 py-2
           text-sm font-medium
           text-[#38bdf8]
           transition
-          hover:bg-[#0ea5e9]/10
+          hover:bg-[#347eb3]/10
         "
       >
         Login / Signup

@@ -18,7 +18,7 @@ export function Accordion({ title, children, defaultOpen = false }) {
 
         <ChevronDownIcon
           className={`h-5 w-5 transition-transform duration-300 ${
-            open ? "rotate-180 text-[#0ea5e9]" : "text-gray-400"
+            open ? "rotate-180 text-[#347eb3]" : "text-gray-400"
           }`}
         />
       </button>

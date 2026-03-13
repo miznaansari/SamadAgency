@@ -39,19 +39,19 @@ export default function Footer({ category = [] }) {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+                className="border border-gray-300 p-2 hover:border-[#347eb3] hover:text-[#347eb3] transition"
               >
                 IG
               </a>
               <a
                 href="#"
-                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+                className="border border-gray-300 p-2 hover:border-[#347eb3] hover:text-[#347eb3] transition"
               >
                 TW
               </a>
               <a
                 href="#"
-                className="border border-gray-300 p-2 hover:border-[#0ea5e9] hover:text-[#0ea5e9] transition"
+                className="border border-gray-300 p-2 hover:border-[#347eb3] hover:text-[#347eb3] transition"
               >
                 YT
               </a>
@@ -98,9 +98,9 @@ export default function Footer({ category = [] }) {
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-[#0ea5e9]"
+                className="w-full bg-white border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:border-[#347eb3]"
               />
-              <button className="bg-[#0ea5e9] text-white px-4 hover:bg-[#0284c7] transition">
+              <button className="bg-[#347eb3] text-white px-4 hover:bg-[#0284c7] transition">
                 →
               </button>
             </div>
@@ -117,20 +117,20 @@ export default function Footer({ category = [] }) {
               href="https://www.mizna.me/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0ea5e9] hover:underline"
+              className="text-[#347eb3] hover:underline"
             >
               Mohd Mizna Ansari
             </a>
           </p>
 
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-[#0ea5e9]">
+            <Link href="/privacy-policy" className="hover:text-[#347eb3]">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-[#0ea5e9]">
+            <Link href="/terms" className="hover:text-[#347eb3]">
               Terms
             </Link>
-            <Link href="/cookies" className="hover:text-[#0ea5e9]">
+            <Link href="/cookies" className="hover:text-[#347eb3]">
               Cookies
             </Link>
           </div>
@@ -163,7 +163,7 @@ function FooterColumn({ title, links = [] }) {
           <li key={i}>
             <Link
               href={link.href}
-              className="hover:text-[#0ea5e9] transition"
+              className="hover:text-[#347eb3] transition"
             >
               {link.label}
             </Link>

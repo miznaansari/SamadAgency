@@ -188,8 +188,8 @@ return (
         className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
         ${
           method === "razorpay"
-            ? "border-[#0ea5e9] bg-[#0ea5e9]/10"
-            : "border-gray-200 hover:border-[#0ea5e9]/40"
+            ? "border-[#347eb3] bg-[#347eb3]/10"
+            : "border-gray-200 hover:border-[#347eb3]/40"
         }`}
       >
 
@@ -216,8 +216,8 @@ return (
         className={`flex justify-between border rounded-xl p-4 cursor-pointer transition
         ${
           method === "cod"
-            ? "border-[#0ea5e9] bg-[#0ea5e9]/10"
-            : "border-gray-200 hover:border-[#0ea5e9]/40"
+            ? "border-[#347eb3] bg-[#347eb3]/10"
+            : "border-gray-200 hover:border-[#347eb3]/40"
         }`}
       >
 
@@ -245,7 +245,7 @@ return (
     <button
       onClick={handlePlaceOrder}
       disabled={loading}
-      className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+      className="w-full mt-6 bg-[#347eb3] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
     >
       {loading ? "Processing..." : "PLACE ORDER"}
     </button>

@@ -106,7 +106,7 @@ export default function CheckoutTotal({ cartData = [] }) {
       </div>
 
       {/* Optional */}
-      <button className="mt-3 w-full rounded border border-sky-500 py-3 text-sm font-medium text-sky-500 hover:bg-sky-50">
+      <button className="mt-3 w-full rounded border border-[#347eb3] py-3 text-sm font-medium text-[#347eb3] hover:bg-sky-50">
         Request Quote
       </button>
     </div>

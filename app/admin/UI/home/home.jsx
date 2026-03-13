@@ -23,7 +23,7 @@ export default function Home() {
             <Link
               href="/menu"
               className="mt-8 inline-flex items-center gap-2 rounded
-                         bg-sky-500 px-6 py-3 text-sm font-medium
+                         bg-[#347eb3] px-6 py-3 text-sm font-medium
                          text-white transition hover:bg-sky-600"
             >
               Shop Now

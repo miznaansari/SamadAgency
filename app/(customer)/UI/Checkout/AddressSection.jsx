@@ -168,7 +168,7 @@ return (
           text-sm text-[#38bdf8]
           border border-[#38bdf8]
           px-3 py-1 font-bold rounded
-          hover:bg-[#0ea5e9]/10
+          hover:bg-[#347eb3]/10
         "
       >
         Edit Address

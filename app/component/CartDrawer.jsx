@@ -42,10 +42,10 @@ function EmptyState({ setOpen }) {
     <div className="flex flex-col items-center justify-center text-center mt-16 px-4">
 
       <div className="relative mb-5">
-        <div className="absolute inset-0 blur-2xl bg-[#0ea5e9]/20 rounded-full" />
+        <div className="absolute inset-0 blur-2xl bg-[#347eb3]/20 rounded-full" />
 
         <div className="relative flex items-center justify-center w-16 h-16 rounded-full bg-white border border-gray-200 shadow">
-          <ShoppingBagIcon className="w-8 h-8 text-[#0ea5e9]" />
+          <ShoppingBagIcon className="w-8 h-8 text-[#347eb3]" />
         </div>
       </div>
 
@@ -62,7 +62,7 @@ function EmptyState({ setOpen }) {
         onClick={() => setOpen(false)}
         className="
         w-full max-w-[220px]
-        bg-[#0ea5e9]
+        bg-[#347eb3]
         py-2.5 rounded-lg text-white text-sm font-semibold
         hover:bg-[#0284c7]
         transition"
@@ -108,7 +108,7 @@ export default function CartDrawer({ isLoggedIn }) {
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
 
           <div className="flex items-center gap-2">
-            <ShoppingBagIcon className="w-5 h-5 text-[#0ea5e9]" />
+            <ShoppingBagIcon className="w-5 h-5 text-[#347eb3]" />
 
             <h2 className="text-black text-lg font-semibold">
               Your Bag
@@ -155,10 +155,10 @@ export default function CartDrawer({ isLoggedIn }) {
               <Link
                 href="/auth/login"
                 onClick={() => setOpen(false)}
-                className="rounded-lg border border-[#0ea5e9]/30
-                bg-[#0ea5e9]/5 text-[#0ea5e9]
+                className="rounded-lg border border-[#347eb3]/30
+                bg-[#347eb3]/5 text-[#347eb3]
                 py-2 text-sm font-medium text-center
-                hover:bg-[#0ea5e9]/10 transition"
+                hover:bg-[#347eb3]/10 transition"
               >
                 Login to sync your cart
               </Link>
@@ -201,7 +201,7 @@ export default function CartDrawer({ isLoggedIn }) {
                 onClick={() => setOpen(false)}
                 className="
                 mt-3 block w-full text-center rounded-lg
-                bg-[#0ea5e9]
+                bg-[#347eb3]
                 py-3 text-white text-sm font-semibold
                 hover:bg-[#0284c7]
                 transition"

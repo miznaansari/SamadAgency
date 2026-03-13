@@ -11,7 +11,7 @@ export default function ServiceHighlights() {
       icon: TruckIcon,
       title: "PAN INDIA DELIVERY",
       desc: "Fast shipping across India",
-      color: "text-[#0ea5e9] border-[#0ea5e9]/30 bg-[#0ea5e9]/10",
+      color: "text-[#347eb3] border-[#347eb3]/30 bg-[#347eb3]/10",
     },
     {
       icon: ShieldCheckIcon,

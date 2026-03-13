@@ -88,8 +88,8 @@ return (
           className="
             w-full rounded border border-white/10
             bg-[#111827] px-3 py-2 text-sm text-white
-            focus:border-[#0ea5e9]
-            focus:ring-1 focus:ring-[#0ea5e9]
+            focus:border-[#347eb3]
+            focus:ring-1 focus:ring-[#347eb3]
             outline-none
           "
           defaultValue={state.values.country || ""}
@@ -112,7 +112,7 @@ return (
         type="checkbox"
         name="is_default"
         defaultChecked={state.values.is_default === "on"}
-        className="h-4 w-4 accent-[#0ea5e9]"
+        className="h-4 w-4 accent-[#347eb3]"
       />
       Make this my default address
     </label>
@@ -128,7 +128,7 @@ return (
     <button
       disabled={pending}
       className="
-        mt-2 rounded-lg bg-[#0ea5e9]
+        mt-2 rounded-lg bg-[#347eb3]
         px-6 py-2 text-sm font-medium text-white
         shadow-[0_0_18px_rgba(14,165,233,0.35)]
         hover:bg-[#38bdf8]
@@ -151,8 +151,8 @@ function FormInput({ label, name, state }) {
         className="
           w-full rounded border border-white/10
           bg-[#111827] px-3 py-2 text-sm text-white
-          focus:border-[#0ea5e9]
-          focus:ring-1 focus:ring-[#0ea5e9]
+          focus:border-[#347eb3]
+          focus:ring-1 focus:ring-[#347eb3]
           outline-none
         "
       />

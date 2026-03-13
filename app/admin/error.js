@@ -80,7 +80,7 @@ export default function Error({ error }) {
         <div className="
           mx-auto mb-5 flex h-14 w-14 items-center justify-center
           rounded-full
-          bg-[#0ea5e9]/10
+          bg-[#347eb3]/10
           border border-[#38bdf8]/20
         ">
           <span className="text-2xl">⚠</span>
@@ -120,7 +120,7 @@ export default function Error({ error }) {
               flex-1 h-11 rounded-xl
               text-sm font-semibold text-white
 
-              bg-[#0ea5e9]
+              bg-[#347eb3]
               hover:bg-[#38bdf8]
 
               shadow-[0_0_20px_rgba(14,165,233,0.35)]

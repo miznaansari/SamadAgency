@@ -103,7 +103,7 @@ export default function BestSellingProducts({ products }) {
 
   const tagStyles = {
     HOT: "bg-red-500 text-white",
-    BESTSELLER: "bg-[#0ea5e9] text-white",
+    BESTSELLER: "bg-[#347eb3] text-white",
     NEW: "bg-green-500 text-white",
     LIMITED: "bg-yellow-400 text-black",
   };
@@ -125,7 +125,7 @@ export default function BestSellingProducts({ products }) {
           <div className="text-yellow-400 text-xs">★★★★★</div>
 
           <div className="flex gap-2 mt-1">
-            <span className="text-[#0ea5e9] font-semibold">
+            <span className="text-[#347eb3] font-semibold">
               ₹{selectedProduct?.price}
             </span>
           </div>
@@ -144,7 +144,7 @@ export default function BestSellingProducts({ products }) {
             className={`px-4 py-2 rounded-lg text-sm border transition
               ${
                 selectedSize === v.id
-                  ? "bg-[#0ea5e9] text-white border-[#0ea5e9]"
+                  ? "bg-[#347eb3] text-white border-[#347eb3]"
                   : "border-gray-300 text-gray-600"
               }`}
           >
@@ -175,7 +175,7 @@ export default function BestSellingProducts({ products }) {
       <button
         onClick={handleAddToCart}
         disabled={!selectedSize || loading}
-        className="w-full py-3 rounded-xl bg-[#0ea5e9] text-white font-semibold"
+        className="w-full py-3 rounded-xl bg-[#347eb3] text-white font-semibold"
       >
         {loading ? "Adding..." : "Add to Cart"}
       </button>
@@ -208,7 +208,7 @@ export default function BestSellingProducts({ products }) {
           <button
             onClick={() => openModal(product)}
             className="hidden md:flex absolute bottom-4 left-1/2 -translate-x-1/2 
-            bg-[#0ea5e9] text-white text-xs font-semibold px-4 py-2 rounded-full
+            bg-[#347eb3] text-white text-xs font-semibold px-4 py-2 rounded-full
             opacity-0 group-hover:opacity-100 transition"
           >
             ADD TO CART
@@ -216,7 +216,7 @@ export default function BestSellingProducts({ products }) {
         </div>
 
         <div className="px-4 pb-4 flex flex-col gap-1">
-          <span className="text-xs text-[#0ea5e9] uppercase">
+          <span className="text-xs text-[#347eb3] uppercase">
             {product.category?.name || "ACCESSORIES"}
           </span>
 
@@ -241,7 +241,7 @@ export default function BestSellingProducts({ products }) {
           </div>
 
           {qtyInCart > 0 && (
-            <span className="text-xs text-[#0ea5e9] mt-1">
+            <span className="text-xs text-[#347eb3] mt-1">
               In Cart: {qtyInCart}
             </span>
           )}

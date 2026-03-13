@@ -8,7 +8,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebase";
 function Spinner() {
   return (
-    <div className="w-4 h-4 border-2 border-gray-300 border-t-[#0ea5e9] rounded-full animate-spin" />
+    <div className="w-4 h-4 border-2 border-gray-300 border-t-[#347eb3] rounded-full animate-spin" />
   );
 }
 export default function LoginPage({ isLoggedIn }) {
@@ -69,7 +69,7 @@ const handleGoogleLogin = async () => {
               className="
               absolute inset-0
               rounded-full
-              border-2 border-t-[#38bdf8] border-r-[#0ea5e9]
+              border-2 border-t-[#38bdf8] border-r-[#347eb3]
               animate-spin
             "
             ></div>
@@ -160,7 +160,7 @@ const handleGoogleLogin = async () => {
 
           <h2 className="mt-6 text-3xl font-semibold">
             Welcome Back to{" "}
-            <span className="text-[#0ea5e9]">Samad Agency</span>
+            <span className="text-[#347eb3]">Samad Agency</span>
           </h2>
 
           <p className="mt-4 text-gray-600 text-sm leading-relaxed">
@@ -172,7 +172,7 @@ const handleGoogleLogin = async () => {
             Airpods • Chargers • Data Cables • Handsfree • Neckbands • Power Banks
           </div>
 
-          <p className="mt-4 text-[#0ea5e9] text-sm font-medium">
+          <p className="mt-4 text-[#347eb3] text-sm font-medium">
             Pan India Delivery Available 🇮🇳
           </p>
         </div>
@@ -297,8 +297,8 @@ const handleGoogleLogin = async () => {
                   bg-white
                   px-3 py-2 text-black
                   outline-none
-                  focus:border-[#0ea5e9]
-                  focus:ring-1 focus:ring-[#0ea5e9]
+                  focus:border-[#347eb3]
+                  focus:ring-1 focus:ring-[#347eb3]
                 "
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -321,8 +321,8 @@ const handleGoogleLogin = async () => {
                   bg-white
                   px-3 py-2 text-black
                   outline-none
-                  focus:border-[#0ea5e9]
-                  focus:ring-1 focus:ring-[#0ea5e9]
+                  focus:border-[#347eb3]
+                  focus:ring-1 focus:ring-[#347eb3]
                 "
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -336,7 +336,7 @@ const handleGoogleLogin = async () => {
               disabled={loading}
               className="
                 w-full rounded-lg
-                bg-[#0ea5e9]
+                bg-[#347eb3]
                 py-2.5 font-semibold text-white
                 hover:bg-[#0284c7]
                 transition disabled:opacity-60
@@ -353,7 +353,7 @@ const handleGoogleLogin = async () => {
               href="/auth/register"
               className="
                 font-semibold
-                text-[#0ea5e9]
+                text-[#347eb3]
                 hover:text-[#0284c7]
                 hover:underline
                 underline-offset-4

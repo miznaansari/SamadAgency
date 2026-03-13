@@ -231,7 +231,7 @@ export default function ProductGrid({ products, customerId }) {
               disabled:opacity-60
               ${qty > 0
                       ? "border-green-600 bg-green-50 text-green-700 hover:bg-green-100"
-                      : "border-gray-300 bg-[#00AEEF] text-white hover:bg-[#0095cc]"
+                      : "border-gray-300 bg-[#347eb3] text-white hover:bg-[#0095cc]"
                     }
             `}
                 >

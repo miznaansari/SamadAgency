@@ -258,7 +258,7 @@ const [poLoading, setPoLoading] = useState(false);
         value={poNumber}
         onChange={(e) => setPoNumber(e.target.value)}
         placeholder="Enter PO number"
-        className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-sky-500 focus:outline-none"
+        className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-[#347eb3] focus:outline-none"
       />
     </div>
 
@@ -268,7 +268,7 @@ const [poLoading, setPoLoading] = useState(false);
       className={`w-full rounded py-3 text-sm font-medium text-white
         ${
           agreeTerms && poNumber
-            ? "bg-sky-500 hover:bg-sky-600"
+            ? "bg-[#347eb3] hover:bg-sky-600"
             : "bg-gray-300 cursor-not-allowed"
         }
       `}
@@ -345,7 +345,7 @@ const [poLoading, setPoLoading] = useState(false);
 
 
         {/* Request Quote */}
-        {/* <button className="mt-3 w-full rounded border border-sky-500 py-3 text-sm font-medium text-sky-500 hover:bg-sky-50">
+        {/* <button className="mt-3 w-full rounded border border-[#347eb3] py-3 text-sm font-medium text-[#347eb3] hover:bg-sky-50">
         Request a Quote
       </button> */}
       </div>

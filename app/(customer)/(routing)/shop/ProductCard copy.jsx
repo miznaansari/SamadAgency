@@ -93,7 +93,7 @@ reloadCart();
             e.stopPropagation();
             setOpen(true);
           }}
-          className="relative z-10 mt-3 w-full rounded-xl bg-gradient-to-r from-[#0ea5e9] to-[#0284c7] py-2 text-sm font-semibold text-white transition hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] active:scale-95"
+          className="relative z-10 mt-3 w-full rounded-xl bg-gradient-to-r from-[#347eb3] to-[#0284c7] py-2 text-sm font-semibold text-white transition hover:shadow-[0_0_20px_rgba(56,189,248,0.35)] active:scale-95"
         >
           Add to Cart
         </button>
@@ -216,7 +216,7 @@ reloadCart();
         w-full py-3 rounded-xl text-sm font-semibold transition-all duration-300
         ${
           selectedSize
-            ? "bg-gradient-to-r from-[#0ea5e9] to-[#0284c7] text-white hover:shadow-[0_0_25px_rgba(56,189,248,0.35)]"
+            ? "bg-gradient-to-r from-[#347eb3] to-[#0284c7] text-white hover:shadow-[0_0_25px_rgba(56,189,248,0.35)]"
             : "bg-[#1f2937] text-gray-500 cursor-not-allowed"
         }
       `}

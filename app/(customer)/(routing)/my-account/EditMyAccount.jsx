@@ -163,7 +163,7 @@ export default function EditMyAccount({ customer }) {
 
             <button
               disabled={profilePending || (!isProfileChanged && !isImageChanged)}
-              className="mt-4 rounded-lg bg-[#0ea5e9] px-6 py-2 text-sm font-medium text-white"
+              className="mt-4 rounded-lg bg-[#347eb3] px-6 py-2 text-sm font-medium text-white"
             >
               {profilePending ? "Saving..." : "Save Changes"}
             </button>
@@ -198,7 +198,7 @@ export default function EditMyAccount({ customer }) {
 
           <button
             disabled={passwordPending}
-            className="rounded-lg bg-[#0ea5e9] px-6 py-2 text-sm font-medium text-white"
+            className="rounded-lg bg-[#347eb3] px-6 py-2 text-sm font-medium text-white"
           >
             {passwordPending ? "Updating..." : "Save Changes"}
           </button>

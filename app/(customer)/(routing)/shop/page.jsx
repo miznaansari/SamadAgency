@@ -76,8 +76,8 @@ export default function ShopPage() {
               className={`px-4 py-2 text-xs rounded-full border whitespace-nowrap transition
                 ${
                   active
-                    ? "bg-[#0ea5e9] text-white border-[#0ea5e9]"
-                    : "border-gray-300 text-gray-500 hover:border-[#0ea5e9] hover:text-black"
+                    ? "bg-[#347eb3] text-white border-[#347eb3]"
+                    : "border-gray-300 text-gray-500 hover:border-[#347eb3] hover:text-black"
                 }
               `}
             >
@@ -107,7 +107,7 @@ export default function ShopPage() {
               {["New", "Trending", "Bestseller", "Limited", "Sale"].map((t) => (
                 <span
                   key={t}
-                  className="px-3 py-1 text-xs rounded-full border border-gray-300 text-gray-500 hover:border-[#0ea5e9] hover:text-black cursor-pointer"
+                  className="px-3 py-1 text-xs rounded-full border border-gray-300 text-gray-500 hover:border-[#347eb3] hover:text-black cursor-pointer"
                 >
                   {t}
                 </span>
@@ -125,7 +125,7 @@ export default function ShopPage() {
             <select
               value={query.sort}
               onChange={(e) => updateQuery("sort", e.target.value)}
-              className="bg-white border border-gray-300 px-3 py-2 rounded-lg text-xs focus:outline-none focus:border-[#0ea5e9]"
+              className="bg-white border border-gray-300 px-3 py-2 rounded-lg text-xs focus:outline-none focus:border-[#347eb3]"
             >
               <option value="">Featured</option>
               <option value="price_asc">Price Low → High</option>
@@ -136,7 +136,7 @@ export default function ShopPage() {
 
             <button
               onClick={() => setOpenFilter(true)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#0ea5e9] text-[#0ea5e9] text-xs hover:bg-[#0ea5e9]/10 transition"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#347eb3] text-[#347eb3] text-xs hover:bg-[#347eb3]/10 transition"
             >
               <FunnelIcon className="w-4 h-4" />
               Filter
@@ -180,8 +180,8 @@ export default function ShopPage() {
               className={`px-3 py-1.5 text-sm rounded-lg transition
                 ${
                   active
-                    ? "bg-[#0ea5e9] text-white"
-                    : "bg-white text-gray-500 border border-gray-300 hover:border-[#0ea5e9] hover:text-black"
+                    ? "bg-[#347eb3] text-white"
+                    : "bg-white text-gray-500 border border-gray-300 hover:border-[#347eb3] hover:text-black"
                 }
               `}
             >

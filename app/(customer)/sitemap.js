@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 
 export default async function sitemap() {
-  const baseUrl = "https://theclevar.com";
+  const baseUrl = "https://samad-agency.vercel.app/";
 
   /* =========================
      🏠 STATIC PAGES

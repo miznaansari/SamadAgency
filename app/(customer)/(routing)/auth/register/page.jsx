@@ -168,7 +168,7 @@ export default function RegisterPage() {
               disabled={isPending}
               className="
                 w-full rounded-lg
-                bg-[#0ea5e9]
+                bg-[#347eb3]
                 py-2.5 font-semibold text-white
                 shadow-[0_0_20px_rgba(14,165,233,0.35)]
                 hover:bg-[#38bdf8]

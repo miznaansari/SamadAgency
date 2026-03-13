@@ -62,7 +62,7 @@ export default function Navbar() {
                   {menu.children.map((level2) => (
                     <li
                       key={level2.title}
-                      className="group/level2 relative flex items-center justify-between  px-4 py-2 cursor-pointer hover:bg-sky-500 hover:text-white"
+                      className="group/level2 relative flex items-center justify-between  px-4 py-2 cursor-pointer hover:bg-[#347eb3] hover:text-white"
                       onClick={() => handleNavigate(level2.path)}
                     >
                       {level2.title}
@@ -76,7 +76,7 @@ export default function Navbar() {
                           {level2.children.map((level3) => (
                             <li
                               key={level3.title}
-                              className="group/level3 relative flex items-center justify-between  px-4 py-2 cursor-pointer hover:bg-sky-500 hover:text-white"
+                              className="group/level3 relative flex items-center justify-between  px-4 py-2 cursor-pointer hover:bg-[#347eb3] hover:text-white"
                               onClick={() => handleNavigate(level3.path)}
                             >
                               {level3.title}
@@ -90,7 +90,7 @@ export default function Navbar() {
                                   {level3.children.map((level4) => (
                                     <li
                                       key={level4.title}
-                                      className="px-4 py-2 cursor-pointer hover:bg-sky-500 hover:text-white"
+                                      className="px-4 py-2 cursor-pointer hover:bg-[#347eb3] hover:text-white"
                                       onClick={() =>
                                         handleNavigate(level4.path)
                                       }

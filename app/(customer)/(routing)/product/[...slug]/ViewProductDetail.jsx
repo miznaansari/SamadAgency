@@ -115,8 +115,8 @@ const handleAddToCart = async () => {
                   className={`w-16 h-16 object-cover rounded-md cursor-pointer border
                   ${
                     activeImage?.url === img.url
-                      ? "border-[#0ea5e9]"
-                      : "border-gray-200 hover:border-[#0ea5e9]"
+                      ? "border-[#347eb3]"
+                      : "border-gray-200 hover:border-[#347eb3]"
                   }`}
                 />
               ))}
@@ -163,7 +163,7 @@ const handleAddToCart = async () => {
                   ))}
                 </div>
 
-                <span className="text-[#0ea5e9] font-semibold">4.8</span>
+                <span className="text-[#347eb3] font-semibold">4.8</span>
                 <span>(234 reviews)</span>
 
               </div>
@@ -228,7 +228,7 @@ const handleAddToCart = async () => {
               <button
                 onClick={handleAddToCart}
                 disabled={isAdding}
-                className="flex-1 h-12 rounded-lg border border-[#0ea5e9] text-[#0ea5e9] hover:bg-[#0ea5e9] hover:text-white transition font-semibold"
+                className="flex-1 h-12 rounded-lg border border-[#347eb3] text-[#347eb3] hover:bg-[#347eb3] hover:text-white transition font-semibold"
               >
                 {isAdding ? "Adding..." : "Add To Cart"}
               </button>

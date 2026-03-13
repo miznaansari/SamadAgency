@@ -61,7 +61,7 @@ export default function ProductCard({ product }) {
   const badgeColors = {
     HOT: "bg-red-500 text-white",
     NEW: "bg-green-400 text-black",
-    BESTSELLER: "bg-[#0ea5e9] text-white",
+    BESTSELLER: "bg-[#347eb3] text-white",
     LIMITED: "bg-yellow-400 text-black",
   };
 
@@ -118,8 +118,8 @@ export default function ProductCard({ product }) {
                 className={`px-4 py-2 rounded-lg text-sm border transition
                   ${
                     active
-                      ? "bg-[#0ea5e9] text-white border-[#0ea5e9]"
-                      : "border-gray-300 text-gray-600 hover:border-[#0ea5e9]"
+                      ? "bg-[#347eb3] text-white border-[#347eb3]"
+                      : "border-gray-300 text-gray-600 hover:border-[#347eb3]"
                   }
                 `}
               >
@@ -152,7 +152,7 @@ export default function ProductCard({ product }) {
       <button
         onClick={handleAddToCart}
         disabled={!selectedSize || loading}
-        className="w-full py-3 rounded-xl bg-[#0ea5e9] text-white font-semibold disabled:bg-gray-300 transition"
+        className="w-full py-3 rounded-xl bg-[#347eb3] text-white font-semibold disabled:bg-gray-300 transition"
       >
         {loading ? "Adding..." : "Add To Cart"}
       </button>
@@ -199,7 +199,7 @@ export default function ProductCard({ product }) {
                     e.stopPropagation();
                     setOpen(true);
                   }}
-                  className="flex items-center gap-2 bg-[#0ea5e9] text-white px-4 py-2 rounded-full text-xs font-semibold"
+                  className="flex items-center gap-2 bg-[#347eb3] text-white px-4 py-2 rounded-full text-xs font-semibold"
                 >
                   <ShoppingCartIcon className="w-4 h-4" />
                   ADD TO CART
@@ -215,7 +215,7 @@ export default function ProductCard({ product }) {
 
         <div className="p-3 space-y-1">
 
-          <p className="text-[10px] uppercase text-[#0ea5e9]">
+          <p className="text-[10px] uppercase text-[#347eb3]">
             {product.category || "ACCESSORIES"}
           </p>
 
@@ -258,7 +258,7 @@ export default function ProductCard({ product }) {
         {isMobile && (
           <button
             onClick={() => setOpen(true)}
-            className="w-full py-2 bg-[#0ea5e9] text-white text-sm font-semibold"
+            className="w-full py-2 bg-[#347eb3] text-white text-sm font-semibold"
           >
             Add to Cart
           </button>

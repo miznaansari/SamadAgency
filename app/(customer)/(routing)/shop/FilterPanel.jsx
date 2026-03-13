@@ -41,7 +41,7 @@ export default function FilterPanel({ query }) {
                   px-4 py-2 text-xs rounded-full transition-all duration-300
                   border
                   ${active
-                    ? "bg-[#0ea5e9]/10 border-[#38bdf8] text-[#38bdf8] shadow-[0_0_12px_rgba(56,189,248,0.4)]"
+                    ? "bg-[#347eb3]/10 border-[#38bdf8] text-[#38bdf8] shadow-[0_0_12px_rgba(56,189,248,0.4)]"
                     : "border-white/10 text-gray-400 hover:border-[#38bdf8]/40 hover:text-white"}
                 `}
               >

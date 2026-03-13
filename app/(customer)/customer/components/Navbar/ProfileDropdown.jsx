@@ -63,7 +63,7 @@ export default function ProfileDropdown({isLoggedIn}) {
           <Link href="/auth/login" className="text-blue-400 hover:text-blue-300">
             <button className="
             mt-3 w-full py-2 rounded-lg
-            bg-gradient-to-r from-[#0ea5e9] to-[#38bdf8]
+            bg-gradient-to-r from-[#347eb3] to-[#38bdf8]
             text-black font-semibold
             hover:shadow-[0_0_15px_rgba(56,189,248,0.6)]
             transition cursor-pointer

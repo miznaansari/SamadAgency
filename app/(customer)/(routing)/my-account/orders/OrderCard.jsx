@@ -22,12 +22,12 @@ export default function OrderCard({ order }) {
           transition-all duration-300
           hover:-translate-y-1
           hover:shadow-xl
-          hover:border-[#0ea5e9]/40
+          hover:border-[#347eb3]/40
         "
       >
         {/* Soft Glow */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none">
-          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-[#0ea5e9]/10 blur-3xl" />
+          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-[#347eb3]/10 blur-3xl" />
           <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-[#6366f1]/10 blur-3xl" />
         </div>
 
@@ -56,7 +56,7 @@ export default function OrderCard({ order }) {
 
             {/* <p className="
               text-3xl font-extrabold
-              bg-gradient-to-r from-[#0ea5e9] to-[#6366f1]
+              bg-gradient-to-r from-[#347eb3] to-[#6366f1]
               bg-clip-text text-transparent
             ">
               ${order.total.toFixed(2)}

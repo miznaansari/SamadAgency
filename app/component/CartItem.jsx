@@ -92,7 +92,7 @@ export default function CartItem({ item, isLoggedIn }) {
       className="
       group flex gap-4 p-4 rounded-2xl
       bg-white border border-gray-200
-      hover:border-[#0ea5e9]/40
+      hover:border-[#347eb3]/40
       hover:shadow-sm
       transition
     "

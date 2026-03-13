@@ -79,7 +79,7 @@ return (
             <span
               className="
                 rounded-full
-                bg-[#0ea5e9]
+                bg-[#347eb3]
                 px-3 py-0.5
                 text-white text-xs font-medium
                 shadow-[0_0_12px_rgba(14,165,233,0.35)]

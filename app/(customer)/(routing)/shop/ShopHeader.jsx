@@ -20,7 +20,7 @@ export default function ShopHeader({ count = 0 }) {
       {/* CONTENT */}
       <div className="relative py-16 text-center space-y-3">
 
-        <p className="text-xs tracking-[0.25em] text-[#0ea5e9] font-medium">
+        <p className="text-xs tracking-[0.25em] text-[#347eb3] font-medium">
           BROWSE OUR PRODUCTS
         </p>
 

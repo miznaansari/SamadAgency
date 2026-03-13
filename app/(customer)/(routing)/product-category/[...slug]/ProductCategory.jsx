@@ -224,7 +224,7 @@ return (
                 border border-gray-200
                 p-5 text-center
                 transition-all duration-300
-                hover:border-[#0ea5e9]
+                hover:border-[#347eb3]
                 hover:shadow-md
               "
             >
@@ -233,7 +233,7 @@ return (
                 className="
                   text-sm font-semibold
                   text-black
-                  group-hover:text-[#0ea5e9]
+                  group-hover:text-[#347eb3]
                   transition
                 "
               >
@@ -261,7 +261,7 @@ return (
 
           <div className="flex flex-col items-center gap-3 rounded-xl border border-gray-200 bg-white px-8 py-10 text-center shadow-sm">
 
-            <CubeIcon className="h-10 w-10 text-[#0ea5e9]" />
+            <CubeIcon className="h-10 w-10 text-[#347eb3]" />
 
             <h3 className="text-lg font-semibold text-black">
               No products found

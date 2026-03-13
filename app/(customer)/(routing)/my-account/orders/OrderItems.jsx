@@ -74,7 +74,7 @@ export default async function OrderItems({ orderId }) {
               QTY: {item.quantity}
             </span>
 
-            {/* <span className="font-medium text-[#0ea5e9]">
+            {/* <span className="font-medium text-[#347eb3]">
               ${item.line_total.toFixed(2)}
             </span> */}
 

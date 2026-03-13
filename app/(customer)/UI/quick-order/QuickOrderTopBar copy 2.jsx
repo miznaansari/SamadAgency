@@ -166,7 +166,7 @@ export default function QuickOrderTopBar({ menuData = [], onCategorySelect }) {
                                   </button>
 
                                   {m3.children && (
-                                    <ChevronRight className="h-4 w-4 text-sky-500" />
+                                    <ChevronRight className="h-4 w-4 text-[#347eb3]" />
                                   )}
                                 </div>
 

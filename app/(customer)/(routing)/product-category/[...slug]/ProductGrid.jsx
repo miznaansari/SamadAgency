@@ -152,7 +152,7 @@ export default function ProductGrid({ products, customerId }) {
               bg-white
               shadow-sm
               transition-all duration-300
-              hover:border-[#0ea5e9]
+              hover:border-[#347eb3]
               hover:shadow-md
             "
           >
@@ -184,7 +184,7 @@ export default function ProductGrid({ products, customerId }) {
                   className="
                     line-clamp-2 text-sm font-medium
                     text-black
-                    group-hover:text-[#0ea5e9]
+                    group-hover:text-[#347eb3]
                     transition
                   "
                 >
@@ -201,11 +201,11 @@ export default function ProductGrid({ products, customerId }) {
                   <span
                     className="
                       rounded-md
-                      bg-[#0ea5e9]/10
+                      bg-[#347eb3]/10
                       px-2 py-0.5
                       text-xs font-medium
-                      text-[#0ea5e9]
-                      border border-[#0ea5e9]/30
+                      text-[#347eb3]
+                      border border-[#347eb3]/30
                     "
                   >
                     Qty {qty}
@@ -249,12 +249,12 @@ export default function ProductGrid({ products, customerId }) {
                     ${
                       qty > 0
                         ? `
-                          border border-[#0ea5e9]/40
-                          text-[#0ea5e9]
-                          hover:bg-[#0ea5e9]/10
+                          border border-[#347eb3]/40
+                          text-[#347eb3]
+                          hover:bg-[#347eb3]/10
                         `
                         : `
-                          bg-[#0ea5e9]
+                          bg-[#347eb3]
                           text-white
                           hover:bg-[#0284c7]
                         `

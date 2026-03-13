@@ -61,7 +61,7 @@ export default function OrderCardMobile({ order }) {
       <div className="relative overflow-hidden border border-gray-200 bg-white px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition">
 
         {/* subtle hover highlight */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#0ea5e9]/5 via-transparent to-[#6366f1]/5" />
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-r from-[#347eb3]/5 via-transparent to-[#6366f1]/5" />
 
         <div className="relative flex items-center justify-between">
 

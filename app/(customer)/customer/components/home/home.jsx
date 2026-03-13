@@ -46,7 +46,7 @@ export default function Home() {
         {/* TAG */}
         <motion.div
           variants={item}
-          className="inline-flex items-center px-4 py-1 rounded-full border border-[#0ea5e9]/40 text-[#0ea5e9] text-xs tracking-widest mb-6 backdrop-blur-md"
+          className="inline-flex items-center px-4 py-1 rounded-full border border-[#347eb3]/40 text-[#347eb3] text-xs tracking-widest mb-6 backdrop-blur-md"
         >
           ⚡ NEW ARRIVALS AVAILABLE
         </motion.div>

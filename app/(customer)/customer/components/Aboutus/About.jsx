@@ -10,7 +10,7 @@ export default function AboutPage() {
 
         {/* Glow */}
         <div className="absolute -top-32 -right-32 h-96 w-96 bg-[#38bdf8]/20 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 h-96 w-96 bg-[#0ea5e9]/20 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 h-96 w-96 bg-[#347eb3]/20 blur-3xl" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
 
@@ -21,7 +21,7 @@ export default function AboutPage() {
           <h1 className="mt-4 text-4xl md:text-5xl font-extrabold text-white leading-tight">
             We Don’t Just Sell Clothes.
             <br />
-            <span className="bg-gradient-to-r from-[#38bdf8] to-[#0ea5e9] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#38bdf8] to-[#347eb3] bg-clip-text text-transparent">
               We Build Your Style.
             </span>
           </h1>
@@ -66,7 +66,7 @@ export default function AboutPage() {
             <div className="flex gap-4 pt-4">
               <Link
                 href="/shop"
-                className="rounded-xl bg-gradient-to-r from-[#0ea5e9] to-[#0284c7] px-6 py-3 text-sm font-semibold text-white transition hover:shadow-[0_0_25px_rgba(56,189,248,0.35)]"
+                className="rounded-xl bg-gradient-to-r from-[#347eb3] to-[#0284c7] px-6 py-3 text-sm font-semibold text-white transition hover:shadow-[0_0_25px_rgba(56,189,248,0.35)]"
               >
                 Shop Now
               </Link>

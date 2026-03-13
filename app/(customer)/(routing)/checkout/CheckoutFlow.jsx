@@ -22,7 +22,7 @@ return (
 
         <button
           onClick={() => window.history.back()}
-          className="text-sm text-gray-500 hover:text-[#0ea5e9]"
+          className="text-sm text-gray-500 hover:text-[#347eb3]"
         >
           ← BACK TO CART
         </button>

@@ -66,7 +66,7 @@ export default async function Page() {
           {/* LEFT */}
           <Link
             href="/shop"
-            className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#0ea5e9] transition"
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#347eb3] transition"
           >
             <ArrowLeftIcon className="h-5 w-5" />
 
@@ -81,7 +81,7 @@ export default async function Page() {
             <span className="sm:hidden">Cart</span>
             <span className="hidden sm:inline">Your Cart</span>
 
-            <span className="ml-1 text-[#0ea5e9]">
+            <span className="ml-1 text-[#347eb3]">
               ({isGuest ? "" : pricedCartData.length})
             </span>
 
@@ -115,7 +115,7 @@ export default async function Page() {
       </div> */}
  <Link
         href={`/checkout`}
-        className="w-full mt-6 bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold text-center p-3 rounded-lg transition"
+        className="w-full mt-6 bg-[#347eb3] hover:bg-[#0284c7] text-white font-semibold text-center p-3 rounded-lg transition"
       >
         CONTINUE TO CHECKOUT
       </Link>

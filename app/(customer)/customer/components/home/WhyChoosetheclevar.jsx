@@ -18,7 +18,7 @@ export default function WhyChoosetheclevar() {
               Why Choose Samad Agency?
             </h2>
 
-            <div className="my-6 h-[2px] w-48 bg-[#0ea5e9]" />
+            <div className="my-6 h-[2px] w-48 bg-[#347eb3]" />
 
             <div className="space-y-8">
 
@@ -83,7 +83,7 @@ export default function WhyChoosetheclevar() {
             {/* CTA */}
             <Link
               href="/shop"
-              className="mt-10 inline-flex items-center gap-2 rounded-md bg-[#0ea5e9] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#38bdf8] shadow-[0_0_20px_rgba(14,165,233,0.35)]"
+              className="mt-10 inline-flex items-center gap-2 rounded-md bg-[#347eb3] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#38bdf8] shadow-[0_0_20px_rgba(14,165,233,0.35)]"
             >
               Explore Collection →
             </Link>

@@ -179,7 +179,7 @@ export default function CheckoutTotal({ cartData = [] }) {
         className={`p-4 rounded-xl border cursor-pointer transition-all text-left
         ${
           paymentMethod === "razorpay"
-            ? "border-sky-500 bg-sky-500/10 shadow-[0_0_20px_rgba(14,165,233,0.4)]"
+            ? "border-[#347eb3] bg-[#347eb3]/10 shadow-[0_0_20px_rgba(14,165,233,0.4)]"
             : "border-white/10 hover:border-sky-400/40"
         }`}
       >
@@ -193,7 +193,7 @@ export default function CheckoutTotal({ cartData = [] }) {
         className={`p-4 rounded-xl border cursor-pointer transition-all text-left
         ${
           paymentMethod === "po"
-            ? "border-sky-500 bg-sky-500/10 shadow-[0_0_20px_rgba(14,165,233,0.4)]"
+            ? "border-[#347eb3] bg-[#347eb3]/10 shadow-[0_0_20px_rgba(14,165,233,0.4)]"
             : "border-white/10 hover:border-sky-400/40"
         }`}
       >
@@ -208,7 +208,7 @@ export default function CheckoutTotal({ cartData = [] }) {
         className={`h-5 w-5 rounded-md border flex items-center justify-center transition-all
         ${
           agreeTerms
-            ? "bg-sky-500 border-sky-500"
+            ? "bg-[#347eb3] border-[#347eb3]"
             : "border-white/20 group-hover:border-sky-400"
         }`}
       >
@@ -238,7 +238,7 @@ export default function CheckoutTotal({ cartData = [] }) {
           onClick={handleRazorpayPayment}
           disabled={!agreeTerms || rzpLoading}
           className="w-full rounded-xl py-3 text-white font-medium
-          bg-gradient-to-r from-sky-500 to-blue-600
+          bg-gradient-to-r from-[#347eb3] to-blue-600
           shadow-[0_0_20px_rgba(14,165,233,0.5)]
           hover:scale-[1.02] active:scale-[0.98]
           transition-all disabled:opacity-50"
@@ -263,7 +263,7 @@ export default function CheckoutTotal({ cartData = [] }) {
           <button
             disabled={!agreeTerms || !poNumber || poLoading}
             className="w-full rounded-xl py-3 text-white font-medium
-            bg-gradient-to-r from-sky-500 to-blue-600
+            bg-gradient-to-r from-[#347eb3] to-blue-600
             shadow-[0_0_20px_rgba(14,165,233,0.5)]
             hover:scale-[1.02] active:scale-[0.98]
             transition-all disabled:opacity-50"

@@ -253,12 +253,11 @@ function CartRow({ item, isGuest, setCart }) {
         href={`/product/${product.slug}`}
         className="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0"
       >
-        <Image
-          src={product.images?.[0]?.image_url || "/images/not-found.png"}
-          alt={product.name}
-          fill
-          className="object-cover rounded-lg"
-        />
+     <img
+  src={product.images?.[0]?.image_url || "/images/not-found.png"}
+  alt={product.name}
+  className="w-full h-full object-cover rounded-lg"
+/>
       </Link>
 
       {/* INFO */}

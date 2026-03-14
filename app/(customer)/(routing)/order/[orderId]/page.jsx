@@ -73,9 +73,9 @@ export default function OrderDetailsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen  px-6 py-6 space-y-6">
+      <div className="min-h-screen  px-2 py-2 space-y-2">
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-6">
+        <div className="rounded-2xl border border-gray-200 bg-white p-2">
           <div className="flex justify-between">
             <div className="space-y-3">
               <div className="h-3 w-28 bg-gray-200 rounded animate-pulse" />
@@ -143,11 +143,11 @@ export default function OrderDetailsPage() {
     .filter(Boolean);
 
   return (
-    <div className="min-h-screen  px-6 py-6 space-y-6">
+    <div className="min-h-screen  px-2 py-2 space-y-2">
 
       {/* HERO */}
 
-      <div className="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col md:flex-row md:justify-between md:items-center">
+      <div className="rounded-2xl border border-gray-200 bg-white p-2 flex flex-col md:flex-row md:justify-between md:items-center">
 
         <div>
           <p
@@ -157,7 +157,7 @@ export default function OrderDetailsPage() {
             ← Back to Orders
           </p>
 
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900 mt-1">
+          <h1 className="text-md md:text-2xl font-bold text-gray-900 mt-1">
             Order #{order?.order_number}
           </h1>
 

@@ -3,11 +3,12 @@ import { NextResponse } from "next/server";
 import { requireUser } from "@/lib/requireUser";
 
 export async function GET(req) {
+  console.log("hitt");
+
   try {
     const { searchParams } = new URL(req.url);
 
     const category = searchParams.get("category");
-    const size = searchParams.get("size");
     const page = Number(searchParams.get("page") || 1);
 
     const limit = 8;
@@ -39,20 +40,11 @@ export async function GET(req) {
         is_deleted: false,
 
         ...(category && {
-          category: { slug: category },
-        }),
-
-        ...(size && {
-          variants: {
-            some: {
-              size,
-              stock_qty: { gt: 0 },
-              is_deleted: false,
-            },
+          category: {
+            slug: category,
           },
         }),
 
-        stock_qty: { gt: 0 },
       },
 
       include: {
@@ -62,17 +54,6 @@ export async function GET(req) {
             is_deleted: false,
           },
           take: 1,
-        },
-
-        variants: {
-          where: {
-            is_deleted: false,
-          },
-          select: {
-            id: true,
-            size: true,
-            stock_qty: true,
-          },
         },
 
         /* ✅ FILTERED CUSTOMER GROUP PRICING */
@@ -93,52 +74,45 @@ export async function GET(req) {
       take: limit,
     });
 
+    console.log("products", products);
+
     /* =========================
        💰 PRICE CALCULATION
     ========================= */
     const finalProducts = products.map((p) => {
       let price = p.sale_price || p.regular_price;
 
-      /* ✅ 1. CUSTOMER GROUP PRICE */
+      /* ✅ CUSTOMER GROUP PRICE */
       if (p.pricing?.length) {
         price = p.pricing[0].price;
       }
 
-      /* ✅ 2. TIER PRICING (HIGHEST PRIORITY) */
+      /* ✅ TIER PRICING (HIGHEST PRIORITY) */
       if (customer?.price_tier && p.tier_product_pricing) {
-        const tierKey = customer.price_tier.toLowerCase(); 
-        // TIER_1 → tier_1_price
+        const tierKey = customer.price_tier.toLowerCase();
 
-        const tierPrice =
-          p.tier_product_pricing[`${tierKey}_price`];
+        const tierPrice = p.tier_product_pricing[`${tierKey}_price`];
 
         if (tierPrice) {
           price = Number(tierPrice);
         }
       }
 
-    return {
-  id: p.id,
-  name: p.name,
-  slug: p.slug,
-  description: p.description,
-  image: p.images[0]?.image_url || null,
-  price,
-  rating: 4.5,
+      return {
+        id: p.id,
+        name: p.name,
+        slug: p.slug,
+        description: p.description,
+        image: p.images[0]?.image_url || null,
+        price,
+        rating: 4.5,
 
-  /* ✅ show only when discount exists */
-  regular_price:
-    p.regular_price && p.regular_price > price
-      ? p.regular_price
-      : null,
-
-  variants: p.variants
-    .filter((v) => v.stock_qty > 0)
-    .map((v) => ({
-      id: v.id,
-      size: v.size,
-    })),
-};
+        /* show only when discount exists */
+        regular_price:
+          p.regular_price && p.regular_price > price
+            ? p.regular_price
+            : null,
+      };
     });
 
     /* =========================
@@ -150,20 +124,11 @@ export async function GET(req) {
         is_deleted: false,
 
         ...(category && {
-          category: { slug: category },
-        }),
-
-        ...(size && {
-          variants: {
-            some: {
-              size,
-              stock_qty: { gt: 0 },
-              is_deleted: false,
-            },
+          category: {
+            slug: category,
           },
-        }),
+        })
 
-        stock_qty: { gt: 0 },
       },
     });
 

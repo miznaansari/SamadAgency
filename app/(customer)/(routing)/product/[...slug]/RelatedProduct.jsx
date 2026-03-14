@@ -146,7 +146,7 @@ function ProductCard({ product }) {
             ₹{product.price || product.regular_price}
           </span>
 
-          {product.sale_price && (
+          {product.sale_price  && (
             <span className="text-gray-400 text-xs line-through">
               ₹{product.sale_price}
             </span>

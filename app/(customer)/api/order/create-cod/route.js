@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/requireUser";
-import { sendWhatsAppMessage } from "@/lib/whatsapp";
 
 export async function POST(req) {
   try {
@@ -168,26 +167,26 @@ Phone: ${a.phone}
 
 
     /* SEND WHATSAPP MESSAGE */
-//     try {
-//       console.log('try to send sms ')
-//       console.log('shippingAddr',shippingAddr)
-//       const phone = shippingAddr.phone.replace(/\D/g, ""); // remove spaces
-// console.log('phone',phone)
-//       const message = `🛒 Order Confirmed!
+    //     try {
+    //       console.log('try to send sms ')
+    //       console.log('shippingAddr',shippingAddr)
+    //       const phone = shippingAddr.phone.replace(/\D/g, ""); // remove spaces
+    // console.log('phone',phone)
+    //       const message = `🛒 Order Confirmed!
 
-// Order Number: ${order.order_number}
+    // Order Number: ${order.order_number}
 
-// Total Amount: ₹${total}
+    // Total Amount: ₹${total}
 
-// Delivery Method: ${deliveryMethod ? "Home Delivery" : "Store Pickup"
-//         }
+    // Delivery Method: ${deliveryMethod ? "Home Delivery" : "Store Pickup"
+    //         }
 
-// Thank you for shopping with us ❤️`;
-// console.log('senidng')
-//       await sendWhatsAppMessage(`91${phone}`, message);
-//     } catch (err) {
-//       console.error("WhatsApp send failed:", err);
-//     }
+    // Thank you for shopping with us ❤️`;
+    // console.log('senidng')
+    //       await sendWhatsAppMessage(`91${phone}`, message);
+    //     } catch (err) {
+    //       console.error("WhatsApp send failed:", err);
+    //     }
 
     /* CLEAR CART */
     await prisma.customer_cart.updateMany({
@@ -200,12 +199,87 @@ Phone: ${a.phone}
       },
     });
 
-    return NextResponse.json({
+
+
+    const response = NextResponse.json({
       success: true,
       orderId: order.id,
       orderNumber: order.order_number,
       message: "Order placed successfully with Cash on Delivery",
     });
+
+    /* BACKGROUND WHATSAPP SEND */
+    (async () => {
+      try {
+        const phone = shippingAddr.phone.replace(/\D/g, "");
+        const itemsText = orderItems
+          .map((item) => `• ${item.product_title} x${item.quantity}`)
+          .join("\n");
+        const message = `🛒 *ORDER CONFIRMED*
+
+*Order Number:* ${order.order_number}
+
+*Items Ordered:*
+${itemsText}
+
+*Total Amount:* ₹${total}
+
+*Delivery Method:* ${deliveryMethod ? "Home Delivery" : "Store Pickup"}
+
+🔎 *Track Order*
+https://samad.agencytheclevar.com/order/${order.id}
+
+_Thank you for shopping with us!_
+*Samad Agency* ❤️`;
+
+        const notification = await prisma.whatsapp_notifications.create({
+          data: {
+            phone: `91${phone}`,
+            message,
+            order_id: order.id,
+            status: "PENDING",
+          },
+        });
+
+        fetch("https://vps.theclevar.com/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: notification.phone,
+            message: notification.message,
+          }),
+          signal: AbortSignal.timeout(10000), // stop after 10s
+        })
+          .then(async (res) => {
+            const data = await res.text();
+
+            await prisma.whatsapp_notifications.update({
+              where: { id: notification.id },
+              data: {
+                status: "SENT",
+                response: data,
+              },
+            });
+          })
+          .catch(async (err) => {
+            await prisma.whatsapp_notifications.update({
+              where: { id: notification.id },
+              data: {
+                status: "FAILED",
+                response: err.message,
+              },
+            });
+          });
+
+      } catch (err) {
+        console.error("WhatsApp background error:", err);
+      }
+    })();
+
+    return response;
+
   } catch (error) {
     console.error("COD ORDER ERROR:", error);
 

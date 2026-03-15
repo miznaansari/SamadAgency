@@ -477,3 +477,14 @@ model WhatsAppSession {
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
 }
+model whatsapp_notifications {
+  id            Int      @id @default(autoincrement())
+  phone         String   @db.VarChar(20)
+  message       String   @db.Text
+  status        String   @default("PENDING")
+  response      String?  @db.Text
+  order_id      Int?
+  attempts      Int      @default(0)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+}

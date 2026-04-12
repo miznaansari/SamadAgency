@@ -89,16 +89,15 @@ export default function AddProductForm({ categories }) {
       );
 
       const data = await res.json();
+      console.log('datdataa',data)
 
-      if (data.status !== "success") {
-        throw new Error(data?.data?.message || "AI extraction failed");
-      }
+      
 
-      const ai = data.data;
+      const ai = data;
 
       setFormValues({
         name: ai.name || "",
-        sku: ai.model || "",
+        sku: ai.sku || "",
         description: ai.description || "",
         meta_title: ai.meta_title || "",
         meta_description: ai.meta_description || "",

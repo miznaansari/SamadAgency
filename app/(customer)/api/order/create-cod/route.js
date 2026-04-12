@@ -209,75 +209,147 @@ Phone: ${a.phone}
     });
 
     /* BACKGROUND WHATSAPP SEND */
-    (async () => {
-      try {
-        const phone = shippingAddr.phone.replace(/\D/g, "");
-        const itemsText = orderItems
-          .map((item) => `• ${item.product_title} x${item.quantity}`)
-          .join("\n");
-        const message = `🛒 *ORDER CONFIRMED*
+//     (async () => {
+//       try {
+//         const phone = shippingAddr.phone.replace(/\D/g, "");
+//         const itemsText = orderItems
+//           .map((item) => `• ${item.product_title} x${item.quantity}`)
+//           .join("\n");
+//         const message = `🛒 *ORDER CONFIRMED*
 
-*Order Number:* ${order.order_number}
+// *Order Number:* ${order.order_number}
 
-*Items Ordered:*
-${itemsText}
+// *Items Ordered:*
+// ${itemsText}
 
-*Total Amount:* ₹${total}
+// *Total Amount:* ₹${total}
 
-*Delivery Method:* ${deliveryMethod ? "Home Delivery" : "Store Pickup"}
+// *Delivery Method:* ${deliveryMethod ? "Home Delivery" : "Store Pickup"}
 
-🔎 *Track Order*
+// 🔎 *Track Order*
+// https://samad.agencytheclevar.com/order/${order.id}
+
+// _Thank you for shopping with us!_
+// *Samad Agency* ❤️`;
+
+//         const notification = await prisma.whatsapp_notifications.create({
+//           data: {
+//             phone: `91${phone}`,
+//             message,
+//             order_id: order.id,
+//             status: "PENDING",
+//           },
+//         });
+
+//         fetch("https://vps.theclevar.com/send", {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             phone: notification.phone,
+//             message: notification.message,
+//           }),
+//           signal: AbortSignal.timeout(10000), // stop after 10s
+//         })
+//           .then(async (res) => {
+//             const data = await res.text();
+
+//             await prisma.whatsapp_notifications.update({
+//               where: { id: notification.id },
+//               data: {
+//                 status: "SENT",
+//                 response: data,
+//               },
+//             });
+//           })
+//           .catch(async (err) => {
+//             await prisma.whatsapp_notifications.update({
+//               where: { id: notification.id },
+//               data: {
+//                 status: "FAILED",
+//                 response: err.message,
+//               },
+//             });
+//           });
+
+//       } catch (err) {
+//         console.error("WhatsApp background error:", err);
+//       }
+//     })();
+(async () => {
+  try {
+    const phone = shippingAddr.phone.replace(/\D/g, "");
+
+    const itemsText = orderItems
+      .map((item) => `${item.product_title} x${item.quantity}`)
+      .join(", ");
+
+    const message = `Order Confirmed!
+Order No: ${order.order_number}
+
+Items: ${itemsText}
+
+Total: Rs ${total}
+
+Track Order:
 https://samad.agencytheclevar.com/order/${order.id}
 
-_Thank you for shopping with us!_
-*Samad Agency* ❤️`;
+Samad Agency`;
 
-        const notification = await prisma.whatsapp_notifications.create({
+    const notification = await prisma.whatsapp_notifications.create({
+      data: {
+        phone: `91${phone}`,
+        message,
+        order_id: order.id,
+        status: "PENDING",
+      },
+    });
+
+    fetch("https://control.msg91.com/api/v5/flow", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authkey: process.env.MSG91_AUTH_KEY,
+      },
+      body: JSON.stringify({
+        sender: process.env.MSG91_SENDER_ID,
+        route: process.env.MSG91_ROUTE,
+        country: "91",
+        sms: [
+          {
+            message: notification.message,
+            to: [notification.phone],
+          },
+        ],
+      }),
+      signal: AbortSignal.timeout(10000),
+    })
+      .then(async (res) => {
+        const data = await res.text();
+
+        await prisma.whatsapp_notifications.update({
+          where: { id: notification.id },
           data: {
-            phone: `91${phone}`,
-            message,
-            order_id: order.id,
-            status: "PENDING",
+            status: "SENT",
+            response: data,
           },
         });
-
-        fetch("https://vps.theclevar.com/send", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+      })
+      .catch(async (err) => {
+        await prisma.whatsapp_notifications.update({
+          where: { id: notification.id },
+          data: {
+            status: "FAILED",
+            response: err.message,
           },
-          body: JSON.stringify({
-            phone: notification.phone,
-            message: notification.message,
-          }),
-          signal: AbortSignal.timeout(10000), // stop after 10s
-        })
-          .then(async (res) => {
-            const data = await res.text();
+        });
+      });
 
-            await prisma.whatsapp_notifications.update({
-              where: { id: notification.id },
-              data: {
-                status: "SENT",
-                response: data,
-              },
-            });
-          })
-          .catch(async (err) => {
-            await prisma.whatsapp_notifications.update({
-              where: { id: notification.id },
-              data: {
-                status: "FAILED",
-                response: err.message,
-              },
-            });
-          });
-
-      } catch (err) {
-        console.error("WhatsApp background error:", err);
-      }
-    })();
-
+  } catch (err) {
+    console.error("SMS background error:", err);
+  }
+})();
     return response;
 
   } catch (error) {

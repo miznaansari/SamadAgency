@@ -49,7 +49,7 @@ export default function LeftSidebar() {
     },
   
     { title: "Wishlist", icon: StarIcon, href: "/admin/wishlist" },
-    { title: "Whatsapp", icon: PhoneIcon, href: "/admin/whatsapp" },
+    // { title: "Whatsapp", icon: PhoneIcon, href: "/admin/whatsapp" },
     { title: "Contact Form", icon: ChatBubbleBottomCenterIcon, href: "/admin/contact" },
     { title: "Back to Website", icon: TruckIcon, href: "/" }
 

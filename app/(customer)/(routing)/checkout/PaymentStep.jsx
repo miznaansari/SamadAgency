@@ -100,6 +100,7 @@ export default function PaymentStep() {
             }),
           });
 
+          // Do not setLoading(false) here, let it stay true until redirect
           router.push(`/verify-order/${localOrderIdRef.current}`);
         },
 
@@ -115,9 +116,9 @@ export default function PaymentStep() {
         type: "error",
         message: "Payment failed",
       });
-    } finally {
       setLoading(false);
     }
+    // Do not setLoading(false) in finally, keep loading until redirect
   };
 
   /* ===============================
@@ -164,16 +165,16 @@ export default function PaymentStep() {
         message: "Order placed successfully",
       });
 
-      /* REDIRECT TO ORDER PAGE */
+      // Do not setLoading(false) here, let it stay true until redirect
       router.push(`/order/${data.orderId}`);
     } catch (error) {
       showToast({
         type: "error",
         message: "Failed to place order",
       });
-    } finally {
       setLoading(false);
     }
+    // Do not setLoading(false) in finally, keep loading until redirect
   };
 
   /* ===============================

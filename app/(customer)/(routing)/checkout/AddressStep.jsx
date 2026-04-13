@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { createAddress } from "./actions";
+import { useToast } from "@/app/admin/context/ToastProvider";
 
 export default function AddressStep({ addresses, onNext }) {
+  const {showToast} = useToast();
 
   const [selected, setSelected] = useState(null);
   const [showForm, setShowForm] = useState(false);
@@ -24,23 +26,30 @@ export default function AddressStep({ addresses, onNext }) {
      LOAD DEFAULT ADDRESS
   ========================= */
 
+
   useEffect(() => {
-
+    // Try to get stored address id
     const stored = localStorage.getItem("shipping_address_id");
-
-    if (stored) {
+    if (stored && addresses.some(a => a.id === Number(stored))) {
       setSelected(Number(stored));
       return;
     }
 
+    // Try to get default address
     const primary = addresses.find((a) => a.is_default);
-
     if (primary) {
       setSelected(primary.id);
       localStorage.setItem("shipping_address_id", primary.id);
       localStorage.setItem("billing_address_id", primary.id);
+      return;
     }
 
+    // If no default, select the first address if available
+    if (addresses.length > 0) {
+      setSelected(addresses[0].id);
+      localStorage.setItem("shipping_address_id", addresses[0].id);
+      localStorage.setItem("billing_address_id", addresses[0].id);
+    }
   }, [addresses]);
 
   const handleSelect = (id) => {
@@ -50,13 +59,14 @@ export default function AddressStep({ addresses, onNext }) {
     localStorage.setItem("billing_address_id", id);
   };
 
+
   const handleNext = () => {
-
-    if (!selected) return;
-
+    if (!selected) {
+      showToast("Please select any one address", "error");
+      return;
+    }
     localStorage.setItem("shipping_address_id", selected);
     localStorage.setItem("billing_address_id", selected);
-
     onNext();
   };
 

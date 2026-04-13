@@ -117,8 +117,11 @@ function normalizeMenu(menu, level = 1) {
 
 
 const menuData = buildMenuData(categories);
-const normalizedMenuData = normalizeMenu(menuData);
 
-return <Navbar isLoggedIn={isLoggedIn} menuData={menuData} />;
+// take only first 7 items
+const limitedMenuData = menuData.slice(0, 7);
 
+const normalizedMenuData = normalizeMenu(limitedMenuData);
+
+return <Navbar isLoggedIn={isLoggedIn} menuData={limitedMenuData} />;
 }

@@ -1,5 +1,16 @@
+import { useToast } from "@/app/admin/context/ToastProvider";
+
 export default function ReviewStep({ cartData, onNext, onBack }) {
-console.log('cartData',cartData)
+  const { showToast } = useToast();
+
+  const handleContinue = () => {
+    if (!cartData || cartData.length === 0) {
+      showToast("Please add at least one item", "error");
+      return;
+    }
+    onNext();
+  };
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6">
 
@@ -39,9 +50,25 @@ console.log('cartData',cartData)
 
       </div>
 
+
+      {(!cartData || cartData.length === 0) && (
+        <>
+          <div className="text-red-500 text-center mt-6 font-medium">
+            Please add item for proceed
+          </div>
+          <a
+            href="http://localhost:3000/shop"
+            className="block w-full mt-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg text-center transition"
+          >
+            Shop Now
+          </a>
+        </>
+      )}
+
       <button
-        onClick={onNext}
-        className="w-full mt-6 bg-[#347eb3] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition"
+        onClick={handleContinue}
+        disabled={!cartData || cartData.length === 0}
+        className="w-full mt-6 bg-[#347eb3] hover:bg-[#0284c7] text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
       >
         CONTINUE TO ORDER
       </button>

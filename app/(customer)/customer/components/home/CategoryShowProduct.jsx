@@ -213,7 +213,7 @@ export default function CategoryShowProduct({ categories }) {
                         <table className="w-full text-sm">
                           <thead className="bg-gray-50">
                             <tr>
-                              <th className="p-3 text-left">S.No</th>
+                              <th className="p-3 text-left hidden">S.No</th>
                               <th className="p-3 text-left">Item</th>
                               <th className="p-3 text-left">Name</th>
                               <th className="p-3 text-left">Qty</th>
@@ -233,7 +233,7 @@ export default function CategoryShowProduct({ categories }) {
                                   key={product.id}
                                   className="border-t border-gray-100"
                                 >
-                                  <td className="p-3">{index + 1}</td>
+                                  <td className="p-3 hidden">{index + 1}</td>
 
                                   <td className="p-3">
                                     <img
@@ -243,7 +243,7 @@ export default function CategoryShowProduct({ categories }) {
                                     />
                                   </td>
                                   <Link href={`/product/${product.slug}`}>
-                                    <td className="p-3 font-medium">
+                                    <td className="p-3 font-medium text-xs">
                                       {product.name}
                                     </td>
                                   </Link>
